@@ -1,0 +1,57 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+    //1.三目true/false拼接
+    <input type="checkbox" v-model="isTxtRed">文本变红色
+    <input type="checkbox" v-model="isBgRed">背景变红色
+    <hr>
+    <p :class="(isTxtRed?'text-danger ':'')+(isBgRed?'bg-danger':'')"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur delectus dignissimos, dolor et molestiae nesciunt nisi provident recusandae? Ad amet consequuntur corporis cumque dolorum exercitationem in iure sit tempore totam.</p>
+
+    //2.class="{'class名':true/false,'class名':true/false}"
+    <input type="checkbox" v-model="isTxtRed">文本变红色
+    <input type="checkbox" v-model="isBgRed">背景变红色
+    <hr>
+    <p :class="{'text-danger':isTxtRed,'bg-danger':isBgRed}"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur delectus dignissimos, dolor et molestiae nesciunt nisi provident recusandae? Ad amet consequuntur corporis cumque dolorum exercitationem in iure sit tempore totam.</p>
+
+    //3.classObj 引用对象
+    <input type="checkbox" v-model="classObj['text-danger']">文本变红色<!--非法属性名，中括号引号包裹！！-->
+    <input type="checkbox" v-model="classObj['bg-danger']">背景变红色
+    <hr>
+    <p :class="classObj"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur delectus dignissimos, dolor et molestiae nesciunt nisi provident recusandae? Ad amet consequuntur corporis cumque dolorum exercitationem in iure sit tempore totam.</p>
+
+</div>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            isTxtRed:false,
+            isBgRed:false,
+            classObj:{
+                'text-danger':false,
+                'bg-danger':false
+            }
+        },
+        methods:{},
+        watch:{
+            kw:function(){
+                console.log("1");
+            }
+        }
+    });
+</script>
+</body>
+</html>
+<!--
+1.注意：两个属性之间要用空格空开
+-->

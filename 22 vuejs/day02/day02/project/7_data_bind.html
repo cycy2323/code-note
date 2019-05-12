@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <select v-model="imgSrc">   <!--View=>Model-->
+    <option value="img/bj.jpg">北京市</option>
+    <option value="img/sh.jpg">上海市</option>
+    <option value="img/hz.jpg">杭州市</option>
+  </select>
+  <img :src="imgSrc">         <!--Model=>View-->
+</div>
+<script src="js/vue.js"></script>
+<script>
+  /*
+   练习：下拉框中有“北京、上海、杭州”三个选项，选择某项时，下方就呈现出该城市对应的图片
+   */
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      imgSrc: 'img/bj.jpg'
+    }
+  });
+</script>
+</body>
+</html>
+<!--
+将路径放在value中——进行绑定
+-->

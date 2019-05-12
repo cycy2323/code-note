@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+    <p>{{cart}}</p>
+    <hr>
+    <table class="table table-bordered">
+        <tbody>
+        <tr>
+            <td>{{cart[0].pname.length<=5 ? cart[0].pname : cart[0].pname.substring(0,5)+'...'}}</td>
+            <td>{{cart[0].count>=10 ? cart[0].count : '0'+cart[0].count}}</td>
+            <!--<td>￥{{cart[0].price * cart[0].count}}</td>-->
+            <td>{{'￥' + cart[0].price * cart[0].count}}</td>
+        </tr>
+        <tr>
+            <td>{{cart[1].pname.length<=5 ? cart[1].pname : cart[1].pname.substring(0,5)+'...'}}</td>
+            <td>{{cart[1].count>=10 ? cart[1].count : '0'+cart[1].count}}</td>
+            <td>{{'￥' + cart[1].price * cart[1].count}}</td>
+        </tr>
+        <tr>
+            <td>{{cart[2].pname.length<=5 ? cart[2].pname : cart[2].pname.substring(0,5)+'...'}}</td>
+            <td>{{cart[2].count>=10 ? cart[2].count : '0'+cart[0].count}}</td>
+            <td>{{'￥' + cart[2].price * cart[2].count}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    /*
+     创建一个使用Vue.js的页面，创建模型数据： cart，保存三个商品信息，每个商品包含名称、单价、购买数量；把这些数据绑定在视图中：table>tr>td。提示：每行显示商品名称(最多显示5个字符，超过了就显示为...)、购买数量、价格小计(前面必须有￥提示符)
+     */
+    new Vue({
+        el: '#app',
+        data: {
+            cart: [
+                {pname:'联想小新', price: 1000, count:2},
+                {pname:'戴尔燃七千', price: 2000, count:3},
+                {pname:'小米艾薇儿系列', price: 3000, count:11}
+            ]
+        }
+    });
+</script>
+</body>
+</html>
+<!-- 标题省略号(运算绑定)
+分析：{{}}内做三目
+剪切数据：数据.subtring(0,5)+'...'}}
+
+ -->

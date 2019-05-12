@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<div id="app">
+  <!--<img src="imgUrl">-->
+  <!--<img src="{{imgUrl}}">-->
+  <img v-bind:src="imgUrl">
+  <img :src="imgUrl">
+  <hr>
+
+  <ul>
+    <li v-for="url in imgList">
+      <img v-bind:src="url">
+      <img :src="url">
+    </li>
+  </ul>
+
+  <hr>
+  <table border="1" width="100%">
+    <tbody>
+    <tr v-for="p in productList">
+      <td>{{p.pid}}</td>
+      <td>{{p.pname}}</td>
+      <!--<td><a href="delete.php?pid=p.pid">删除该商品</a></td>-->
+      <td><a :href="'delete.php?pid='+p.pid">删除该商品</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  /*
+   练习：创建模型数据：imgList，保存4张图片的URL字符串，将上述数据绑定的ul>li>img上
+   练习：创建模型数据：productList，保存4个商品的信息，每个商品都有编号和名称两个属性，将上述数据绑定到table>tr>td上，每个商品最后添加一列“删除该商品”，该超链接跳转到 'delete.php?pid=*'
+   */
+  new Vue({
+    el: '#app',
+    data: {
+      imgUrl: 'img/1.jpg',
+      imgList: [
+        'img/1.jpg',
+        'img/2.jpg',
+        'img/3.jpg',
+        'img/4.jpg',
+      ],
+      productList: [
+        {pid: 101, pname:'商品名称1'},
+        {pid: 102, pname:'商品名称2'},
+        {pid: 103, pname:'商品名称3'},
+        {pid: 104, pname:'商品名称4'},
+      ]
+    }
+  });
+</script>
+</body>
+</html>
+<!-- 
+绑定属性：src href(href注意拼接pid时的引号用法)
+
+遍历——删除按钮href绑对应pid：<a :href="'delete.php?pid='+p.pid">
+
+数据(图片路径)遍历：<li v-for="url in imgList">
+绑给src：<img :src="url">
+ -->

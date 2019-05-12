@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <input v-model="isTxtRed" type="checkbox">文本显示为红色 <br>
+  <input v-model="isBgRed" type="checkbox">背景显示为红色
+  <hr>
+  <p>文本是红色吗？{{isTxtRed}}</p>
+  <p>背景是红色吗？{{isBgRed}}</p>
+  <p :class="(isTxtRed?'text-danger ':'')  + (isBgRed?'bg-danger ':'')">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, asperiores eum explicabo impedit nesciunt perferendis quod repellat tenetur. Ab asperiores dolore dolores facere fugiat id optio perspiciatis quisquam, reprehenderit temporibus?</p>
+  <p :class="{'text-danger': isTxtRed, 'bg-danger': isBgRed}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, asperiores eum explicabo impedit nesciunt perferendis quod repellat tenetur. Ab asperiores dolore dolores facere fugiat id optio perspiciatis quisquam, reprehenderit temporibus?</p>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      isTxtRed: false,    //文本是红色吗
+      isBgRed: false      //背景是红色吗
+    }
+  });
+</script>
+</body>
+</html>
+<!--
+绑class  ——选中——true
+-->

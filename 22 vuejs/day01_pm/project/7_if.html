@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <p class="well" v-if="isPayedUser">
+    111此段内容仅付费用户可见：Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus doloribus fugiat, ipsum molestiae, mollitia nulla officiis porro quas reprehenderit sed temporibus ullam unde ut, voluptatem voluptates? Ipsam officiis provident veniam!
+  </p>
+  <p class="well" v-else>
+    222此段内容仅非付费用户可见：Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consequatur dolorem eaque explicabo facilis ipsum iure libero molestiae obcaecati possimus, quo, quos rem repudiandae rerum sed sit totam vero voluptatibus.
+  </p>
+
+  <hr>
+  <p>用户积分：{{userScore}}</p>
+  <p v-if="userScore>=5000" class="alert alert-success">白金用户</p>
+  <p v-else-if="userScore>=3000" class="alert alert-warning">黄金用户</p>
+  <p v-else-if="userScore>=1000" class="alert alert-info">白银用户</p>
+  <p v-else class="alert alert-danger">普通用户</p>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      isPayedUser: false,    //当前用户是否为付费用户
+      userScore: 8800
+    }
+  });
+</script>
+</body>
+</html>
+<!--是否显示标签1. if——else、if——else-if——else 2.v-show(是否频繁：show 同意，显示按钮)
+  判断：<p v-if="数据是否true"> </p>   
+  判断：<p v-else-if="数据是否true"> </p> 
+  其他(else不判断数据)：<p v-else></p> 
+
+ -->

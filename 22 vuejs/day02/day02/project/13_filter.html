@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <p>{{msg}}</p>
+  <!--<p>{{msg.toUpperCase()}}</p>-->
+  <p>{{msg | uppercase}}</p>
+  <p>{{msg | ellipses}}</p>
+  <p>{{msg | ellipses | uppercase }}</p>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  //声明自定义过滤器 —— 本质是数据处理函数
+  Vue.filter('uppercase', function(val){
+    //val参数就是管道传递过来的原始数据
+    var result = val.toUpperCase();
+    return result;  //返回过滤后的结果
+  });
+
+  Vue.filter('ellipses', function(val){ //将长于5个字符的字符串用...显示
+    if(val.length<=5){
+      return val;
+    }else {
+      return val.substring(0,5)+'...';
+    }
+  });
+
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      msg: 'Dell燃7000Series'
+    }
+  });
+</script>
+</body>
+</html>
+<!--
+过滤器定义 ellipses 长字符串变省略号
+-->
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <p>当前已买数量：{{count}}</p>
+  <button onclick="f1()">多买一件1</button>
+  <!--<button onclick="f2()">多买一件</button>-->
+  <button v-on:click="f2()">多买一件</button>
+
+  <hr>
+  <button v-on:click="f3()">匿名函数F3</button>
+  <button v-on:click="f4()">箭头函数F4</button>
+  <button v-on:click="f5()">ES6成员函数F5</button>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  function f1(){
+    console.log('1111');
+    //this.count++;
+    //vm.count++;   //不好！破坏了面向对象的封装理论
+  }
+
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      count: 3
+    },
+    methods: {
+      f2: function(){
+        console.log(this);
+        this.count++;
+      },
+      f3: function(){
+        console.log(this);    //vm
+          this.count++;
+      },
+      f4: ()=>{
+        console.log(this);    //window
+      },
+      f5(){     //ES6中为对象声明成员方法
+        console.log(this);    //vm
+        this.count++;
+      }
+    }
+  });
+</script>
+</body>
+</html>
+<!--
+1.vue绑事件写法 
+  :click (vue外方法f1：onclick——修改vue组件中数据时.不用this.count++，用vm.count++)
+
+2.方法的写法：
+  1.f2:function(){}
+  2.ES6写法：f5(){}
+
+ -->

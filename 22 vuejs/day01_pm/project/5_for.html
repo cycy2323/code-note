@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <p v-for="val in scoreList"> {{val}}</p>
+    <ul>
+        <li v-for="p in emp">
+            {{p}}
+        </li>
+    </ul>
+    <ol>
+        <li v-for="(p, k) in emp">
+            {{k}} - {{p}}
+        </li>
+    </ol>
+    <ul>
+        <li v-for="(p, k, i) in emp">
+            {{k}} - {{p}} - {{i}}
+        </li>
+    </ul>
+    <hr>
+    <ul>
+        <li v-for="n in 5">{{n}}</li>
+    </ul>
+    <ul>
+        <li v-for="c in '我爱北京天安门'">
+            {{c}}
+        </li>
+    </ul>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            scoreList: [75, 88, 63],
+            emp: {
+                eid: 10001,
+                ename: 'Scott',
+                sex: '男'
+            }
+        }
+    });
+</script>
+</body>
+</html>
+<!--遍历 p k i 绑定 (值，键，下标)
+1.数组——1个：         <li v-for="p in emp">{{p}}</li>
+2.对象——值+键填充(2个)：<li v-for="(p, k) in emp">{{k}}-{{p}}</li>
+3.对象——值+键+id填充(3个)：<li v-for="(p, k, i) in emp"> {{k}} - {{p}} - {{i}} </li>
+
+4.数字：<li v-for="n in 5">{{n}}</li>
+5.字符串：<li v-for="c in '我爱北京天安门'">{{c}}</li>
+ -->
+

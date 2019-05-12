@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--View-->
+<div id="app">
+    <h2>{{newsList}}</h2>
+    <ul>
+        <li>{{newsList[0]}}</li>
+        <li>{{newsList[1]}}</li>
+        <li>{{newsList[2]}}</li>
+        <li>{{newsList[3]}}</li>
+    </ul>
+    <hr>
+    <h3>{{user}}</h3>
+    <span>编号：{{user.uid}}</span>
+    <span>用户名：{{user.uname}}</span>
+    <span>密码名：{{user.upwd}}</span>
+    <hr>
+    <table border="1" width="100%">
+        <tbody>
+        <tr>
+            <td>{{userList[0].uid}}</td>
+            <td>{{userList[0].uname}}</td>
+            <td>{{userList[0].upwd}}</td>
+        </tr>
+        <tr>
+            <td>{{userList[1].uid}}</td>
+            <td>{{userList[1].uname}}</td>
+            <td>{{userList[1].upwd}}</td>
+        </tr>
+        <tr>
+            <td>{{userList[2].uid}}</td>
+            <td>{{userList[2].uname}}</td>
+            <td>{{userList[2].upwd}}</td>
+        </tr>
+        <tr>
+            <td>{{userList[3].uid}}</td>
+            <td>{{userList[3].uname}}</td>
+            <td>{{userList[3].upwd}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    //ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {     //Model
+            newsList: ['新闻标题1','新闻标题2','新闻标题3','新闻标题4'],
+            user: { uid: 1001, uname: 'dangdang',upwd: '123456'},
+            userList: [
+                {uid:101, uname:'dingding', upwd: '111'},
+                {uid:102, uname:'dandang', upwd: '222'},
+                {uid:103, uname:'doudou', upwd: '333'},
+                {uid:104, uname:'yaya', upwd: '444'}
+            ]
+        }
+    });
+</script>
+</body>
+</html>
+<!--   数据对象 绑定数据方法
+    格式：数据里的值可以是：对象 \ 数组
+    绑定:数据是数组——newsList[0]
+         数据是对象——user.uname
+         数据时数组中的对象——userList[3].upwd
+ -->
+
+

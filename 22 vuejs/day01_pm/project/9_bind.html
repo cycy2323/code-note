@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<div id="app">
+  <!--错误写法：<p title="pname">产品名称：{{pname.substring(0,10)+'...'}}</p>-->
+  <!--错误写法：<p title="{{pname}}">产品名称：{{pname.substring(0,10)+'...'}}</p>-->
+  <p v-bind:title="pname">产品名称：{{pname.slice(0,10)+'...'}}</p>
+  <p :title="pname">产品名称：{{pname.substring(0,10)+'...'}}</p>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      pname: 'Apple MacBook Air 3000系列8000型'
+    }
+  });
+</script>
+</body>
+</html>
+<!-- 标签属性绑定数据：加冒号
+     数据：
+绑给标签的title： <p :title="pname">
+ -->

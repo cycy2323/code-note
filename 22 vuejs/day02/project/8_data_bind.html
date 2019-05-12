@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+    <input v-model="isAgreed" type="checkbox">我统一本站的使用条款
+    <button :disabled="!isAgreed">提交组成信息</button>
+    <div ></div>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            isAgreed:false
+        },
+        methods:{},
+        watch:{
+            kw:function(){
+                console.log("1");
+            }
+        }
+    });
+</script>
+</body>
+</html>
+<!--
+只要model改变，data马上改变
+-->

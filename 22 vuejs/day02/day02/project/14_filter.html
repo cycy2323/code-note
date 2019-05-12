@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <p>用户性别为：{{userSex}}</p>
+  <p>用户性别为：{{userSex | sex }}</p>
+  <ul>
+    <li v-for="s in sexList">
+      {{s | sex}}
+    </li>
+  </ul>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  /*
+   练习：页面从后台获取的员工性别是0或1或其它，创建过滤器sex， 把0转换为“女”、1转换为“男”、其它转换为“未知”。
+   假设模型数据：sexList，其中有5个员工性别：[ 0, 1, 1, 0, 2]，绑定到ul>li中
+   */
+  Vue.filter('sex', function(val){
+    if(val===0){
+      return '女';
+    }else if(val===1){
+      return '男';
+    }else {
+      return '未知';
+    }
+  });
+
+
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      userSex: 1,
+      sexList: [0,1,1,0,2]
+    }
+  });
+</script>
+</body>
+</html>
+<!--
+return
+-->

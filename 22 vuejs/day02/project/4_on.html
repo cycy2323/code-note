@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue——加减效果</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        input{
+            width:100px;
+            text-align: center;
+        }
+        button{width: 60px}
+    </style>
+</head>
+<body>
+<div id="app">
+    已买数量:
+    <button v-on:click="f2" :disabled="btnDescDisabled">-</button>
+    <input type="text" :value="count">
+    <button v-on:click="f1">+</button>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            count: 3,
+            btnDescDisabled:false
+        },
+        methods: {
+            f1: function () {
+                this.count++//this指向事件元素
+            },
+            f2: function () {
+                this.count--;
+                if (this.count===0)
+                    this.btnDescDisabled=true;
+            },
+            f3: function () {
+            },
+            f4: () => {},
+        f5(){
+        }//ES6中为对象声明成员，本质：成员函数
+    }
+    })
+    ;
+</script>
+</body>
+</html>
+<!--
+1.count 找不到？this
+2.减到0时，方法1：if (this.count > 0) this.count--;方法2：禁用button- —— disable禁用：
+任务：不是0时，如何disabled=false?
+-->

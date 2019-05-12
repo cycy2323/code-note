@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <input v-model="classObj['text-danger']" type="checkbox">文本显示为红色 <br>
+  <input v-model="classObj['bg-danger']" type="checkbox">背景显示为红色 <br>
+  <p :class=" classObj ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias, aliquid deserunt dolores dolorum ducimus eligendi fugit harum hic ipsam iste minima nam nemo nesciunt quasi repellendus rerum sapiente velit.</p>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      classObj: {
+        'text-danger': true,
+        'bg-danger': true
+      }
+    }
+  });
+</script>
+</body>
+</html>
+
+<!--
+对象形式绑定：绑class对象.某项 ——选中——true
+-->

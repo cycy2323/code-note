@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-on+修饰词</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <a @click="jump1" href="#" class="btn btn-success">提交订单</a>
+  <a @click.prevent.once="jump2" href="#" class="btn btn-success">提交订单</a>
+  <hr>
+  <input type="text" @keyup="showProduct1()">
+  <input type="text" @keyup.13="showProduct2()">
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+
+  var vm = new Vue({
+    el: '#app',
+    methods: {
+      jump1(){
+        event.preventDefault();  //阻止事件的默认行为
+        console.log('hello1');
+      },
+      jump2(){
+        console.log('hello2');
+      },
+      showProduct1(){
+        if(event.keyCode===13){
+          console.log('跳转到产品详情页显示搜索结果1...');
+        }
+      },
+      showProduct2(){
+        console.log('跳转到产品详情页显示搜索结果2...');
+      }
+    }
+  });
+
+</script>
+</body>
+</html>
+<!-- 事件绑定修饰词 .prevent .once .stop(阻止默认行为 事件只作用一次 阻止冒泡)
+
+1.event.preventdefault()——再引用@click="jump1 "
+2.@click.prevent="jump2"
+
+3.@keyup.13=""
+4.event.keyCode===13)
+ -->

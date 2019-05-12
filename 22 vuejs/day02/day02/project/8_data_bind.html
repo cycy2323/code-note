@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <!--View=>Model-->
+  <input v-model="isAgreed" type="checkbox">我同意本站的使用条款 <br>
+
+  <!--Model=>View-->
+  <button :disabled="!isAgreed" @click="submitInfo()" class="btn btn-success">提交注册信息</button>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  /*
+   勾选“我同意”则可以点击提交，否则不能点击
+   提示：checkbox成组使用，对应的模型变量必须是数组；
+   若仅单个使用，对应的模型变量就是true/false
+   */
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      isAgreed: false   //Model
+    },
+    methods: {
+      submitInfo(){
+        console.log('开始提交注册信息...');
+      }
+    }
+  });
+</script>
+</body>
+</html>
+<!--
+选中是v-modle为true——运用到disabled的属性绑定
+-->

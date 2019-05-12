@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <!--<select v-model="txtColor">-->
+  <select v-model="styleObj.color">
+    <option value="#a94442">文本显示为红色</option>
+    <option value="#8a6d3b">文本显示为黄色</option>
+    <option value="#3c763d">文本显示为绿色</option>
+    <option value="#31708f">文本显示为蓝色</option>
+  </select>
+  <p :style="'color:'+ txtColor+'; background-color:'+ bgColor">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A error ipsa magnam nostrum porro provident, qui. Exercitationem, iure maiores odit possimus quam qui quia quidem quod sint sunt temporibus voluptatem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. quasi!</p>
+  <p :style="{color:txtColor, backgroundColor: bgColor }">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A error ipsa magnam nostrum porro provident, qui. Exercitationem, iure maiores odit possimus quam qui quia quidem quod sint sunt temporibus voluptatem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. quasi!</p>
+  <p :style="styleObj">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A error ipsa magnam nostrum porro provident, qui. Exercitationem, iure maiores odit possimus quam qui quia quidem quod sint sunt temporibus voluptatem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. quasi!</p>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      txtColor: '#a94442',
+      bgColor: 'yellow',
+      styleObj: {      //对象形式：v-model="styleObj.color"
+        color: '#a94442',
+        backgroundColor: 'yellow'
+      }
+    }
+  });
+
+</script>
+</body>
+</html>
+
+<!--绑style
+法1.选择——v-modle绑data——data变——绑定的style也变
+:style="{color:txtColor, backgroundColor: bgColor }
+
+法2.选择——对象形式：v-model="styleObj.color"——数据对象中的数据变——:style="styleObj"
+
+-->

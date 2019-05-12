@@ -1,0 +1,53 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+    <select name="" id="" v-model="textColor">
+        <option value="red">红</option>
+        <option value="yellow">黄</option>
+        <option value="#3c673d">绿</option>
+        <option value="#31708f">蓝</option>
+    </select>
+    <select name="" id="" v-model="textColor">
+        <option value="red">红</option>
+        <option value="yellow">黄</option>
+        <option value="#3c673d">绿</option>
+        <option value="#31708f">蓝</option>
+    </select>
+    <select name="" id="" v-model="textColor">
+        <option value="red">红</option>
+        <option value="yellow">黄</option>
+        <option value="#3c673d">绿</option>
+        <option value="#31708f">蓝</option>
+    </select>
+    <p :style="'color:'+textColor" > Lorem ffffffffffffsaaaaaaaaaaaaaaaaaa </p>//style="color:red;background-color:pink"
+</div>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            textColor:'red'
+        },
+        methods:{},
+        watch:{
+            kw:function(){
+                console.log("1");
+            }
+        }
+    });
+</script>
+</body>
+</html>
+<!--
+只要model改变，data马上改变
+-->

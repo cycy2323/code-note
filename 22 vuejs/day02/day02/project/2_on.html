@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <button v-on:click="desc()" id="bt1" :disabled="btnDescDisabled">-</button>
+  <input type="text" :value="count">
+  <button @click="inc">+</button>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      count: 0,
+      btnDescDisabled: false    //“减少”按钮禁用了吗？
+    },
+//      简单方法：当this.count===0时才this.btnDescDisable=0
+//      methods: {
+//          f1: function () {
+//              this.count++//this指向事件元素
+//          },
+//          f2: function () {
+//              this.count--;
+//              if (this.count===0)
+//                  this.btnDescDisabled=true;
+//          },
+    methods: {
+      desc(){ //方法的写法
+        
+        if(this.count<=0){
+          this.btnDescDisabled = true;
+        }else{this.count--;}
+      },
+      inc(){
+        this.count++;
+        if(this.btnDescDisabled){  //disabled如果是true，变为false！
+          this.btnDescDisabled = false;
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>
+<!-- 加减按钮绑事件插件 方法绑定@——disable属性绑定变动的数据（方法变动数据：count和btnDescDisabled）
+  1.数据：默认值——绑给属性value
+  2.加按钮绑加法——减按钮绑减法和disable属性绑定数据btnDescDisabled(方法令btnDescDisabled变动)
+  3.methods中建方法(指定数据时，加this：这个组件中的count，这个组件中的btnDescDisabled等)
+    减方法1：令数据count-1——如果数据count==0（数字）——令数据btnDescDisabled变true(绑给减按钮的disable属性——既disable为true)
+    减方法2：如数据count<=0——这个组件中的btnDescDisabled为true——其他情况，这个组件中的count+1
+    加方法：令数据count+1——如果数据btnDescDisabled为false——令其=true
+
+ -->
+<!--
+注意：1.方法的写法：可以不要()   方法在methods中：desc(){}
+      2.this指向: 当前vue
+-->

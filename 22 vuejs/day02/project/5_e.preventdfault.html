@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue——加减效果</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        input{
+            width:100px;
+            text-align: center;
+        }
+        button{width: 60px}
+    </style>
+</head>
+<body>
+<div id="app" class="container">
+    <a @click.prevent.stop="jump" href="#" class="btn btn-success">提交订单</a>
+    <a @click="jump2" href="#" class="btn btn-success">提交订单</a>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+        },
+        methods: {
+            f1: function () {
+                this.count++//this指向事件元素
+            },
+            f2: function () {
+
+            },
+            f3: function () {
+            },
+            f4: () => {},
+            f5(){},//ES6中为对象声明成员，本质：成员函数
+            jump(){
+                console.log("hello");
+                console.log(window.event);
+            },
+        jump2(){
+            console.log("hello");
+            console.log(window.event);
+            event.preventDefault();
+        }
+        }
+    })
+    ;
+</script>
+</body>
+</html>
+<!--
+@click.prevent.stop......="jump":阻止默认行为 阻止冒泡。。
+-->

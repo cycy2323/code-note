@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="s in studentList" v-if="s.score>=60">
+      {{s.sid}} - {{s.sname}} - {{s.score}}
+    </li>
+  </ul>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  /*
+   练习：创建模型数据：studentList，保存4个学生的信息，包括学生编号、姓名、语文成绩。把学生信息绑定到一个ul>li，注意只显示成绩及格的学生信息
+   */
+  new Vue({
+    el: '#app',
+    data: {
+      studentList: [
+        {sid: 101, sname:'丁丁', score:80},
+        {sid: 102, sname:'当当', score:50},
+        {sid: 103, sname:'豆豆', score:90},
+        {sid: 104, sname:'丫丫', score:40},
+      ]
+    }
+  });
+</script>
+</body>
+</html>
+<!-- 
+遍历出来s 判断s是否显示
+<li v-for="s in studentList" v-if="s.score>=60">{{s.sid}} - {{s.sname}} - {{s.score}}</li>
+ -->

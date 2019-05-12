@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <ul class="list-group">
+    <li v-for="(n,i) in newsList" class="list-group-item">
+      {{i}}:{{n}}
+    </li>
+  </ul>
+  <hr>
+  <table class="table table-bordered">
+    <tbody>
+    <tr v-for="p in cart">
+      <td>{{p.pname}}</td>
+      <td>{{p.count}}</td>
+      <td>小计：{{p.price*p.count}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  /*
+   练习：创建模型数据：newsList，数组中保存4个新闻标题，使用循环绑定到ul>li中
+   练习：创建模型数据： cart，保存三个商品信息，每个商品包含名称、单价、购买数量；使用循环把这些数据绑定在视图中：table>tr>td
+   */
+  new Vue({
+    el: '#app',
+    data: {
+      newsList: ['新闻标题1', '新闻标题2', '新闻标题3'],
+      cart: [
+        {pname:'联想',price:1000, count:2},
+        {pname:'戴尔',price:2000, count:3},
+        {pname:'小米',price:3000, count:1},
+      ]
+    }
+  });
+</script>
+</body>
+</html>
+<!-- 绑数组 绑数组对象
+绑数组:遍历出：下标+成员(p,i)in
+绑数组对象：1.遍历出：对象p in  2.绑定：对象.键=值：{{p.count}}
+ -->

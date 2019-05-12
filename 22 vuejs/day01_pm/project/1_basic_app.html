@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--View: 视图，用于显示模型数据-->
+<div id="app">
+    <h3>欢迎回来：{{ userName }}</h3>
+    <hr>
+    <p>用户年龄：{{userAge}}   </p>
+    <span>是否已婚：{{isMarried}}</span>
+    <hr>
+    <div>婚否：{{isMarried}}</div>
+    <hr>
+    <ul>
+        <li>{{isMarried}}</li>
+        <li>{{isMarried}}</li>
+        <li>{{isMarried}}</li>
+    </ul>
+
+</div>
+
+
+<div id="app2">
+
+</div>
+<script>
+    //传统的网页DOM操作不具备“数据绑定”效果：
+    var myName = '学子商城';
+    app2.innerHTML = '项目名称：'+myName;
+</script>
+
+
+<script src="js/vue.js"></script>
+<script>
+    //ViewModel：视图模型对象/控制器对象，用于把数据绑定到视图
+    var vm = new Vue({
+        el: '#app',   //控制模型绑定到哪一块视图上
+        data: {  //Model：模型数据，就是要显示的JS变量
+            userName: 'dingding',
+            userAge: 20,
+            isMarried: true
+        }
+    });
+</script>
+</body>
+</html>
+<!-- vue 创建
+1.script ：引入vue.js
+2.script：建vue控制器对象：元素 数据对象
+3.html：绑定
+ -->

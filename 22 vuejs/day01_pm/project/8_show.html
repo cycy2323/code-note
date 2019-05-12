@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+<div id="app">
+  <!--<button v-if="isUserLicenseAgreed">提交注册信息</button>-->
+  <input type="checkbox" v-model="isUserLicenseAgreed" >同意条款 <br>
+  <button v-show="isUserLicenseAgreed">提交注册信息</button>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      isUserLicenseAgreed: 0  //用户使用许可是否被同意
+    }
+  });
+</script>
+</body>
+</html>
+<!-- 同意条款时弹出提交按钮
+思路：数据双向绑定选择框——选中true/不选false——数据再绑按钮v-show（实现是否显示）
+代码：
+设置数据：默认值true/false
+选择框的v-model引用数据：不选——v-model中的数据为false，反之true
+按钮：v-show引用数据(该数据已双向绑定选择框)
+
+
+ -->

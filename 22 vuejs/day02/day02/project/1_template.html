@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>el为class时，只能读一次</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div class="myapp">
+  <p>{{msg}}</p>
+  <p v-html="msg"></p>
+</div>
+<hr>
+<div class="myapp">
+  <p>{{msg}}</p>
+  <p v-html="msg"></p>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '.myapp',//el为class时，只能读一次
+    data: {
+      msg: '欢迎来到学子商城'
+    }
+  });
+</script>
+</body>
+</html>
+<!--el尽量引用id-->

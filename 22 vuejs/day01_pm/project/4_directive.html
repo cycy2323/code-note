@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<pre>
+    function add(n1, n2){
+        var sum = n1 + n2;
+        return sum;
+    }
+</pre>
+
+<div id="app">
+    <h1>网站名称：{{siteName}}</h1>
+    <hr>1
+    <h1 v-html="siteName">网站名称</h1>
+    <hr>2
+    <h1 v-text="siteName">网站名称：</h1>
+    <hr>3
+    <h1 v-cloak>网站名称：{{siteName}}</h1>
+    <hr>4
+    <h1 v-pre>网站名称：{{siteName}}</h1>
+    <h1 v-once>网站名称：{{siteName}}</h1>
+
+</div>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            siteName: '学<br> 城'
+        }
+    });
+</script>
+</body>
+</html>
+<!-- 数据绑定情况
+1.按格式保留模板：html中<pre>包着(vue跟标签外写标签——与vue无关)
+
+vue：  斗篷、完全不翻译、翻译内容带有的标签 
+1.有标签时会翻译(替换内容)： v-html: <div v-html="siteName">
+2.有标签时不翻译(替换内容)： v-text: <h1 v-text="siteName">
+3.有标签时不翻译：单纯标签内填数据
+4.完全不翻译{{siteName}}也不翻译：<h1 v-pre> 
+5.斗篷：①.加属性：<h1 v-cloak> ②属性样式隐藏：[v-cloak]{display: none;}
+
+ -->

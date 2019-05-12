@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>过滤器——例子，转大写+裁剪</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+    <p>{{msg}}</p>
+    <p>{{msg|uppercase|ellipses}}</p>
+    <!--<p>{{msg.toUpperCase()}}</p> 给过滤器干这事-->
+    <ul>
+        <li v-for="s in sexList" >{{s|sexturn}}</li>
+    </ul>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    Vue.filter('uppercase',function(val){//val:模型变量值！
+        var result=val.toUpperCase();
+        return result;//返回结果
+    });
+    Vue.filter('ellipses',function(val){
+        if(val.length<=5)
+            return val;
+        else
+            return val.substring(0,5)+'...';
+    });
+    Vue.filter('sexturn',function(val){
+        if(val===0)
+            return '女';
+        else if(val===1)
+            return '男';
+        else return '未知';
+    })
+
+    var vm=new Vue({
+        el:'#app',
+        data:{
+            msg:'Dell燃7000',
+            sexList:[0,1,0,1,2],
+            birthday:[1501234567890]
+        }
+    })
+</script>
+</body>
+</html>
+<!--
+做filter（结构）——引用
+
+2.例子filter3：页面从后台获取性别是0或1，创建过滤器sex，把模型数据转女或男，其他转为“未知”
+-->

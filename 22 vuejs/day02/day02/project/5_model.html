@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <input v-model="kw" type="text" placeholder="请输入要搜索的商品关键字...">
+  <p>用户已经输入的搜索关键字：{{kw}}</p>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      kw: 'lenovo'   //用于保存用户输入的搜索关键字
+    },
+    methods:{ //方法：用于操作模型数据
+    },
+    watch: {  //监视：用于监视模型数据的改变
+      kw: function(){
+        console.log('模型数据kw的值发生改变了');
+        console.log(this.kw);
+      }
+    }
+  });
+</script>
+</body>
+</html>
+<!--双向变化+watch 监听变化 调用函数
+1.v-model绑定数据
+2.检测变动：Vue创建watch，当绑定的数据变动，自动调用函数
+-->

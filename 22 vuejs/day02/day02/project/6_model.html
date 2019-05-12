@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  用户密码：<input v-model="upwd" type="password"><br>
+  个人签名：<textarea v-model="signiture"></textarea><br>
+  所在城市：<select v-model="city">
+            <option value="bj">北京市</option>
+            <option value="sh">上海市</option>
+            <option value="hz">杭州市</option>
+          </select><br>
+  用户性别：
+  <input v-model="userSex" type="radio" name="sex" value="male">男
+  <input v-model="userSex" type="radio" name="sex" value="female">女 <br>
+  兴趣爱好：
+  <input v-model="hobby" type="checkbox" value="xy">洗衣
+  <input v-model="hobby" type="checkbox" value="zf">做饭
+  <input v-model="hobby" type="checkbox" value="sd">扫地 <br>
+  <hr>
+  <p>密码：{{upwd}}</p>
+  <p>签名：{{signiture}}</p>
+  <p>城市：{{city}}</p>
+  <p>性别：{{userSex}}</p>
+  <p>爱好：{{hobby}}</p>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      upwd: null,
+      signiture: null,
+      city: 'sh',
+      userSex: 'female',
+      hobby: []     //若想实现多选效果，初始值必须是数组
+    }
+  });
+</script>
+</body>
+</html>
+<!-- 
+  1.双向绑数据：v-model会自动绑定数据及选中的value——option中的、checkbox中的、同name的radio
+  双向步骤：创数据：city——v-model绑定select——option设置value
+
+ -->

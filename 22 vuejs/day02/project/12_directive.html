@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义指令</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+    <h2>自定义</h2>
+    <input type="text" v-focus><br><br>
+    <input type="text"><br>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    Vue.directive('focus', {
+        inserted: function (el) {//当前元素插入父元素
+//            console.log('v-focus插入父');
+//            console.log(this);
+//            console.log(el);
+            el.focus();
+        }
+    });
+    var vm = new Vue({
+        el: '#app',
+        data: {}
+    });
+</script>
+</body>
+</html>
+<!--
+1.遇到问题：为什么没聚焦？只创建自定义指令，没有new vue控制器
+-->
