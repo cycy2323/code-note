@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <my-child1></my-child1>
+  <my-child2></my-child2>
+</div>
+<template id="tpl1">
+  <div class="alert alert-success">
+    <h3>子组件1</h3>
+    <button @click="putData">往总线上放数据</button>
+  </div>
+</template>
+<template id="tpl2">
+  <div class="alert alert-danger">
+    <h3>子组件2</h3>
+    <button @click="getData">从总线上取数据</button>
+  </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+  /*
+  兄弟组件间通信的总线
+   */
+  var bus = new Vue();  //总线
+
+  var myChild1 = {
+    template: '#tpl1',
+    methods: {
+      putData(){
+        bus.msg = '这是来自组件1的数据';
+      }
+    }
+  }
+  var myChild2 = {
+    template: '#tpl2',
+    methods: {
+      getData(){
+        console.log('从总线上获取数据：', bus.msg);
+      }
+    }
+  }
+
+  var vm = new Vue({
+    el: '#app',
+    data: {},
+    components: {
+      myChild1,
+      myChild2
+    }
+  });
+</script>
+</body>
+</html>
+<!--bus传递
+
+需求：子1方法传进bus——子2方法从bus取
+
+var bus=new Vue()
+子1方法：bus.msg=data
+子2获取：this.msg=bus.msg
+-->

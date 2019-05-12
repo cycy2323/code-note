@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <cart></cart>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  /*
+   练习：购物车计算器
+   */
+  var cartItem = {
+    template: `
+    <div style="display: inline-block; width: 150px; border:1px solid #333">
+      <h3>{{product.title}}</h3>
+      <button>-</button>
+      <span>{{product.count}}</span>
+      <button @click="inc">+</button>
+    </div>
+    `,
+    props: ['product'],
+    methods: {
+      inc(){
+        this.product.count++;
+      }
+    }
+  }
+
+  var cart = {
+    template: `
+    <div>
+      <p>购物车中商品总数为：{{totalCount}}</p>
+      <hr>
+      <cart-item v-for="p in plist" :product="p"></cart-item>
+    </div>
+    `,
+    components: {   //声明子组件
+      cartItem
+    },
+    data(){
+      return {
+        plist: [
+          {pid:101, title:'戴尔燃7000',count:1},
+          {pid:102, title:'戴尔燃8000',count:3},
+          {pid:103, title:'戴尔燃9000',count:2},
+        ]
+      }
+    },
+    computed: {     //声明计算属性
+      totalCount(){
+        var sum = 0;
+        for(var p of this.plist){
+          sum += p.count;
+        }
+        return sum;
+      }
+    }
+
+  }
+
+
+
+  var vm = new Vue({
+    el: '#app',
+    data: {},
+    components: {
+      cart
+    }
+  });
+</script>
+</body>
+</html>
+<!--（12才完整）产品数->父传多子——多子事件方法改this.产品数(父组件数据未跟着变)——父算好的：{方法(){}}
+
+按步骤：引入——小组件=对象{模板,props:[''],方法：{a(){}}}——父组件=对象{模板[插入烤串——v-for——绑属性=p]，数据(){return},小组件:{大驼峰},算好的方法：{return}}——父模板引用
+vue——全局组件:{大驼峰}——挂dom：烤串
+
+-->

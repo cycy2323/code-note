@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <tedu-emp eid="101" ename="丁丁" sex="男"></tedu-emp>
+  <tedu-emp eid="102" ename="当当" sex="男"></tedu-emp>
+  <tedu-emp eid="103" ename="豆豆" sex="男"></tedu-emp>
+  <tedu-emp eid="104" ename="丫丫" sex="女"></tedu-emp>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  /*
+   练习：创建一个自定义组件：<tedu-emp></tedu-emp>，
+   每个该组件实例都可以声明eid、ename、sex三个自定义属性
+   页面中实例化4个该组件对象
+   */
+  Vue.component('tedu-emp', {
+    template: `
+      <div>
+        <span>{{eid}}</span>
+        <span>{{ename}}</span>
+        <span>{{sex}}</span>
+        <button>删除</button>
+        <hr>
+      </div>
+    `,
+    props: ['eid', 'ename', 'sex']
+  })
+
+  var vm = new Vue({
+    el: '#app',
+    data: {}
+  });
+</script>
+</body>
+</html>
+
+<!--
+引入——组件——对象中——模板——props属性：数据——vue——dom树——属性
+-->

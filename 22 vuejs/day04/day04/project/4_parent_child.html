@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <my-parent></my-parent>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  /*
+   练习：在父组件内有模型数据：newsList: ['新闻标题1', ....]
+   根据此数据，渲染出多个子组件，
+   */
+  /**<my-child>**/
+  var myChild = {
+    template: `
+    <div>
+      <a>{{newstitle}}</a>
+      <button>删除</button>
+    </div>
+    `,
+    props: ['newstitle']
+  }
+
+  /**<my-parent>**/
+  var myParent = {
+    template:`
+    <div>
+      <my-child v-for="(n,i) in newsList" :key="i" :newstitle="n"></my-child>
+    </div>
+    `,
+    components: {
+      myChild
+    },
+    data(){
+      return {
+        newsList: ['新闻标题1','新闻标题2','新闻标题3']
+      }
+    }
+  }
+
+  var vm = new Vue({
+    el: '#app',
+    data: {},
+    components: {
+      myParent
+    }
+  });
+</script>
+</body>
+</html>
+<!--
+引入——小组件=对象{模板、props:['']}——大组件=对象{模板[插入烤串——v-for——绑属性]，数据(){return {}，小组件:{大驼峰}}
+vue——全局组件:{大驼峰}——挂dom：烤串
+-->

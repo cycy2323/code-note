@@ -1,0 +1,151 @@
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<meta name="viewport"-->
+          <!--content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+    <!--<title>Document</title>-->
+    <!--<link rel="stylesheet" href="css/bootstrap.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="app" class="containers">-->
+    <!--<h3>商品列表</h3>-->
+    <!--<table class="table table-hover">-->
+        <!--<thead>-->
+        <!--<tr>-->
+            <!--<th><input type="checkbox">全选</th>-->
+            <!--<th>编号</th>-->
+            <!--<th>主标题</th>-->
+            <!--<th>规格</th>-->
+            <!--<th>单价</th>-->
+            <!--<th>操作</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<tr v-for="p in pager.data">-->
+            <!--<td><input type="checkbox"></td>-->
+            <!--<td>{{p.lid}}</td>-->
+            <!--<td>{{p.title.substring(0,10)+"..."}}</td>-->
+            <!--<td>{{p.spec}}</td>-->
+            <!--<td>￥{{p.price}}</td>-->
+            <!--<td><a href="#">删除</a></td>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
+    <!--&lt;!&ndash;分页&ndash;&gt;-->
+    <!--<ul class="pagination">-->
+        <!--<li class="disabled"><a href="#">上一页</a></li>-->
+        <!--<li class="active"><a href="#">1</a></li>-->
+        <!--<li><a href="#">2</a></li>-->
+        <!--<li><a href="#">3</a></li>-->
+        <!--<li><a href="#">4</a></li>-->
+        <!--<li><a href="#">下一页</a></li>-->
+    <!--</ul>-->
+    <!--<button @click="loadData(1,8)">加载</button>-->
+<!--</div>-->
+<!--<script src="js/vue.js"></script>-->
+<!--<script src="js/axios.min.js"></script>-->
+<!--<script>-->
+    <!--var vm=new Vue({-->
+        <!--el:'#app',-->
+        <!--data:{-->
+            <!--pager:{},  //model:分页器对象-->
+        <!--},-->
+        <!--methods:{-->
+            <!--loadData(pno,pageSize){-->
+                <!--var url=`http://127.0.0.1/teacher_note/22%20vuejs/day03/project/productlist.php?pno=${pno}&pageSize=${pageSize}`;//不拼接的话就用模板字符串-->
+                <!--axios.get(url).then(function(res){-->
+                    <!--console.log(res);-->
+                    <!--this.vm.pager=res.data;-->
+                    <!--console.log(this);-->
+                <!--}).catch(function(err){-->
+                <!--console.log(err)-->
+                <!--});-->
+            <!--}-->
+        <!--},-->
+        <!--mounted:function () {-->
+            <!--console.log("已经挂载到dom树上");-->
+            <!--this.loadData(1,8)-->
+        <!--}-->
+    <!--})-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+</head>
+<body>
+<div id="example" class="container">
+    <h3>商品编号</h3>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th><input type="checkbox">全选</th>
+            <th>编号</th>
+            <th>主题标</th>
+            <th>规格</th>
+            <th>单价</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="p in pager.data">
+            <td><input type="checkbox"></td>
+            <td>{{p.lid}}</td>
+            <td>{{p.title.substring(0,10)+"..."}}</td>
+            <td>{{p.spec}}</td>
+            <td>￥{{p.price}}</td>
+            <td><a href="#">删除</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <ul class="pagination">
+        <li class="disabled"><a @click.prevent="loadData(pager.pno-1,8)" href="#">上一页</a></li>
+        <li v-if="pager.pno-2>0"><a @click.prevent="loadData(pager.pno-2,8)" href="#">{{pager.pno-2}}</a></li>
+        <li @click.prenvent="loadData(pager.pno-1,8)" v-if="pager.pno-1>0"><a href="#">{{pager.pno-1}}</a></li>
+        <li class="active"><a @click.prevent="loadData(pager.pno,8)">{{pager.pno}}</a></li>
+        <li v-if="pager.pno+1<=pager.pageCount"><a @click.prevent="loadData(pager.pno+1,8)" href="#">{{pager.pno+1}}</a></li>
+        <li v-if="pager.pno+2<=pager.pageCount"><a @click.prevent="loadData(pager.pno+2,8)" href="#">{{pager.pno+2}}</a></li>
+        <li><a @click.prevent="loadData(pager.pno+1,8)" href="#">下一页</a></li>
+    </ul>
+    <button class="btn btn-success" @click="loadData(2,8)">加载数据</button>
+</div>
+<script src="js/axios.min.js"></script>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#example",
+        data: {
+            pager:{ }     //model:分页器对象
+        },
+        methods:{
+            loadData(pno,pageSize){
+                var url=`http://127.0.0.1/teacher_note/22%20vuejs/day03/project/productlist.php?pno=${pno}&pageSize=${pageSize}`;
+                axios.get(url).then( (res)=>{
+                   console.log(res.data);
+                    this.pager=res.data;
+//                    console.log(this.pager.pageCount);
+                }).catch((err)=> {
+                    console.log(err);
+                });
+            }
+        },
+        mounted:function () {
+            console.log("已经挂载到dom树上");
+            this.loadData(1,8)
+        }
+    });
+
+</script>
+</body>
+</html>

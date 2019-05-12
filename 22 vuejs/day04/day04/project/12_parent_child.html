@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <cart></cart>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  /*
+   练习：购物车计算器
+   */
+  var cartItem = {
+    template: `
+    <div style="display: inline-block; width: 150px; border:1px solid #333">
+      <h3>{{title}}</h3>
+      <button>-</button>
+      <span>{{count}}</span>
+      <button @click="inc">+</button>
+    </div>
+    `,
+    props: ['title','count','pid'],
+    methods: {
+      inc(){
+        this.count++;
+        //触发“修改购买数量”事件: 绑定数据：pid、count
+        this.$emit('updatecount',this.pid, this.count);
+      }
+    }
+  }
+
+  var cart = {
+    template: `
+    <div>
+      <p>购物车中商品总数为：{{totalCount}}</p>
+      <hr>
+      <cart-item v-for="p in plist"
+        :title="p.title"
+        :count="p.count"
+        :pid="p.pid"
+        @updatecount="updateProductCount"
+      ></cart-item>
+    </div>
+    `,
+    components: {   //声明子组件
+      cartItem
+    },
+    data(){
+      return {
+        plist: [
+          {pid:101, title:'戴尔燃7000',count:1},
+          {pid:102, title:'戴尔燃8000',count:3},
+          {pid:103, title:'戴尔燃9000',count:2},
+        ]
+      }
+    },
+    computed: {     //声明计算属性
+      totalCount(){
+        var sum = 0;
+        for(var p of this.plist){
+          sum += p.count;
+        }
+        return sum;
+      }
+    },
+    methods: {
+      updateProductCount(pid, count){
+        //修改具有指定pid的商品的购买数量
+        for(var p of this.plist){
+          if(p.pid==pid){
+            p.count = count;
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+
+
+  var vm = new Vue({
+    el: '#app',
+    data: {},
+    components: {
+      cart
+    }
+  });
+</script>
+</body>
+</html>
+<!--（12完整）产品数->父传多子——多子事件方法改this.产品数——发射会父组件保存(父数据变，可供其他引用)——父算好的：{方法(){}}
+
+按步骤：引入——小组件=对象{模板,props:[''],方法：{a(){ 外加发射事件传变后参}}}——父组件=对象{模板[插入烤串——v-for——绑属性=p 绑事件]，数据(){return},小组件:{大驼峰},算好的方法：{return}，方法：{a(pid,cout){插进数据}}——父模板引用
+vue——全局组件:{大驼峰}——挂dom：烤串
+
+-->

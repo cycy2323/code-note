@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+    <tedu-emp-box></tedu-emp-box>
+</div>
+<script src="js/vue.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+    var componentTeduEmp={
+       template:`<div>
+            <span>{{eid}}</span>
+            <span>{{ename}}</span>
+            <span>{{sex}}</span>
+            <button>删除</button>
+            <hr>
+        </div>`,
+        props:['eid','ename','sex']
+    };
+
+    Vue.component('tedu-emp-box',{//大组件
+        components:{//组件
+            'tedu-emp':componentTeduEmp
+        },
+        template://模板
+        `<div style="border:1px solid #333">
+            <tedu-emp v-for="e in empList" :eid="e.eid" :ename="e.ename" :sex="e.sex"></tedu-emp>
+        </div>`,
+        data:function () {//model数据（可引用的变量）
+            return {
+                empList:[
+                    {eid:201,ename:'丁当',sex:'男'},
+                    {eid:202,ename:'丁丁',sex:'女'},
+                    {eid:203,ename:'丽丽',sex:'女'},
+                    {eid:204,ename:'盛盛',sex:'男'}
+                ]
+            }
+        }
+    })
+
+    var vm=new Vue({
+        el:'#app',
+        data:{}
+    })
+</script>
+</body>
+</html>
+<!--组件——大组件_组件_组件模板_数据函数返回数据-->

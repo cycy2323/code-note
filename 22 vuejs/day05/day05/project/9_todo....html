@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <todo-box></todo-box>
+</div>
+<template id="tplTodoListItem">
+  <li>
+    <span>{{itemcontent}}</span>
+    <button>删除</button>
+  </li>
+</template>
+<template id="tplTodoList">
+  <ul>
+      <todo-list-item v-for="(item,i) in list" :key="i" :itemcontent="item" :itemid="i"></todo-list-item>
+  </ul>
+</template>
+<template id="tplTodoInput">
+  <div>
+    <input type="text">
+    <button @click="">添加</button>
+  </div>
+</template>
+<template id="tplTodoBox">
+  <div>
+    <h3>代办事项列表</h3>
+    <hr>
+    <todo-input></todo-input>
+    <todo-list :list="existingTodoItem"></todo-list>
+  </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+  /***<todo-list-item>***/
+  var todoListItem = {
+    template: '#tplTodoListItem',
+    props: ['itemcontent', 'itemid'],
+    methods: {
+      handleClick(){
+        //触发自定义事件userdeleteitem,向父组件传递要删除的待办项编号
+        this.$emit('userdeleteitem', this.itemid);
+      }
+    }
+  }
+  /***<todo-list>***/
+  var todoList = {
+    template: '#tplTodoList',
+    components: {
+      todoListItem
+    },
+    props: ['list'],
+    methods: {
+      handleUserDeleteItem(itemid){
+        //触发listdeleteitem事件，继续向父组件传递要删除的待办项编号
+        this.$emit('listdeleteitem', itemid);
+      }
+    }
+  }
+  /***<todo-input>***/
+  var todoInput = {
+    template: '#tplTodoInput',
+    data(){
+      return {
+        newTodoItem: ''   //用户输入的新待办项
+      }
+    },
+    methods: {
+      handleClick(){
+        if(this.newTodoItem){
+          //触发useradditem事件，把用户的输入传递给父组件
+          this.$emit('useradditem',this.newTodoItem);
+          this.newTodoItem = ''; //清空用户输入
+        }else {
+          alert('待办项不能为空')
+        }
+      }
+    }
+  }
+  /***<todo-box>***/
+  var todoBox = {
+    template: '#tplTodoBox',
+    data(){
+      return {
+        existingTodoItem: ['吃饭','睡觉','打豆豆']   //已有的代办项
+      }
+    },
+    components:{
+      todoInput,
+      todoList
+    },
+    methods: {
+      handleUserAddItem(item){
+        //把子组件通过事件传递的新待办项加入“已有待办项"
+        this.existingTodoItem.push(item);
+      },
+      handleListDeleteItem(itemid){
+        //把子组件通过事件传递的要删除的待办项编号删除
+        this.existingTodoItem.splice(itemid, 1);
+      }
+    }
+  }
+
+  var vm = new Vue({
+    el: '#app',
+    data: {},
+    components: {
+      todoBox
+    }
+  });
+</script>
+</body>
+</html>
+<!--步骤：
+组件+数据+模板：1.var 组件todoListItem 、2.组件todoList、3.组件todoInput(data：newItem)、4.组件todoBox（data:已有数据）——
+
+规律：模板的大胡子先不填，根据根组件数据填
+-->

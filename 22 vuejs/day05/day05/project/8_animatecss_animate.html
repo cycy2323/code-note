@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <style>
+    button {
+      width: 150px;
+    }
+  </style>
+</head>
+<body>
+<div id="app" class="container">
+  <input type="checkbox" v-model="isAgreed">我接受本站的使用许可 <br>
+  <transition
+    name="btn"
+    enter-active-class="animated flipInY"
+    leave-active-class="animated lightSpeedOut"
+  >
+    <button v-show="isAgreed">提交我的注册信息</button>
+  </transition>
+
+</div>
+<script src="js/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      isAgreed: true    //是否同意本站的使用条款
+    }
+  });
+</script>
+</body>
+</html>
+<!--
+vue显示隐藏 借用animate.ccs动画
+
+引入animate.css——div内transition包元素——transition设显示类和隐藏类：enter-active-class=""——选中/不选中更换isAgreed=false/true
+-->

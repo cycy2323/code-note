@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <my-child1></my-child1>
+  <my-child2></my-child2>
+</div>
+<template id="tpl1">
+  <div class="alert alert-success">
+    <h3>子组件1</h3>
+    <button @click="emitMyEvent">触发总线上的事件</button>
+  </div>
+</template>
+<template id="tpl2">
+  <div class="alert alert-danger">
+    <h3>子组件2</h3>
+  </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+  /*
+  兄弟组件间通信的总线
+   */
+  var bus = new Vue();  //总线
+
+  var myChild1 = {
+    template: '#tpl1',
+    methods: {
+      emitMyEvent(){
+        //在总线上触发事件（子1发射事件给bus）
+        bus.$emit('newdataarrived', 99999);
+      }
+    }
+  }
+  var myChild2 = {
+    template: '#tpl2',
+    mounted(){
+      bus.$on('newdataarrived', function(data){
+        console.log('子组件2接收到总线上的事件数据：', data);
+      });
+    }
+  }
+
+  var vm = new Vue({
+    el: '#app',
+    data: {},
+    components: {
+      myChild1,
+      myChild2
+    }
+  });
+</script>
+</body>
+</html>
+<!--
+需求：子发事件给bus——子2mounted自动获得
+
+
+引入——两模板——两组件——1组件方法:{a(){bus.$emit(事件名，参)}}——2组件——mounted(){a(){bus.$on(事件名，参){保存参}}}
+
+陈述：子1发射事件带参给bus：bus.$emit(事件名，参)——子2 钩子mounted 自动监测bus（事件，后接函数传参并保存）：mounted(){bus.$on(事件名，函数(参){保存参})}
+
+注意：引大驼峰——插烤串
+-->

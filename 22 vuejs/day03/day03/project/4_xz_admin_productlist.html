@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <h3>商品列表</h3>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th><input type="checkbox">全选</th>
+      <th>编号</th>
+      <th>主标题</th>
+      <th>规格</th>
+      <th>单价</th>
+      <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr v-for="p in pager.data">
+      <td><input type="checkbox"></td>
+      <td>{{p.lid}}</td>
+      <td>{{p.title.substring(0,10)+'...'}}</td>
+      <td>{{p.spec.substring(0,10)+'...'}}</td>
+      <td>￥{{p.price}}</td>
+      <td><a href="#">删除</a></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <ul class="pagination">
+    <li class="disabled"><a href="#">上一页</a></li>
+    <li v-if="pager.pno-2>0"> <a @click.prevent="loadData(pager.pno-2,8)" href="#"> {{pager.pno-2}} </a> </li>
+    <li v-if="pager.pno-1>0"><a @click.prevent="loadData(pager.pno-1,8)" href="#">{{pager.pno-1}}</a></li>
+    <li class="active"><a href="#">{{pager.pno}}</a></li>
+    <li v-if="pager.pno+1<=pager.pageCount"><a @click.prevent="loadData(pager.pno+1,8)" href="#">{{pager.pno+1}}</a></li>
+    <li v-if="pager.pno+2<=pager.pageCount"><a @click.prevent="loadData(pager.pno+2,8)" href="#">{{pager.pno+2}}</a></li>
+    <li><a href="#">下一页</a></li>
+  </ul>
+
+  <!--<button @click="loadData(1,8)">加载数据</button>-->
+</div>
+<script src="js/axios.min.js"></script>
+<script src="js/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      pager: { }       //Model：分页器对象
+    },
+    methods: {
+      loadData(pno, pageSize){
+        var url = `http://127.0.0.1/teacher_note/22%20vuejs/day03/project/productlist.php?pno=${pno}&pageSize=${pageSize}`;
+        //console.log(this);   //vm
+        axios.get(url).then((res)=>{
+          console.log(res.data);
+          //console.log(this);  //匿名函数: window
+          //console.log(this);  //箭头函数：vm
+          this.pager = res.data; //1.把服务器返回的响应数据上升为Model
+          console.log(this.pager)
+        }).catch(function (err) {
+          console.log(err);
+        });
+      }
+    },
+    mounted: function(){
+      //Vue.js实例已经挂载到DOM树上，开始异步加载服务器端数据
+      console.log('Vue实例已经挂载到DOM树上');
+      this.loadData(1, 8);
+    }
+  });
+</script>
+</body>
+</html>
+<!--
+技巧：挂载后，异步发起
+
+问题：1.内容没出来——可以打印出res.data——错误:TypeError: Cannot read property 'substring' of undefined
+        答，php中没查spec项！！所以spec处不能用.substring(0,10)+'...'
+
+
+-->

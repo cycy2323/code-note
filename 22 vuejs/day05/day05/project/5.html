@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <style>
+    .v-leave-active { /*动画方式*/
+      transition: all 1s linear;
+    }
+    .v-leave {      /*动画初始状态*/
+      opacity: 1;
+    }
+    .v-leave-to {   /*动画最后状态*/
+      opacity: 0;
+    }
+    .v-enter-active {  /*动画方式*/
+      transition: all 1s linear;
+    }
+    .v-enter {      /*动画初始状态*/
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    .v-enter-to {   /*动画最后状态*/
+      opacicty: 1;
+      transform: translateX(0);
+    }
+  </style>
+</head>
+<body>
+<div id="app" class="container">
+  <br><br><br><br><br>
+  <transition>
+    <button v-show="isShow"  class="btn btn-success">渐隐/渐显的按钮</button><!--在控制台更换isShow=false/true-->
+  </transition>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      isShow: true
+    }
+  });
+</script>
+</body>
+</html>
+<!--需求：控制台更换isShow让按钮实现——显示动画和隐藏动画
+
+前提：style设置——显示3过程——动画方式 初始状态 最后状态——隐藏3过程——动画 初始 最后
+1.div内transition包动画元素
+2.在控制台更换isShow=false/true
+
+
+注意：上下位置属性（y）——transform：translatey（-100px）
+-->
+

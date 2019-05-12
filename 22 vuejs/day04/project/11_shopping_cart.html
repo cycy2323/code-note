@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子数据（emit事件）传给父</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+<cart></cart>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    var cartItem={
+        template:
+        `<div style="display:inline-block;width:200px;">
+            <h3>{{product.title}}</h3>
+            <button >-</button>
+            <span>{{product.count}}</span>
+            <button @click="inc">+</button>
+        </div>`,
+        props:['product'],
+        methods:{
+            inc(){
+                this.product.count++;
+            }
+        }
+    }
+
+    var cart={
+        template:
+        `<div>
+            <p>购物车中的商品总数为：{{totalCount}}</p>
+            <hr>
+            <cart-item v-for="p in plist" :product="p"></cart-item>
+        </div>`,
+        components:{
+            cartItem
+        },
+        data(){
+            return{
+                plist:[
+                    {pid:101,title:'戴尔燃7000',count:1},
+                    {pid:102,title:'戴尔燃8000',count:3},
+                    {pid:102,title:'戴尔燃9000',count:2}
+                ]
+            }
+        },
+        computed:{
+            totalCount(){
+                var sum=0;
+                for(var p of this.plist)
+                    sum+=p.count;
+                return sum;
+            }
+        }
+    }
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+        },
+        components:{
+            cart
+        }
+    });
+</script>
+</body>
+</html>
+<!--
+步骤：子组件——模板+变量——定义属性（对象）——【定义方法——方法可能改变传过来的data——覆盖原data数据】
+    父组件——模板+变量——data记录——在模板中定义属性（遍历）：给子组件传data——
+    计算器算父组件变量：data中取（会算到覆盖后的data）
+-->

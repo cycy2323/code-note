@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <my-parent></my-parent>
+</div>
+
+<!--HTML5中的temmplate标签不会被浏览器解析-->
+<template id="tplChild">
+  <div class="alert alert-danger">
+    <h3>子组件：{{cmsg}}</h3>
+    <p>CAGE: {{cage}}</p>
+    <button @click="sendMsgToParent">给父组件发数据</button>
+  </div>
+</template>
+<template id="tplParent">
+  <div class="alert alert-success">
+    <h3>父组件：{{msg}}</h3>
+    <p>CAGE: {{childAge}}</p>
+    <my-child :cmsg="msg" @sendage="handleChildAge"></my-child>
+  </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+  /*
+  父、子组件间通信
+   */
+  var myChild = {
+    template: '#tplChild',
+    props: ['cmsg'],
+    data(){
+      return {
+        cage: 28
+      }
+    },
+    methods: {
+      sendMsgToParent(){
+        this.$emit('sendage', this.cage)
+      }
+    }
+  };
+  var myParent = {
+    template: '#tplParent',
+    components: {
+      myChild
+    },
+    data(){
+      return {
+        msg: '这是来自父组件的数据',
+        childAge: null//1.
+      }
+    },
+    methods:{
+      handleChildAge(cage){
+        this.childAge = cage;
+      }
+    }
+  }
+  var vm = new Vue({
+    el: '#app',
+    data: {},
+    components: {
+      myParent
+    }
+  });
+</script>
+</body>
+</html>
+
+<!--
+完整组件写法2：模板位置不同
+
+  需求：子的age给父的data
+
+引入——子template 绑发射事件——父template:绑属性 绑方法——子组件：{模板:"id",props:[],data:{},方法：{a(){发事件，参}}}——父组件:{模板:"id",data,组件：{}，methods:{方法：保存参}}
+vue ——挂dom
+-->

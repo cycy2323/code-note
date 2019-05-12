@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <my-parent></my-parent>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  //把父 传 子组件
+
+  /**<my-child childmsg="">**/
+  var myChild = {
+    template: `
+    <div class="alert alert-danger">
+      <p>这里是子组件...{{childmsg}}</p>
+    </div>
+    `,
+    props: ['childmsg']   //子组件的自定义属性：也是一种Model
+  }
+  /**<my-parent>**/
+  var myParent= {
+    template: `
+    <div class="alert alert-success">
+      <p>这里是父组件</p>
+      <!--<my-child childmsg="hello"></my-child>-->
+      <my-child :childmsg="msg"></my-child>
+    </div>
+    `,
+    data(){
+      return {    //父组件中的模型数据
+        msg: '这是来自父组件的一个数据'
+      }
+    },
+    components: {
+      myChild
+    }
+  }
+
+  var vm = new Vue({
+    el: '#app',
+    data: {},
+    components: {
+      myParent
+    }
+  });
+</script>
+</body>
+</html>
+<!-- (较完整)
+引入——小组件=对象{模板、props:['']}——大组件=对象{模板[插入烤串——绑属性]，数据(){return {}，小组件:{大驼峰}}
+vue——全局组件:{大驼峰}——挂dom：烤串
+-->

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <candidate-box></candidate-box>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  /*
+   练习：竞选总统
+   */
+  var candidate = {
+    template: `
+    <div style="display:inline-block; width:200px; border: 1px solid #333">
+      <p>候选人姓名：{{cname}}</p>
+      <button @click="handleClick">我要当总统</button>
+    </div>
+    `,
+    props: ['cname'],
+    methods: {
+      handleClick(){
+        //子组件发射自定义事件，携带自己的数据
+        console.log('子组件触发事件：jingxuan');
+        this.$emit('jingxuan', this.cname);
+      }
+    }
+  }
+
+  var candidateBox = {
+    template:`
+    <div>
+      <p>当前当选总统：{{currentCname}}</p>
+      <candidate @jingxuan="handleJingxuan" cname="川普"></candidate>
+      <candidate @jingxuan="handleJingxuan" cname="希拉里"></candidate>
+    </div>
+    `,
+    components: {
+      candidate
+    },
+    methods: {
+      handleJingxuan(cname){
+        console.log('父组件处理事件：jingxuan', cname);
+        this.currentCname = cname;
+      }
+    },
+    data(){
+      return {
+        currentCname: ''
+      }
+    }
+  }
+
+  var vm = new Vue({
+    el: '#app',
+    data: {},
+    components: {
+      candidateBox
+    }
+  });
+</script>
+</body>
+</html>
+<!--父子子父间传
+路径：川普/希拉里->父烤串绑属性传值给子——子this.引用——发同名事件名，带参——烤串绑事件接参=方法（保存进数据）
+
+引入——小组件=对象{模板、...
+-->

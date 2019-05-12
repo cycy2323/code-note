@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子数据（emit事件）传给父</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+<candidate-box></candidate-box>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    var candidate={
+        template:
+        `<div>
+            <p>候选人：{{cname}}</p>
+            <button @click="handleClick">我要当总统</button>
+        </div>`,
+        props:['cname'],
+        methods:{
+            handleClick(){
+                this.$emit('jingxuan',this.cname);//携带数据发射事件
+            }
+        }
+    }
+
+    var candidateBox={
+        template:
+        `<div>
+            <p>当前当选总统：{{currentCname}}</p>
+            <candidate @jingxuan="handleJingxuan" cname="川普"></candidate>
+            <candidate @jingxuan="handleJingxuan" cname="希拉里"></candidate>
+        </div>`,
+        components:{
+            candidate
+        },
+        methods:{
+            handleJingxuan(cname){
+                console.log('父组件处理事件：jingxuan'+cname);
+                this.currentCname=cname;//父组件处理事件
+            }
+        },
+        data(){
+            return{
+                currentCname:''
+            }
+        }
+    }
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+        },
+        components:{
+            candidateBox
+        }
+    });
+</script>
+</body>
+</html>
+<!--
+注意：父组件中要想接收子组件的数据，要创建自己的data准备接收，好让子组件发射的数据有地方放
+-->

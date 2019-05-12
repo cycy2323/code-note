@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <tedu-emp-box></tedu-emp-box>
+</div>
+<script src="js/vue.js"></script>
+<script>
+
+   var componentTeduEmp = {
+    template: `
+      <div>
+        <span>{{eid}}</span>
+        <span>{{ename}}</span>
+        <span>{{sex}}</span>
+        <button>删除</button>
+        <hr>
+      </div>
+    `,
+    props: ['eid', 'ename', 'sex']
+  };
+
+   //全局组件
+  Vue.component('tedu-emp-box', {
+    components: {
+      'tedu-emp': componentTeduEmp  //局部组件
+    },
+    template: `
+      <div style="border:1px solid #333">
+        <tedu-emp v-for="e in empList" :eid="e.eid" :ename="e.ename" :sex="e.sex"></tedu-emp>
+      </div>
+    `,
+    data: function(){
+      return {
+        empList: [
+          {eid:201, ename:'dingding',sex:'m'},
+          {eid:202, ename:'dangdang',sex:'m'},
+          {eid:203, ename:'doudou',sex:'m'},
+          {eid:204, ename:'yaya',sex:'f'},
+        ]
+      }
+    }
+  })
+
+
+
+  var vm = new Vue({
+    el: '#app',
+    data: {}
+  });
+</script>
+</body>
+</html>
+<!--
+引入——小组件保存{模板、props属性数组}——全局组件(名称，{小组件{}，模板：小组件+绑属性)}
+vue——挂dom
+-->

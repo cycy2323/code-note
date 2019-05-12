@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <buy-count></buy-count>
+  <hr>
+  <buy-count></buy-count>
+  <hr>
+  <buy-count></buy-count>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  //自定义全局组件
+  Vue.component('buy-count', {
+    template: `
+      <div>
+        <button>-</button>
+        <input type="text" v-model="count">
+        <button @click="inc">+</button>
+      </div>
+    `,
+    /*data: {       //错误写法
+      count: 3
+    }*/
+    data: function(){ //组件的模型数据必须用函数来返回
+      return {
+        count: 3
+      }
+    },
+    methods: {
+      inc(){
+        this.count++;
+      }
+    }
+  });
+
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      count: 100
+    }
+  });
+
+
+/*
+  function f1(){
+    return {uname: 'tom'};
+  }
+  var obj1 = f1();
+  var obj2 = f1();
+  console.log(obj1 === obj2);  //false
+*/
+
+
+</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <buy-count></buy-count>
+  <hr>
+  <buy-count></buy-count>
+  <hr>
+  <buy-count></buy-count>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    //自定义全局组件
+    Vue.component('buy-count', {
+        template: `
+      <div>
+        <button>-</button>
+        <input type="text" v-model="count">
+        <button @click="inc">+</button>
+      </div>
+    `,
+      /*data: {       //错误写法
+       count: 3
+       }*/
+        data: function(){ //组件的模型数据必须用函数来返回
+            return {
+                count: 3
+            }
+        },
+        methods: {
+            inc(){
+                this.count++;
+            }
+        }
+    });
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            count: 100
+        }
+    });
+
+
+    /*
+     function f1(){
+     return {uname: 'tom'};
+     }
+     var obj1 = f1();
+     var obj2 = f1();
+     console.log(obj1 === obj2);  //false
+     */
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <p>购物车中商品的总数：{{totalCount}}</p>
+  <p>购物车中商品的总数：{{totalCount}}</p>
+  <p>购物车中商品的总数：{{totalCount}}</p>
+  <p>购物车中商品的总数：{{totalCount}}</p>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  /*
+  计算属性：是一种特殊的Model数据
+   */
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      plist: [
+        {pid:101, pname:'戴尔燃7000',count:1},
+        {pid:102, pname:'戴尔燃8000',count:3},
+        {pid:103, pname:'戴尔燃9000',count:2},
+      ]
+    },
+    computed: {     //声明计算属性：本质是函数，但是使用时与属性类似
+      totalCount: function(){
+        console.log('totalCount...');
+        var sum = 0;
+        for(var p of this.plist){
+          sum+= p.count;
+        }
+        return sum;
+      }
+    }
+  });
+</script>
+</body>
+</html>
+<!--保存计算的结果
+
+插入computed：对象{方法名:function(){return结果}}——胡子多次要运行方法时用
+-->

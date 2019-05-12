@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子数据（emit事件）传给父</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+<my-parent></my-parent>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    var myChild={
+        template:
+        `<button @click="handleClick">给父组件传数据</button>`,
+        data(){
+            return{
+                msg:'来自子组件的数据'
+            }
+        },
+        methods:{
+            handleClick(){
+                console.log("子组件传数据给父")
+                this.$emit('giveparentmsg',this.msg)//发射
+            }
+        }
+    }
+    var myParent={
+        template:
+        `<div>
+            <my-child @giveparentmsg="handleMsg"></my-child><!--接收事件：模板+@事件=处理方法——下面提供处理方法-->
+            <hr>
+        </div>`,
+        components:{
+            myChild
+        },
+        methods:{
+            handleMsg(msg){
+                console.log('父组件在处理子组件的事件giveparentmsg'+msg);
+                this.msg=msg;
+            }
+        }
+    }
+    var vm = new Vue({
+        el: '#app',
+        data: {
+        },
+        components:{
+            myParent
+        }
+    });
+</script>
+</body>
+</html>
+<!--
+事件路径：子组件发生事件（模板）——方法函数发射事件——父组件接收事件：模板+@事件=处理方法——父组件提供方法
+数据路径：子组件发射数据
+-->

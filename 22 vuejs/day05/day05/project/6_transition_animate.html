@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <style>
+    button {
+      width: 150px;
+    }
+    /*按钮离开动画效果*/
+    .btn-leave-active {
+      transition: all .5s;
+    }
+    .btn-leave {
+    }
+    .btn-leave-to {
+      opacity: 0;
+      transform: translatex(-150px);
+    }
+    /*按钮进入动画效果*/
+    .btn-enter-active {
+      transition: all .5s;
+    }
+    .btn-enter {
+      opacity: 0;
+      transform: translatex(150px);
+    }
+    .btn-enter-to {
+    }
+  </style>
+</head>
+<body>
+<div id="app" class="container">
+  <input type="checkbox" v-model="isAgreed">我接受本站的使用许可 <br>
+  <transition name="btn">
+    <button v-show="isAgreed">提交我的注册信息</button>
+  </transition>
+
+</div>
+<script src="js/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      isAgreed: true    //是否同意本站的使用条款
+    }
+  });
+</script>
+</body>
+</html>
+<!--
+需求：选中/不选中更换isShow=false/true——让其实现显示动画和隐藏动画
+
+选中——isAgreed为true——isAgreed再绑v-show上——设style动画状态6种：显示3过程——动画方式 初始状态 最后状态——隐藏3过程——动画 初始 最后
+
+div内transition包动画元素——选中/不选中更换isShow=false/true
+-->

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <todo-box></todo-box>
+</div>
+<template id="tplTodoListItem">
+  <li>
+    <span>{{itemcontent}}</span>
+    <button @click="handleClick">删除</button>
+  </li>
+</template>
+
+<template id="tplTodoList">
+  <div>
+    <ul>
+      <todo-list-item v-for="(item,i) in list" :key="i" :itemcontent="item" :itemid="i" @userdeleteitem="handleUserDeleteItem"></todo-list-item>//item内容还要传给list下的item，所以给item组件自定义属性itemcontent——到时item组件声明属性后就可以把属性值引用进自己的变量中——同理：声明属性itemid
+    </ul>
+  </div>
+</template>
+
+<template id="tplTodoInput">
+  <div>
+    <input type="text" v-model="newTodoItem">
+    <button @click="handleClick">添加</button>
+  </div>
+</template>
+
+<template id="tplTodoBox">
+  <div>
+    <h3>待办事项列表</h3>
+    <hr>
+    <todo-input @useradditem="handleUserAddItem"></todo-input>
+    <todo-list :list="existingTodoItem" @listdeleteitem="handleListDeleteItem"></todo-list>
+  </div>
+</template>
+
+
+<script src="js/vue.js"></script>
+<script>
+  /***<todo-list-item>***/
+  var todoListItem = {
+    template: '#tplTodoListItem',
+    props: ['itemcontent', 'itemid'],
+    methods: {
+      handleClick(){
+        //触发自定义事件userdeleteitem,向父组件传递要删除的待办项编号
+        this.$emit('userdeleteitem', this.itemid);
+      }
+    }
+  }
+  /***<todo-list>***/
+  var todoList = {
+    template: '#tplTodoList',
+    components: {
+      todoListItem
+    },
+    props: ['list'],
+    methods: {
+      handleUserDeleteItem(itemid){
+        //触发listdeleteitem事件，继续向父组件传递要删除的待办项编号
+        this.$emit('listdeleteitem', itemid);
+      }
+    }
+  }
+  /***<todo-input>***/
+  var todoInput = {
+    template: '#tplTodoInput',
+    data(){
+      return {
+        newTodoItem: ''   //用户输入的新待办项
+      }
+    },
+    methods: {
+      handleClick(){
+        if(this.newTodoItem){
+          //触发useradditem事件，把用户的输入传递给父组件
+          this.$emit('useradditem',this.newTodoItem);
+          this.newTodoItem = ''; //清空用户输入
+        }else {
+          alert('待办项不能为空')
+        }
+      }
+    }
+  }
+  /***<todo-box>***/
+  var todoBox = {
+    template: '#tplTodoBox',
+    data(){
+      return {
+        existingTodoItem: ['吃饭','睡觉','打豆豆']   //已有的代办项
+      }
+    },
+    components:{
+      todoInput,
+      todoList
+    },
+    methods: {
+      handleUserAddItem(item){
+        //把子组件通过事件传递的新待办项加入“已有待办项"
+        this.existingTodoItem.push(item);
+      },
+      handleListDeleteItem(itemid){
+        //把子组件通过事件传递的要删除的待办项编号删除
+        this.existingTodoItem.splice(itemid, 1);
+      }
+    }
+  }
+
+  var vm = new Vue({
+    el: '#app',
+    data: {},
+    components: {
+      todoBox
+    }
+  });
+</script>
+</body>
+</html>
+<!--（vue组件完整模板）
+步骤：脑运行一次上面代码：引入——模板——组件——
+                        显示已有待办项：数据传递——
+                        添加新的待办项：发射事件带参传递、事件方法——
+                        删除已有的待办项：发射事件带参传递——将遍历的list时携带的itemid传给父box做删除
+-->

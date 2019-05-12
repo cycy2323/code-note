@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <child1></child1>
+  <hr>
+  <child2></child2>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  /*
+  使用Bus总线在兄弟组件间传输数据
+   */
+  var bus = new Vue();  //1.通信总线对象
+
+  var child1 = {
+    template: `
+    <div>
+      <p>第1个子组件中的数据：{{msg}}</p>
+      <button @click="f">给总线传数据</button>
+    </div>
+    `,
+    data(){
+      return {
+        msg: '这是第一个子组件中的数据'
+      }
+    },
+    methods: {
+      f(){
+        console.log('第一个子组件开始向总线传数据');
+        bus.msg1 = this.msg;//2.
+        console.log(bus);
+      }
+    }
+  }
+
+  var child2 = {
+    template: `
+    <div>
+      <p>第2个子组件中的数据：{{msg}}</p>
+      <button @click="f">从总线上读取第一个组件传递的数据</button>
+    </div>
+    `,
+    data(){
+      return {
+        msg: '这是第二个子组件中的数据'
+      }
+    },
+    methods: {
+      f(){
+        this.msg = bus.msg1;//3.
+      }
+    }
+  }
+
+  var vm = new Vue({
+    el: '#app',
+    data: {},
+    components: {
+      child1,
+      child2
+    }
+  });
+</script>
+</body>
+</html>
+<!--
+引入——建bus——组件1方法：{a(){bus.msg1=this.数据}——组件2方法：{this.数据=bus.msg1}
+-->

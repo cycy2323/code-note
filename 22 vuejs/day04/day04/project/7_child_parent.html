@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <my-parent></my-parent>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  //子
+  var myChild = {
+    template: `
+    <button @click="handleClick">
+      给父组件传数据
+    </button>`,
+    data(){
+      return {
+        msg: '这是来自子组件的数据'
+      }
+    },
+    methods:{
+      handleClick(){
+        console.log('CHILD:子组件开始给父组件传数据...');
+        //在子组件内部触发一个自定义事件
+        //this.$emit('giveparentmsg');  //发出、发射
+        this.$emit('giveparentmsg', this.msg); //发射事件并携带数据
+      }
+    }
+  }
+//父
+  var myParent = {    //为子组件声明自定义事件
+    template: `
+    <div>
+      <my-child v-on:giveparentmsg="handleMsg"></my-child>
+      <hr>
+      <!--<p>父组件中的MSG: {{parentMsg}}</p>-->
+    </div>
+    `,
+    components: {
+      myChild
+    },
+    methods:{
+      handleMsg(childMsg){  //子组件的事件都是由父组件来处理的！
+        console.log('PARENT:父组件在处理子组件的事件giveparentmsg');
+        console.log('PARENT:'+ childMsg);
+      }
+    }
+  }
+
+  var vm = new Vue({
+    el: '#app',
+    data: {},
+    components: {
+      myParent
+    }
+  });
+</script>
+</body>
+</html>
+<!--子传父  子组件发事件和参出来——大组件查烤串时——绑该事件(传参)=方法{}
+
+引入——小组件=对象{模板[事件],数据(){return _{}},方法:对象{方法(){发射带参事件}}——大组件=对象{模板[插入烤串——绑事件=方法]，小组件:{大驼峰},方法:{方法(接参){保存}}
+vue——全局组件:{大驼峰}——挂dom：烤串
+
+(参路径：子方法:{a(){this.$emit("事件名",参this.msg)}——大组件在插烤串时绑事件=方法（）——方法：{方法(接参){this.msg=参})
+-->

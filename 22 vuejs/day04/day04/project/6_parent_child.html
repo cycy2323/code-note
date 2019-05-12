@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <product-list/>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  /*
+   练习：使用父子组件实现学子商城前台中的商品列表功能
+   */
+  /**<product-item>**/
+  var productItem = {
+    template: `
+    <div>
+      <img :src="product.img" style="width:80px">
+      <h4>￥{{product.price}}</h4>
+      <p>{{product.desc}}</p>
+    </div>
+    `,
+    props: ['product']
+    //自定义属性可以是字符串、数字等简单数据，也可以是对象
+  }
+  /**<product-list>**/
+  var productList = {
+    template: `
+    <div>
+      <product-item v-for="p in plist"
+        :product="p" :key="p.pid"/>
+    </div>
+    `,
+    components: {
+      productItem
+    },
+    data(){
+      return {
+        plist: [
+          {pid:101, img:'img/1.jpg', price:2000, desc:'戴尔燃7000'},
+          {pid:102, img:'img/2.jpg', price:3000, desc:'联想小新'},
+          {pid:103, img:'img/3.jpg', price:4000, desc:'小米AirII'},
+        ]
+      }
+    }
+  }
+
+  var vm = new Vue({
+    el: '#app',
+    data: {},
+    components: {
+      productList
+    }
+  });
+</script>
+</body>
+</html>
+<!--（类同5：大组件绑属性时不拆数据，大胡子拆）
+引入——小组件=对象{模板、props:['']}——大组件=对象{模板[插入烤串——v-for——绑属性]，数据(){return {}，小组件:{大驼峰}}
+vue——全局组件:{大驼峰}——挂dom：烤串
+-->

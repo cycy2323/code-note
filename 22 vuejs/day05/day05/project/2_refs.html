@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <my-parent></my-parent>
+</div>
+
+<!--HTML5中的temmplate标签不会被浏览器解析-->
+<template id="tplChild">
+  <div class="alert alert-danger">
+    <h3>子组件：</h3>
+    <button @click="getParentData">获取父组件中的数据</button>
+  </div>
+</template>
+
+<template id="tplParent">
+  <div class="alert alert-success">
+    <h3 ref="childH3">父组件：{{msg}}</h3>
+    <p ref="childP">父组件：.......</p>
+    <button ref="childBtn" @click="printRefs">输出父组件的$refs属性</button>
+    <my-child ref="childMyChild"></my-child>
+  </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+  /*
+  父、子组件间通信
+   */
+  var myChild = {
+    template: '#tplChild',
+    data(){
+      return {
+        cage: 28
+      }
+    },
+    methods: {
+      sendMsgToParent(){
+      },
+      getParentData(){
+        console.log('父传子——在子中——this.$parent.msg：',this.$parent.msg);//1.子取父 （父模板在组件中加了ref属性）
+      }
+    }
+  };
+
+  var myParent = {
+    template: '#tplParent',
+    components: {
+      myChild
+    },
+    data(){
+      return {
+        msg: '这是来自父组件的数据',
+      }
+    },
+    methods:{
+      handleChildAge(cage){
+      },
+      printRefs(){
+        console.log('拿ref对象——在父中——this.$refs：',this.$refs); //References
+        console.log('子传父——在子中——this.$refs.childMyChild.cage：',this.$refs.childMyChild.cage);
+      }
+    }
+  }
+  var vm = new Vue({
+    el: '#app',
+    data: {},
+    components: {
+      myParent
+    }
+  });
+</script>
+</body>
+</html>
+<!--ref方法传递
+
+需求：msg传子 cage传父
+
+前提:父模板在插组件(或子元素)中加了ref属性（如上1注释）
+1.——就可用this.$refs，父可取到ref对象
+2.——子父：在父中——this.$refs.childMyChild.msg (或this.$ref.childH3取到h3元素)
+3.——父子：在子中——this.$parent.msg
+-->

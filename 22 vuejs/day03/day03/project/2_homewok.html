@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <!--过滤+fmt功能说明-->
+  <p>{{d1 | datetime('ymd') }}</p>
+  <p>{{d2 | datetime('hms') }}</p>
+  <p>{{d3 | datetime('ymdhms') }}</p>
+  <p>{{d4 | datetime("ymd") }}</p>
+  <p>{{d5 | datetime }}</p>
+  <p>{{d6 | datetime }}</p>
+  <ul>
+    <li v-for="b in birthdayList">{{b | datetime('ymd')}}</li>
+  </ul>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  /*
+  自定义过滤器：datetime，可以把接收到的大整数转换为'yyyy-mm-dd hh:mm:ss'
+   */
+  Vue.filter('datetime', function(val, fmt){
+    var d = new Date(val);
+
+    var yy = d.getFullYear(); //拿年
+    var mm = d.getMonth()+1;  //拿月
+    mm = mm>=10?mm:'0'+mm;
+    var dd = d.getDate();     //拿日
+    dd = dd>=10?dd:'0'+dd;
+    var hh = d.getHours();
+    hh = hh>=10?hh:'0'+hh;
+    var mi = d.getMinutes();
+    mi = mi>=10?mi:'0'+mi;
+    var ss = d.getSeconds();
+    ss = ss>=10?ss:'0'+ss;
+
+    if(fmt==='ymd'){
+      return yy+'-'+mm+'-'+dd;
+    }else if(fmt==='hms'){
+      return hh+':'+mi+':'+ss;
+    }else {
+      return yy+'-'+mm+'-'+dd + ' '+hh+':'+mi+':'+ss;
+    }
+  });
+
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      d1: 0,
+      d2: 1000,
+      d3: 1000*3600,
+      d4: 1000*3600*24,
+      d5: 1000*3600*24*365,
+      d6: 1501234567890,
+      birthdayList: [
+        1511234567890,
+        1521234567891,
+        1531234567892,
+        1541234567893,
+      ]
+    }
+  });
+</script>
+</body>
+</html>
+<!--过滤：分格式
+
+日期格式过滤：2参
+串 变 格式
+
+注意：getDay() 拿的是星期中的某一天 ||  getDate() 月中的某天
+-->

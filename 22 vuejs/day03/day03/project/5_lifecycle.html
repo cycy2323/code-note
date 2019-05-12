@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <p>{{msg}}</p>
+  <button @click="killSelf()">销毁Vue.js实例</button>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      msg: 'hello'
+    },
+    methods: {
+      killSelf(){
+        this.$destroy(); //销毁当前Vue.js实例
+      }
+    },
+    beforeCreate: function(){
+      console.log('钩子函数：beforeCreate 被调用了...');
+    },
+    created: function(){
+      console.log('钩子函数：created 被调用了...');
+    },
+    beforeMount: function(){
+      console.log('钩子函数：beforeMount 被调用了...');
+    },
+    mounted: function(){
+      console.log('钩子函数：mounted 被调用了...');
+    },
+    beforeUpdate: function(){
+      console.log('钩子函数：beforeUpdate 被调用了...');
+    },
+    updated: function(){
+      console.log('钩子函数：updated 被调用了...');
+    },
+    beforeDestroy: function(){
+      console.log('钩子函数：beforeDestroy 被调用了...');
+    },
+    destroyed: function(){
+      console.log('钩子函数：destroyed 被调用了...');
+    }
+  });
+</script>
+</body>
+</html>

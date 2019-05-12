@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <p v-text="msg"></p> //直接输出
+  <p v-html="msg"></p>//翻译
+  <p>{{msg}}</p>  //直接输出
+  <p v-once>{{msg}}</p>//输出一次  3 9:28
+  <p v-pre>{{msg}}</p> //不翻译大胡子
+</div>
+<script src="js/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      msg: 'Hello <hr> World'
+    }
+  });
+</script>
+</body>
+</html>
+<!--
+
+-->

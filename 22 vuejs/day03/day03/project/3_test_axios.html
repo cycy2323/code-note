@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h3>Axios与Vue.js没有必然的联系</h3>
+<button id="btn">异步加载分页数据</button>
+<script src="js/axios.min.js"></script>
+<script>
+  btn.onclick = function(){
+    var url = 'http://127.0.0.1/16_VUEJS/day03/project/productlist.php?pno=2&pageSize=8';
+    axios.get(url).then(function(res){
+      console.log('异步请求成功');
+      console.log(res);
+    }).catch(function(err){
+      console.log('异步请求失败');
+      console.log(err);
+    })
+  }
+
+</script>
+</body>
+</html>

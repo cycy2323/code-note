@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <emp-list></emp-list>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  /*******局部组件 emp-item ********/
+  var empItem = {
+    template: `
+      <li>
+        <h3>丁丁</h3>
+        <p>丁丁的简介：.....</p>
+        <a href="#">查看详情</a>
+      </li>
+    `
+  }
+  /********'全局'组件 emp-list**********/
+  var empList = {
+    template: `
+      <div>
+        <h3>员工列表</h3>
+        <ul>
+          <emp-item></emp-item>
+          <emp-item></emp-item>
+          <emp-item></emp-item>
+        </ul>
+      </div>
+    `,
+    components: {
+      empItem     //在父组件体内注册子组件
+    }
+  }
+
+  //Vue.component('emp-list', empList);
+
+  var vm = new Vue({
+    el: '#app',
+    data: {},
+    components: {
+      empList
+    }
+  });
+
+  /*
+  全局组件必须声明的vm之前
+  Vue.component('emp-list', {
+    template: `<h3>PARENT</h3>`
+  })*/
+
+
+</script>
+</body>
+</html>

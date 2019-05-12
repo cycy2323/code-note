@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>组件用到方法计算变量（重复多次）</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <p>购物车中商品的总数：{{getTotal()}}</p>
+  <p>购物车中商品的总数：{{getTotal()}}</p>
+  <p>购物车中商品的总数：{{getTotal()}}</p>
+  <p>购物车中商品的总数：{{getTotal()}}</p>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      plist: [
+        {pid:101, pname:'戴尔燃7000',count:1},
+        {pid:102, pname:'戴尔燃8000',count:3},
+        {pid:103, pname:'戴尔燃9000',count:2},
+      ]
+    },
+    methods: {
+      getTotal(){
+        console.log('getTotal....')
+        var sum = 0;
+        for(var p of this.plist){
+          sum+= p.count;
+        }
+        return sum;
+      }
+    }
+  });
+</script>
+</body>
+</html>
+<!--computed：{}
+多次运行方法——看10：方法重用 computed：{}
+-->

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <dd-book price="35.5" title="西游记" bid="101"></dd-book>
+  <hr>
+  <dd-book price="48.2" title="三国志" bid="102"></dd-book>
+  <hr>
+  <dd-book price="39.1" title="水浒传" bid="103"></dd-book>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  Vue.component('dd-book', {
+    template: `
+      <div>
+        <h3 class="text-primary">{{title}}</h3>
+        <p class="text-danger">￥{{price}}</p>
+        <button @click="addToCart(bid)" class="btn btn-danger">添加到购物车</button>
+      </div>
+    `,
+    data:function(){
+      return {  //组件的Model：所有的实例都有相同值 —— 可以双向绑定
+      }
+    },
+    props: [ //组件的自定义属性：也是Model，每个实例都可以有不同的值，可以使用{{}}进行绑定——只能单向绑定
+      'price',
+      'title',
+      'bid'
+    ],
+    methods: {
+      addToCart(bookId){
+        console.log('添加到购物车：'+bookId)
+      }
+    }
+  })
+
+  var vm = new Vue({
+    el: '#app',
+    data: {}
+  });
+</script>
+</body>
+</html>
+
+<!--
+引入——组件——对象{模板、props属性}——实例——dom树挂载——属性传值
+-->

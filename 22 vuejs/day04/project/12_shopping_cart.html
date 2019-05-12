@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子数据（emit事件）传给父</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+<cart></cart>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    var cartItem={
+        template:
+        `<div style="display:inline-block;width:200px;">
+            <h3>{{title}}</h3>
+            <button >-</button>
+            <span>{{count}}</span>
+            <button @click="inc">+</button>
+        </div>`,
+        props:['title','count','pid'],
+        methods:{
+            inc(){
+                this.count++;
+                this.$emit('updatacount',this.pid,this.count)
+            }
+        }
+    }
+
+    var cart={
+        template:
+        `<div>
+            <p>购物车中的商品总数为：{{totalCount}}</p>
+            <hr>
+            <cart-item v-for="p in plist"
+                :title="p.title"
+                :count="p.count"
+                :pid="p.pid"
+                @updatacount="updateProductCount"></cart-item>
+        </div>`,
+        components:{
+            cartItem
+        },
+        data(){
+            return{
+                plist:[
+                    {pid:101,title:'戴尔燃7000',count:1},
+                    {pid:102,title:'戴尔燃8000',count:3},
+                    {pid:102,title:'戴尔燃9000',count:2}
+                ]
+            }
+        },
+        computed:{
+            totalCount(){
+                var sum=0;
+                for(var p of this.plist)
+                    sum+=p.count;
+                return sum;
+            }
+        },
+        methods:{
+            updateProductCount(pid,count){//方法：
+                for(var p of this.plist)
+                    if(p.pid==pid){
+                        p.count=count;
+                        break;
+                    }
+            }
+        }
+    }
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+        },
+        components:{
+            cart
+        }
+    });
+</script>
+</body>
+</html>
+<!--
+
+-->

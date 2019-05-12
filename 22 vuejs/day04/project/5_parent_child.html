@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+<product-list></product-list>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    //子  模板（标签+变量）——自定义属性
+    var productItem={
+        template:
+        `<div>
+            <img :src="product.img" alt="">
+            <p>￥{{product.price}}</p>
+            <h4>{{product.desc}}</h4>
+        </div>`,
+        props:['product']//数据形式是一个对象
+    };
+    //父  模板（子标签+属性（子的数据））——数据——子组件
+    var productList={
+        template:
+        `<div>
+            <product-item v-for="p in plist" :product="p" :key="p.pid"></product-item>//可以用product对象代替传一推属性传数据给子组件:key="p.pid"可以取消警告，因为子组件没用到pid
+        </div>`,
+        data(){
+            return{
+                plist:[
+                    {pid:101,img:'img/bj.jpg',price:2000,desc:'戴尔燃7000'},
+                    {pid:102,img:'img/hz.jpg',price:2100,desc:'联想小新'},
+                    {pid:103,img:'img/sh.jpg',price:2200,desc:'Apple MacBook'},
+                ]
+            }
+        },
+        components:{
+            productItem
+        }
+    };
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            count: 100
+        },
+        components:{
+            productList
+        }
+    });
+</script>
+</body>
+</html>
+<!--
+数据路径：父data——绑定在父模板属性中（属性可以是一个对象）——子组件定义属性props——模板中的变量可以引用自定义属性中的数据
+反向：子组件变量要数据——自定义属性——父组件模板中放绑定属性——父组件放数据
+-->

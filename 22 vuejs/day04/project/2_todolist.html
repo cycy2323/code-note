@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <todo-box></todo-box>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  /**<todo-list-item>**/
+  var todoListItem = {
+    template: `
+      <li>
+        <span>开会</span>
+        <button>删除</button>
+      </li>
+    `
+  }
+
+  /**<todo-list>**/
+  var todoList = {
+    template: `
+    <ul>
+      <todo-list-item></todo-list-item>
+      <todo-list-item></todo-list-item>
+      <todo-list-item></todo-list-item>
+    </ul>
+    `,
+    components: {
+      todoListItem
+    }
+  }
+
+  /**<todo-input>**/
+  var todoInput = {
+    template: `
+    <div>
+      <input type="text">
+      <button>添加</button>
+    </div>
+    `
+  }
+
+  /**<todo-box>**/
+  var todoBox = {
+    template: `
+    <div>
+      <h3>待办事项列表</h3>
+      <hr>
+      <todo-input></todo-input>
+      <todo-list></todo-list>
+    </div>
+    `,
+    components: {
+      todoInput,
+      todoList
+    }
+  }
+  var vm = new Vue({
+    el: '#app',
+    data: {},
+    components: {
+      todoBox
+    }
+  });
+</script>
+</body>
+</html>

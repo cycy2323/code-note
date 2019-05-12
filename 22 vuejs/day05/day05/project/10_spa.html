@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <h3>使用Vue-Router插件实现SPA应用</h3>
+  <router-view></router-view>
+</div>
+<!--SPA应用中的改锥头-->
+<template id="tplLogin">
+  <div class="alert alert-success">
+    <h3>这里是管理员登录页</h3>
+  </div>
+</template>
+<template id="tplMain">
+  <div class="alert alert-info">
+    <h3>这里是管理员监控主页面</h3>
+  </div>
+</template>
+<script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
+<script>
+  var compLogin = {
+    template: '#tplLogin'
+  }
+  var compMain = {
+    template: '#tplMain'
+  }
+  //配置路由词典：为每个组件(螺丝头)指定一个访问“地址”
+  var routes = [
+    {path: '/', component: compLogin},
+    {path: '/login', component: compLogin},
+    {path: '/main', component: compMain},
+  ]
+  //创建路由器：用于封装路由词典
+  var router = new VueRouter({
+    routes
+  });
+  //在根组件中声明使用该路由器
+  var vm = new Vue({
+    el: '#app',
+    data: {},
+    router
+  });
+</script>
+</body>
+</html>
+<!--单页面应用
+引入vue.js和vue-router.js——小组件模板——组件——做词典——词典封装——vue 声明引用router——div插锥头标签<router-view>
+-->

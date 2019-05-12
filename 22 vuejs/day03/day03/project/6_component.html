@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+  <xz-product></xz-product>
+  <hr>
+  <xz-product></xz-product>
+  <hr>
+  <xz-product></xz-product>
+  <hr>
+  <xz-product></xz-product>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  //自定义的全局组件
+  Vue.component('xz-product', {
+    template: `
+    <div>
+      <h3>戴尔燃7000</h3>
+      <span class="text-info">￥6800.00</span>
+      <a @click.prevent="addToCart()" href="#" class="btn btn-info">加入购物车</a>
+    </div>
+    `,
+    methods: {
+      addToCart(){
+        console.log('添加到购物车');
+      }
+    }
+  });
+
+  var vm = new Vue({
+    el: '#app',
+    data: {}
+  });
+</script>
+</body>
+</html>
+
+<!--
+引入——组件：名、对象{模板、方法}
+vue创建——app——引入组件标签
+-->

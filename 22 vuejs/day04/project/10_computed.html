@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件直接引用计算结果（只计算一次）</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div id="app" class="container">
+<p>购物车商品总数：{{totalCount}}</p>
+<p>购物车商品总数：{{totalCount}}</p>
+<p>购物车商品总数：{{totalCount}}</p>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            plist:[
+                {pid:101,pname:'daierran7000',count:1},
+                {pid:102,pname:'daierran8000',count:3},
+                {pid:103,pname:'daierran9000',count:2}
+            ]
+        },
+        computed:{//多次引用组件值调用一次计算（已计算出值）
+            totalCount:function(){
+                console.log("totalCount...");
+                var sum=0;
+                for(var p of this.plist)
+                    sum+=p.count;
+                return sum;
+            }
+        }
+
+    });
+</script>
+</body>
+</html>
