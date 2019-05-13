@@ -1,0 +1,62 @@
+
+.recommend-page {
+    color: #333;
+    height: 667px;
+    /*overflow-y: auto;*/
+}
+.recommend-page{
+    white-space: pre-wrap;
+    word-break: break-all;
+    text-align: justify-all;
+}
+.recommend-page .title {
+    font-size: var(--title-font-size);
+    line-height: var(--title-font-size);
+    margin: var(--title-margin)
+}
+
+.recommend-page .am-card {
+    margin: var(--card-margin);
+}
+
+.recommend-page .com-search-line {
+    width: calc(690vmin * var(--rate));
+    margin: 0 auto;
+}
+
+.recommend-page .com-search-line .date-selector {
+    width: calc(185vmin * var(--rate));
+}
+
+.recommend-page .com-search-line .btn-search {
+    width: calc(173vmin * var(--rate));
+}
+
+.recommend-page .result-header, .recommend-page .result-list {
+    min-height: calc(66vmin * var(--rate));
+    text-align: center;
+
+}
+
+.recommend-page .am-flexbox-item {
+    width: calc(250vmin * var(--rate));
+    padding: calc(10vmin * var(--rate));
+    overflow: hidden;
+    word-break: break-all;
+    white-space: pre-wrap;
+
+}
+
+.recommend-page .result-header {
+    background-color: #DDDDDD;
+}
+
+.recommend-page .result-list {
+    background-color: #fff;
+    border-bottom: 1px solid #D9D9D9;
+}
+
+.recommend-page .result-list.self {
+    background-color: #666666;
+    color: #fff;
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="35px" viewBox="0 0 24 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>rmb</title>
+    <desc>Created with Sketch.</desc>
+    <g id="rmb" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M3,0 L12,15" id="Fill-17" fill="#57A68C"></path>
+        <path d="M3,4 L12,15" id="Stroke-19" stroke="#57A68C" stroke-width="3" stroke-linecap="round"></path>
+        <path d="M23,0 L14,15" id="Fill-20" fill="#57A68C"></path>
+        <path d="M22,4 L13,15" id="Stroke-22" stroke="#57A68C" stroke-width="3" stroke-linecap="round"></path>
+        <path d="M3,16 L24,16" id="Fill-23" fill="#57A68C"></path>
+        <path d="M4,16.5 L22,16.5" id="Stroke-25" stroke="#57A68C" stroke-width="3" stroke-linecap="round"></path>
+        <path d="M3,22 L24,22" id="Fill-26" fill="#57A68C"></path>
+        <path d="M4,24.5 L22,24.5" id="Stroke-28" stroke="#57A68C" stroke-width="3" stroke-linecap="round"></path>
+        <path d="M12.5,33 L12.5,15" id="Stroke-31" stroke="#57A68C" stroke-width="3" stroke-linecap="round"></path>
+    </g>
+</svg>

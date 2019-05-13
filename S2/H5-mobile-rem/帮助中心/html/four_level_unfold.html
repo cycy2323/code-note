@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/index.css">
+    <script type="text/javascript" src="../js/zepto.min.js"></script>
+    <script src="../js/font.js"></script>
+    <script type="text/javascript" src="../js/touch.js"></script>
+    <title>新手教程</title>
+</head>
+<body>
+<header>
+    <div class="header-title-container">
+        <img src="../images/left.png" alt="" id="comeBack">
+        <h2>帮助中心</h2>
+    </div>
+    <div class="header-img-log">
+        <img src="../images/logo.png" alt="">
+    </div>
+</header>
+<section>
+    <div class="flow-container">
+        <span>帮助中心</span>
+        <img src="../images/right.png" alt="">&nbsp;
+        <span>常见问题</span>
+        <img src="../images/right.png" alt="">&nbsp;
+        <span>新手教程</span>
+    </div>
+    <div >
+        <div class="other-article" id="otherArticle" onclick="otherArticle()">
+            <span>此组别内的文章</span>
+            <img src="../images/right.png" alt="" id="imgRight">
+            <img src="../images/bottom.png" alt="" id="imgBottom">
+        </div>
+        <div class="select-content" id="selectContent">
+            <p class="select-font same">如何购买BUB</p>
+            <p class="select-font same">如何出售BUB</p>
+            <p class="select-font same">怎么提升买币额度</p>
+            <p class="select-font same">币友官方交易担保</p>
+            <p class="select-font same">已经付款，但忘记点击"确认付款"怎么办</p>
+            <p class="select-font different">查看更多</p>
+        </div>
+    </div>
+    <div class="other-article-content">
+        <p class="how-to-buy">如何购买BUB</p>
+        <div class="common-fc">
+            <span>第一步，打开手机App</span>
+            <ul>
+                <li>如您已有账号，点击“登录”, 再参考第三步</li>
+                <li>如您没有账号，点击“注册”</li>
+            </ul>
+            <p>
+                第二步，没有账号的，进行注册，点击注册，输入用户名 设置登录密码，再确认登录密码，最后点击确认。
+            </p>
+            <p>
+                第三步, 输入用户名、登录密码，点击“登录”。
+            </p>
+            <p>
+                第四步，点击“购买”，选择想要的币、支付方式，点击商家广告。
+            </p>
+            <p>
+                第五步，在弹窗中，输入购买的数量/金额，再次确认交易价格，点击“确认
+            </p>
+            <div>
+                第六步，下单之后，请您勾选一种您想使用的“支付方式”，然后点击右下角的“去支付”。在点击去支付之后，我们会向您展示您所勾选的“支付方式”卖家的收款账号，按照订单页面显示的支付方式，在金额下方提示的时限内，转账给对方，转账后请务必勾选“我已知晓”并点击“已完成付款”。
+                <div class="different-bg-article">
+                    <p class="different-bg-article-title">请注意</p>
+                    <p class="different-bg-article-content">
+                        1. 您需要按照卖家展示的支付方式，通过网银、手机银行、支付宝、微信或其他第三方支付平台自己转账给卖家，在币友OTC绑定支付方式并不意味点击“去支付”，“已付款”就会自动转款给卖家<br><br><br>
+                        2. 如果您选择“支付宝”支付，在上图中先选择“支付宝”，然后点击“去支付”，复制商家提供的支付宝账号，去支付宝手动输入，即可完成转款；如果商家使用的是二维码图标，则点击图片，保存到手机相册，然后打开支付宝，点击右上角“扫一扫”，从“相册”选择下载的支付宝二维码图片支付即可）在“付款确认”弹窗，点击“确定”。
+                    </p>
+                    <p></p>
+                </div>
+                如果您没有真的付款，请不要点击"已付款"，这是交易规则不允许的。相关阅读:<a class="real-rule">《法币交易区规则》</a>
+            </div>
+            <p>
+                第七步，付款确认后，等待卖家放币。等待过程中，您可以联系卖家或平台客服，详见文末附注。卖家放币后，交易成功。
+            </p>
+            <p>
+                第八步，您也可以在“我”-“我的资产”中，看到刚购买的数字资产。
+            </p>
+        </div>
+
+    </div>
+</section>
+<footer>
+    <div class="footer-container">
+        <span id="toindex" class="footer-help">帮助中心</span>
+    </div>
+</footer>
+</body>
+<script>
+    function otherArticle() {
+        if(document.getElementById('selectContent').style.display == 'block') {
+            document.getElementById('selectContent').style.display = 'none'
+            document.getElementById('imgBottom').style.display = 'none';
+            document.getElementById('imgRight').style.display = 'block';
+        } else {
+            document.getElementById('selectContent').style.display = 'block';
+            document.getElementById('imgBottom').style.display = 'block';
+            document.getElementById('imgRight').style.display = 'none';
+        }
+    }
+    $(function() {
+        $('#comeBack').tap(function(){
+            // Window.history.go(-1)
+            window.history.back()
+        })
+        $('#toindex').tap(function() {
+            window.location.href = 'index.html'
+        })
+    })
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+

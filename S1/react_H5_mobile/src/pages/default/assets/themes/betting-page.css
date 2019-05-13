@@ -1,0 +1,205 @@
+.betting-page {
+    background-color: #fff;
+    font-size: var(--font-size);
+}
+
+.betting-page .com-search-line {
+    width: var(--search-width);
+    margin: var(--search-margin);
+}
+
+.betting-page .com-search-line .date-selector {
+    width: var(--search-date-width);
+}
+
+.betting-page .com-search-line .am-button {
+    width: var(--search-search-width);
+}
+
+.betting-page .result-content-list {
+    height: var(--result-list-height);
+    overflow-y: auto;
+}
+
+.betting-page .am-pull-to-refresh-content-wrapper {
+    min-height: var(--result-list-height);
+}
+
+.betting-page .com-no-data {
+    height: var(--result-list-height);
+}
+
+.betting-page .result-header div {
+    text-align: center;
+    background-color: var(--betting-page-result-header-bg-color);
+    height: var(--result-header-height);
+    line-height: var(--result-header-height);
+}
+
+.betting-page .result-content div {
+    text-align: center;
+}
+
+.betting-page .game-name {
+    width: var(--result-game-name-width);
+}
+
+.betting-page .betting-time {
+    width: var(--result-betting-time-width);
+}
+
+.betting-page .betting-value {
+    width: var(--result-betting-value-width);
+}
+
+.betting-page .betting-result {
+    width: var(--result-betting-result-width);
+}
+
+.betting-page .betting-status {
+    width: var(--result-betting-status-width);
+}
+
+.betting-page .result-content {
+    line-height: var(--result-content-line-height);
+    border-bottom: var(--betting-page-result-content-border);
+}
+
+.betting-page .result-content .result-item {
+    min-height: var(--result-item-min-height);
+    margin: var(--result-item-margin);
+    display: grid;
+    align-items: center;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.betting-page .result-content .betting-result {
+    color: var(--betting-page-item-result-color);
+}
+
+.betting-page .result-content .settle {
+    color: var(--betting-page-item-status-color);
+}
+.betting-page .result-content .pending_settle {
+     color: #f00;
+ }
+.betting-page .result-content .cancel {
+    color: #999;
+}
+
+.betting-page .date-selector .am-list-extra{
+    min-width: calc(var(--search-date-width) - calc(60vmin*var(--rate)));
+    text-align: left!important;
+}
+
+.betting-page .am-list-content {
+    text-indent: calc(15vmin * var(--rate));
+}
+
+/*详情*/
+.detail-view .betting-page-content {
+    height: calc(100vh - var(--com-nav-height));
+    overflow-y: auto;
+}
+
+.detail-view .am-card {
+    font-size: 14px;
+    width: calc(690vmin * var(--rate));
+    margin: calc(40vmin * var(--rate)) auto;
+    padding: unset;
+}
+
+.detail-view .description-header {
+    height: calc(100vmin * var(--rate));
+    line-height: calc(100vmin * var(--rate));
+    border-bottom: 1px solid #DEDEDE;
+    padding: 0 calc(27vmin * var(--rate));
+}
+.detail-view .description-header img{
+    height:calc(46vmin*var(--rate));
+    vertical-align: middle;
+    margin-right:calc(20vmin*var(--rate));
+}
+
+.detail-view .description-content {
+    height: calc(276vmin * var(--rate));
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-evenly;
+}
+
+.detail-view .description-content .list-item {
+    width: 100%;
+    padding: 0 calc(27vmin * var(--rate));
+}
+
+.detail-view .description-content .list-item .item-title {
+    display: inline-block;
+    width: calc(144vmin * var(--rate));
+    text-align: right;
+    color: #999;
+}
+
+.detail-view .subtitle {
+    background-color: #888888;
+    height: calc(65vmin * var(--rate));
+    line-height: calc(65vmin * var(--rate));
+    color: #fff;
+    text-align: center;
+    font-weight: 300;
+}
+
+.detail-view .game-record {
+    display: flex;
+    align-content: center;
+    flex-direction: unset;
+    width: calc(634vmin * var(--rate));
+    margin: calc(20vmin * var(--rate)) auto;
+    padding: calc(12vmin * var(--rate)) calc(28vmin * var(--rate));
+}
+
+.detail-view .game-record .sub-content {
+    width: calc(431vmin * var(--rate));
+    border-left: 1px solid #EFEFEF;
+    padding: 0 0 0 calc(26vmin * var(--rate));
+    line-height: calc(60vmin * var(--rate));
+}
+
+.detail-view .sub-title {
+    display: flex;
+    align-self: center;
+    width: calc(203vmin * var(--rate));
+}
+
+.detail-view .game-record-result .sub-title {
+}
+
+.detail-view .game-record-result .sub-content {
+    line-height: calc(80vmin*var(--rate));
+}
+.detail-view .game-record-result .sub-content .sub-content-item{
+    display: flex;
+    justify-content: space-between;
+}
+.detail-view .game-record-result .sub-content .sub-content-item span{
+    display: inline-flex;
+    line-height: calc(34vmin*var(--rate));
+}
+
+.detail-view .sub-content-content .title {
+    text-align: right;
+    display: inline-block;
+    width: calc(140vmin * var(--rate));
+}
+
+.detail-view .sub-content-content:first-child {
+    border-bottom: 1px solid #efefef;
+}
+
+.detail-view .sub-content .icon {
+    width:.75em;
+    vertical-align: bottom;
+    font-size: calc(76vmin * var(--rate));
+    margin:0 1px;
+}

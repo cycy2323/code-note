@@ -1,0 +1,155 @@
+
+.mine-page {
+    height: var(--content-height);
+    overflow: hidden;
+    color: #333;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../image/my_bg.png");
+}
+
+.mine-page .left {
+    border-right: 1px solid #ddd;
+}
+
+.mine-page .am-flexbox .am-flexbox-item {
+    margin-left: 0;
+}
+
+.mine-page .nav {
+    width: 100%;
+    background-color: transparent !important;
+}
+
+.mine-page .header-box {
+    position: relative;
+    height: var(--header-height);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: #fff;
+}
+
+.mine-page .header-box .profile img {
+    width: calc(106vmin * var(--rate));
+    height: calc(106vmin * var(--rate));
+    background-image: url("../image/touxiang@2x.png");
+    background-origin: border-box;
+    background-size: contain;
+}
+
+.mine-page .am-card {
+    width: calc(100vw - 60vmin * var(--rate));
+    margin: 0 auto calc(20vmin * var(--rate));
+    padding: calc(22vmin * var(--rate)) 0;
+}
+
+.mine-page .header-card {
+    min-height: 40px;
+}
+
+.mine-page .header-card p {
+    text-align: center;
+    height: calc(36vmin * var(--rate));
+    line-height: calc(36vmin * var(--rate));
+    font-size: calc(30vmin * var(--rate));
+    margin: 0;
+}
+
+.mine-page .header-card .number {
+    color: #2BA6FE;
+}
+
+.mine-page .mine-page-body {
+    height: calc(var(--content-height) - var(--header-height) - var(--bar-height) - 20vmin * var(--rate));
+    overflow-y: hidden;
+}
+
+.mine-page .mine-page-body-inner {
+    height: calc(var(--content-height) - var(--header-height) - var(--bar-height) - 20vmin * var(--rate) - 116vmin * var(--rate));
+    overflow-y: auto;
+}
+
+.mine-page .am-pull-to-refresh-content-wrapper {
+    height: 100%;
+}
+
+.mine-page .fund-card .icon {
+    width: calc(62vmin * var(--rate));
+    height: calc(62vmin * var(--rate));
+    margin-right: calc(20vmin * var(--rate));
+}
+
+.mine-page .body-card {
+    padding: 0;
+}
+
+.mine-page .body-card .am-flexbox {
+    border-bottom: 1px solid #F2F2F2;
+}
+
+.mine-page .body-card .am-flexbox:last-child {
+    border: none;
+}
+
+.mine-page .body-card .item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: calc(32vmin * var(--rate)) 0;
+}
+
+.mine-page .body-card .item .icon {
+    width: calc(56vmin * var(--rate));
+    height: calc(56vmin * var(--rate));
+    margin-left: calc(18vmin * var(--rate));
+    margin-right: calc(18vmin * var(--rate));
+}
+
+.mine-page .body-card .item .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.mine-page .body-card .item .content .title {
+    padding-bottom: calc(8vmin * var(--rate));
+    font-size: 14px;
+}
+
+.mine-page .body-card .item .content .describe {
+    font-size: calc(24vmin * var(--rate));
+    overflow: hidden;
+    color: #999;
+}
+
+.mine-page .header-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    margin-top: calc(20vmin * var(--rate));
+}
+
+.mine-page .header-content .user-info {
+    margin-top: calc(13vmin * var(--rate));
+}
+
+.mine-page .header-content .title {
+    font-size: calc(28vmin * var(--rate));
+    height: calc(42vmin * var(--rate));
+    line-height: calc(42vmin * var(--rate));
+}
+
+.mine-page .header-content .icon {
+    font-size: calc(100vmin * var(--rate));
+}
+
+.mine-page .header-content .content {
+    font-size: calc(20vmin * var(--rate)) !important;
+    color: #eee;
+}

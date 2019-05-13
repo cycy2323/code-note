@@ -1,0 +1,30 @@
+.pic-item-list{
+    margin-top: 5px;
+    min-height: 50px;
+}
+.pic-item-list .pic-item,.pic-item-list .active{
+    height: 40px;
+    display: inline-block;
+    border-radius: 3px;
+    margin: 5px;
+    padding:10px;
+}
+.pic-item-list .pic-item{
+    background:#F3F1F4 ;
+    border: transparent solid 1px;
+}
+.pic-item-list .active{
+    background:#D1E0F1;
+    border: #1766BB solid 1px;
+}
+.pic-item-list .pic-item img,.active img{
+    width: 21px;
+    height: 21px;
+    vertical-align: middle;
+}
+.pic-item-list .pic-item div,.active div{
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 14px;
+    color: #333;
+}
