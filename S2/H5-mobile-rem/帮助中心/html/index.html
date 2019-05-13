@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/index.css">
+    <script type="text/javascript" src="../js/zepto.min.js"></script>
+    <script type="text/javascript" src="../js/font.js"></script>
+    <script type="text/javascript" src="../js/touch.js"></script>
+    <title>帮助中心</title>
+</head>
+<body>
+    <header>
+        <div class="header-title-container">
+            <img src="../images/left.png" alt="" style="display: none">
+            <h2>帮助中心</h2>
+        </div>
+        <div class="header-img-log">
+            <img src="../images/logo.png" alt="">
+        </div>
+    </header>
+    <section>
+        <div class="section-btn-container advert">
+            公告中心
+        </div>
+        <div class="section-btn-container question">
+            常见问题
+        </div>
+        <div class="course">
+            新手教程
+        </div>
+        <div class="series-content" id="howToSell">
+            如何出售BUB
+        </div>
+        <div class="series-content" id="howToBuy">
+            如何购买BUB
+        </div>
+        <div class="series-content" id="howToAscendingLine">
+            怎么提升每日买币额度
+        </div>
+        <div class="series-content" id="sellBUBlines">
+            每日卖币额度规则
+        </div>
+        <div class="course">
+            交易问题
+        </div>
+        <div class="series-content" id="userTransactionSpecification">
+            币友用户交易规范
+        </div>
+        <div class="series-content" id="forgetClick">
+            已经付款，但忘记点击"确认付款"怎么办
+        </div>
+        <div class="series-content" id="noSellerRelease">
+            已经付款，但卖家不放行BUB怎么办
+        </div>
+        <div class="series-content" id="errorPaymentMethod">
+            因卖家提供错误付款方式，导致交易无法执行怎么办
+        </div>
+        <div class="series-content" id="buyerNoPay">
+            买家未付款，但点击确认已付款怎么办
+        </div>
+        <!-- <div class="article-container">
+            查看所有<span>27</span>篇文章
+        </div> -->
+        <div class="course" style="margin-top: 2.25rem">
+            身份验证问题
+        </div>
+        <div class="series-content" id="realName">
+            什么是实名认证?如何绑定?
+        </div>
+        <!-- <div class="series-content" id="realNameBenefits">
+            实名认证有什么好处?
+        </div> -->
+        <div class="series-content" id="SeniorCertification">
+            什么高级认证?如何绑定?
+        </div>
+        <!-- <div class="article-container">
+            查看所有<span>12</span>篇文章
+        </div> -->
+        <div class="course">
+            安全验证问题
+        </div>
+        <div class="series-content" id="googleBindingSecond">
+            什么是Google二步验证?如何绑定?
+        </div>
+        <div class="series-content" id="googleEquipmentLose">
+            绑定Google二步验证的设备丢失怎么办?
+        </div>
+        <div class="series-content" id="setPayPassword">
+            什么是支付密码?如何设置?
+        </div>
+        <div class="series-content" id="forgetLoginPassword">
+            登录过程中，忘记登录密码怎么办?
+        </div>
+        <div class="course">
+            其他常见问题
+        </div>
+        <div class="series-content" id="otherProblem">
+            在币友OTC交易的保障
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <span id="toindex" class="footer-help">帮助中心</span>
+        </div>
+    </footer>
+</body>
+<script>
+    $(function(){
+        // $('#problem-wrap').tap(function(){
+        //     window.location.href = 'three_level.html'
+        // })
+        $('#toindex').tap(function() {
+            window.location.href = 'index.html'
+        })
+        // 卖
+        $('#howToSell').tap(function() {
+            window.location.href = 'four_level_sell.html'
+        })
+
+        // 买
+        $('#howToBuy').tap(function() {
+            window.location.href = 'four_level_buy.html'
+        })
+        // 怎么提升每日买币额度
+        $('#howToAscendingLine').tap(function() {
+            window.location.href = 'up_to_sellBUB.html'
+        })
+        // 每日卖币额度规则
+        $('#sellBUBlines').tap(function() {
+            window.location.href = 'sell_bub_rule.html'
+        })
+
+        // 交易  币友用户交易规范
+        $('#userTransactionSpecification').tap(function() {
+            window.location.href = 'user_deal_rule.html'
+        })
+         // 已经付款，但忘记点击"确认付款"怎么办
+        $('#forgetClick').tap(function() {
+            window.location.href = 'four_level_transfer_accounts.html'
+        })
+        // 已经付款，但卖家不放行BUB怎么办
+        $('#noSellerRelease').tap(function() {
+            window.location.href = 'four_level_no_pass.html'
+        })
+        // 因卖家提供错误付款方式，导致交易无法执行怎么办
+        $('#errorPaymentMethod').tap(function() {
+            window.location.href = 'four_level_err_pay.html'
+        })
+        // 买家未付款，但点击确认已付款怎么办
+        $('#buyerNoPay').tap(function() {
+            window.location.href = 'four_level_non_payment.html'
+        })
+
+        // 身份验证问题
+        // 什么是实名认证?如何绑定?
+        $('#realName').tap(function() {
+            window.location.href = 'four_level_binding.html'
+        })
+        // 什么高级认证?如何绑定?
+        $('#SeniorCertification').tap(function() {
+            window.location.href = 'four_level_SeniorCertification.html'
+        })
+
+        // 安全验证问题
+        // 什么是Google二步验证?如何绑定?
+        $('#googleBindingSecond').tap(function() {
+            window.location.href = 'four_level_google.html'
+        })
+        // 绑定Google二步验证的设备丢失怎么办?
+        $('#googleEquipmentLose').tap(function() {
+            window.location.href = 'four_google_equiment_lose.html'
+        })
+        // 什么是支付密码?如何设置?
+        $('#setPayPassword').tap(function() {
+            window.location.href = 'four_set_pay_password.html'
+        })
+        // 登录过程中，忘记登录密码怎么办?
+        $('#forgetLoginPassword').tap(function() {
+            window.location.href = 'four_level_forgetpwd.html'
+        })
+
+        // 其他常见问题 
+        // 在币友OTC交易的保障
+        $('#otherProblem').tap(function() {
+            window.location.href = 'four_BUB_OTC_security.html'
+        })
+
+        
+    })
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+

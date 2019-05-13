@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/index.css">
+    <script type="text/javascript" src="../js/zepto.min.js"></script>
+    <script src="../js/font.js"></script>
+    <script type="text/javascript" src="../js/touch.js"></script>
+    <title>登录过程中，忘记登录密码怎么办?</title>
+</head>
+<body>
+<header>
+    <div class="header-title-container">
+        <img src="../images/left.png" alt="" id="comeBack">
+        <h2>帮助中心</h2>
+    </div>
+    <div class="header-img-log">
+        <img src="../images/logo.png" alt="">
+    </div>
+</header>
+<section>
+    <div class="flow-container">
+        <span>帮助中心</span>
+        <img src="../images/right.png" alt="">&nbsp;
+        <span>常见问题</span>
+        <img src="../images/right.png" alt="">&nbsp;
+        <span>新手教程</span>
+    </div>
+    <div >
+        <div class="other-article" id="otherArticle" onclick="otherArticle()">
+            <span>此组别内的文章</span>
+            <img src="../images/right.png" alt="" id="imgRight">
+            <img src="../images/bottom.png" alt="" id="imgBottom">
+        </div>
+        <div class="select-content" id="selectContent">
+            <p class="select-font same" id="googleBindingSecond">什么是Google二步验证?如何绑定</p>
+            <p class="select-font same" id="googleEquipmentLose">绑定Google二步验证的设备丢失怎么办</p>
+            <p class="select-font same" id="setPayPassword">什么是支付密码?如何设置</p>
+        </div>
+    </div>
+    <div class="other-article-content">
+        <p class="how-to-buy">登录过程中，忘记登录密码怎么办?</p>
+        <div class="common-fc">
+            <div>
+                <p>可透过密码找回功能重置密码</p>
+                <p class="find-pwd-flow">找回登录密码流程</p>
+                <span>第一步：点击登录页中的<a class="find-pwd">找回密码</a>按键</span>
+            </div>
+            <div>
+                <p>第二步：选择找回方式</p>
+                <ul>
+                    <li>实名认证找回</li>
+                    <li>BUB支付密码找回</li>
+                    <li>Google二步验证找回</li>
+                </ul>
+                <img src="../images/mimazhaohui%202.png" alt="" style="margin-top: 1rem">
+            </div>
+            <div>
+                <p>第三步：上传对应信息并送出申请</p>
+                <ul>
+                    <li>
+                        实名认证找回
+                        <ul>
+                            <li>目标帐号</li>
+                            <li>真实姓名</li>
+                            <li>身份证号</li>
+                            <li>联系信箱</li>
+                            <li>手持身份证照片</li>
+                        </ul>
+                    </li>
+                </ul>
+                <img src="../images/mimazhaohui2.png" alt="" style="margin-top: 1rem">
+                <ul>
+                    <li>
+                        支付密码找回
+                        <ul>
+                            <li>目标帐号</li>
+                            <li>BUB支付密码</li>
+                            <li>联系信箱</li>
+                        </ul>
+                    </li>
+                </ul>
+                <img src="../images/mimazhaohui3.png" alt="" style="margin-top: 1rem">
+                <ul>
+                    <li>
+                        Google二次验证找回
+                        <ul>
+                            <li>目标帐号</li>
+                            <li>BUB支付密码</li>
+                            <li>联系信箱</li>
+                        </ul>
+                    </li>
+                </ul>
+                <img src="../images/mimazhaohui4.png" alt="" style="margin-top: 1rem">
+            </div>
+            <div>
+                <p style="margin-bottom: 2.5rem">第四步：等候审核结果，运营人员将回在7天内反馈至您的信箱</p>
+                <p>第五步：如审核通过，您可透过反馈邮件的密码重新登录</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+<footer>
+    <div class="footer-container">
+        <span id="toindex" class="footer-help">帮助中心</span>
+    </div>
+</footer>
+</body>
+<script>
+    function otherArticle() {
+        if(document.getElementById('selectContent').style.display == 'block') {
+            document.getElementById('selectContent').style.display = 'none'
+            document.getElementById('imgBottom').style.display = 'none';
+            document.getElementById('imgRight').style.display = 'block';
+        } else {
+            document.getElementById('selectContent').style.display = 'block';
+            document.getElementById('imgBottom').style.display = 'block';
+            document.getElementById('imgRight').style.display = 'none';
+        }
+    }
+    $(function() {
+        $('#comeBack').tap(function(){
+            // Window.history.go(-1)
+            window.history.back()
+        })
+        $('#toindex').tap(function() {
+            window.location.href = 'index.html'
+        })
+        // 什么是Google二步验证?如何绑定?
+        $('#googleBindingSecond').tap(function() {
+            window.location.href = 'four_level_google.html'
+        })
+        // 绑定Google二步验证的设备丢失怎么办?
+        $('#googleEquipmentLose').tap(function() {
+            window.location.href = 'four_google_equiment_lose.html'
+        })
+        // 什么是支付密码?如何设置?
+        $('#setPayPassword').tap(function() {
+            window.location.href = 'four_set_pay_password.html'
+        })
+    })
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
