@@ -1,0 +1,115 @@
+.fund-record-page {
+    background: var(--fund-record-page-bg-color);
+    color: var(--fund-record-page-color);
+    height: var(--height);
+    font-size: calc(24vmin * var(--rate));
+}
+
+.fund-record-page .com-search-line {
+    width: var(--search-width);
+    margin: var(--search-margin);
+}
+
+.fund-record-page .com-search-line .date-selector {
+    width: var(--search-date-width);
+}
+.fund-record-page .com-search-line .btn-quick-select {
+    display: inline-block;
+    width: var(--search-quick-width);
+    height: var(--search-quick-height);
+    line-height: var(--search-quick-height);
+    text-align: center;
+    color: var(--com-btn-default-color);
+    background-color: var(--com-btn-default-bg-color);
+    margin: var(--search-quick-margin);
+}
+.fund-record-page .com-search-line .btn-quick-select .am-button{
+    margin:unset;
+
+}
+.fund-record-page .com-search-line .btn-quick-select .am-button:before {
+    border: unset;
+}
+
+.fund-record-page .com-search-line .btn-quick-select .am-list-body {
+    background-color: unset;
+}
+
+.fund-record-page .com-search-line .type-selector .am-list-item {
+    width: var(--search-type-width);
+}
+
+.fund-record-page .com-search-line .type-selector input {
+    padding: var(--search-type-input-padding);
+}
+
+.fund-record-page .com-search-line .type-selector .am-input-extra {
+    width: var(--search-type-input-extra-width);
+}
+
+.fund-record-page .com-search-line .btn-search {
+    width: var(--search-search-width);
+}
+
+
+.fund-record-page .date-selector .am-list-extra{
+    min-width: calc(var(--search-date-width) - calc(60vmin*var(--rate)));
+    text-align: left!important;
+}
+
+.fund-record-page .am-list-content {
+    text-indent: calc(15vmin * var(--rate));
+}
+
+.fund-record-page .type-selector .am-list-line .am-list-extra {
+    min-width: calc(var(--search-type-width) - calc(60vmin * var(--rate)));
+    text-align: left;
+    text-indent: calc(15vmin*var(--rate));
+}
+
+.fund-record-page .dealing-content {
+    height: var(--dealing-height);
+    line-height: var(--dealing-height);
+    border-top: var(--fund-record-page-deling-border);
+}
+
+.fund-record-page .dealing-content {
+    display: flex;
+}
+
+.fund-record-page .dealing-content div {
+    margin: var(--dealing-margin);
+}
+
+.fund-record-page .result-header .title, .fund-record-page .result-content-list .result-content .content {
+    width: var(--result-item-width);
+}
+
+.fund-record-page .result-content-list {
+    height: var(--result-list-height);
+    overflow-y: auto;
+}
+
+.fund-record-page .com-no-data {
+    height: var(--result-list-height);
+}
+
+.fund-record-page .result-content-list .result-content .content {
+    width: var(--result-item-width);
+}
+
+.fund-record-page .result-content .content.value {
+    color: var(--fund-record-page-value-color);
+}
+
+.fund-record-page .result-content .content.status {
+    color: var(--fund-record-page-status-color);
+}
+
+.fund-record-page-type-popover {
+    width: var(--fund-record-page-type-popover);
+}
+
+.detail-view {
+
+}

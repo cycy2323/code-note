@@ -1,0 +1,178 @@
+
+.login-page .am-button.am-button-disabled {
+    color: var(--login-page-btn-disabled-color);
+}
+
+.login-page .am-list-line {
+    height: var(--input-height);
+}
+
+.login-page .button-group {
+    margin-top: calc(2 * var(--input-gap));
+}
+
+.login-page .button-group .am-button {
+    margin-bottom: var(--input-gap);
+}
+
+.login-page .remember .am-switch {
+    margin-left: var(--input-gap)
+}
+
+.login-page .remember {
+    margin-top: var(--input-gap);
+}
+
+.login-page .remember .rememberPassword {
+    color: var(--login-page-remember-font-color)
+}
+
+.login-page .profile {
+    margin: calc(100vmin * var(--rate)) auto calc(40vmin * var(--rate));
+    display: table;
+}
+
+.login-page .profile img {
+    display: block;
+    width: calc(190vmin * var(--rate));
+    height: calc(190vmin * var(--rate));
+}
+
+.login-page .profile .img-content {
+    width: calc(190vmin * var(--rate));
+    height: calc(190vmin * var(--rate));
+    border-radius: 50%;
+    -moz-box-shadow: 6px 6px 20px #7B7B7B;
+    -webkit-box-shadow: 6px 6px 20px #7B7B7B;
+    box-shadow: 6px 6px 20px #7B7B7B;
+}
+
+img[src=""], img:not([src]) {
+    opacity: 0;
+}
+
+.login-page .form-content {
+    width: calc(630vmin * var(--rate));
+    margin: 0 auto;
+}
+
+.login-page .form-content .am-list-body {
+    background-color: transparent;
+}
+
+.login-page .form-content .am-list-body:before {
+    height: unset;
+}
+
+.login-page .form-content .am-input-item {
+    border-radius: 6px;
+}
+
+.login-page .form-content .am-input-label .icon {
+    color: #999;
+    font-size: calc(35vmin * var(--rate));
+}
+
+.login-page .form-content .am-list-item .am-input-label.am-input-label-2 {
+    width: calc(50vmin * var(--rate));
+    text-align: left;
+}
+
+.login-page .form-content .am-list-item .am-input-control input {
+    color: #999;
+}
+
+.login-page .form-content .am-switch .checkbox:before {
+    background: var(--login-page-checkBox-bg-color);
+}
+
+.login-page .form-content .am-button {
+    width: 100%;
+}
+
+.login-page .form-content .label-content {
+    margin: calc(36vmin * var(--rate)) 0 calc(18vmin * var(--rate));
+}
+
+.find-psw-page a {
+    color: #888;
+}
+
+.find-psw-page .icon {
+    font-size: calc(35vmin * var(--rate));
+    vertical-align: sub;
+    margin-right: calc(29vmin * var(--rate));
+    color: #BBBBBB;
+}
+
+.find-psw-page .type-username-inner {
+    height: calc(200vmin * var(--rate));
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+}
+
+.find-psw-page .type-username-inner .am-input-control input {
+    height: calc(80vmin * var(--rate));
+    padding: calc(22vmin * var(--rate))
+}
+
+.find-psw-page .am-list-item {
+    margin: 0 auto;
+}
+
+.find-psw-page .type-username-inner .am-input-control {
+    display: inline-block;
+    width: calc(630vmin * var(--rate));
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.find-psw-page .am-list-body {
+    background-color: transparent;
+}
+
+.find-psw-page .receive-code-inner input {
+    text-align: left !important;
+}
+
+.find-psw-page .receive-code-inner {
+    background-color: #fff;
+}
+
+.find-psw-page .receive-code-msg {
+    height: calc(200vmin * var(--rate));
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    text-align: center;
+    border-bottom: 1px solid #F2F2F2;
+}
+
+.find-psw-page .receive-code-msg span {
+    width: 100%;
+    height: calc(58vmin * var(--rate));
+    line-height: calc(58vmin * var(--rate));
+}
+
+.am-list-body:after {
+    height: unset !important;
+}
+
+/*浮层*/
+.type-username, .receive-code, .set-password {
+    position: absolute;
+    z-index: 10;
+    top: var(--com-nav-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #efefef;
+}
+
+.receive-code {
+    position: absolute;
+    z-index: 10;
+
+}

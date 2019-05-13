@@ -1,0 +1,7 @@
+.list-view {
+    height: 100vh;
+}
+.result-content-list {
+    height: 100vh;
+    overflow-y: auto;
+}

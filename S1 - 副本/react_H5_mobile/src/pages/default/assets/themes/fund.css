@@ -1,0 +1,172 @@
+/*资金状况和分布九宫格样式*/
+.fund-manage-view .fund-spread-status{
+    width: 100%;
+    height: calc(140vmin*var(--rate));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.fund-manage-view .fund-spread-status .saving-middle-line{
+    width: 0;
+    height: calc(88vmin*var(--rate));
+    border-left: calc(3vmin*var(--rate)) solid #E6E6E6;
+}
+
+.fund-manage-view .fund-spread-status .total-fund,.fund-manage-view .fund-spread-status .rest-fund{
+    flex: 1;
+    text-align: center;
+
+    color: #000;
+}
+
+.fund-manage-view .fund-spread-status p:first-child{
+    font-size: calc(26vmin*var(--rate));
+}
+
+.fund-manage-view .fund-spread-status p:last-child{
+    font-size: calc(30vmin*var(--rate));
+}
+
+.fund-manage-view .fund-spread-status .total-fund{
+    color: #1F67B9;
+
+}
+
+.fund-manage-view .fund-spread-status .rest-fund{
+    color: #0EC392;
+}
+
+/*资金同步状态*/
+.fund-manage-view .fund-async-status{
+    width: 100%;
+    height: calc(60vmin*var(--rate));
+    background: rgba(247,247,247,1);
+    text-align: center;
+    line-height: calc(60vmin*var(--rate));
+    color: #999;
+    font-size: calc(24vmin*var(--rate));
+
+}
+
+
+/*资金分布九宫格*/
+/*清除UI框架默认样式*/
+.fund-manage-view .am-grid .am-flexbox .am-flexbox-item .am-grid-item-content{
+    padding: 0;
+    font-size: calc(24vmin*var(--rate));
+
+}
+.fund-manage-view .am-grid-item-content{
+    overflow: hidden;
+}
+
+.fund-manage-view .fund-spread-grid{
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    overflow: hidden;
+}
+
+
+.fund-manage-view  .fund-spread-item-top{
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 calc(22vmin*var(--rate));
+    justify-content: space-between;
+    margin-top: calc(25vmin*var(--rate));
+    color: #333;
+    overflow: hidden;
+
+}
+.fund-manage-view .fund-spread-item-top .item-name{
+    margin-top: calc(4vmin*var(--rate));
+    width: calc(129vmin*var(--rate));
+    height: calc(60vmin*var(--rate));
+    line-height: calc(30vmin*var(--rate));
+    overflow: hidden;
+    text-overflow:ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.fund-manage-view .fund-spread-item-top .item-icon{
+    width: calc(30vmin*var(--rate));
+    height: calc(30vmin*var(--rate));
+}
+.fund-manage-view .fund-spread-grid .item-icon{
+    background:url(https://cdn.iconscout.com/icon/free/png-256/refresh-470-474986.png);
+    background-size: 100%;
+}
+.fund-manage-view .fund-spread-grid-lock .item-icon{
+    background:url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698630-icon-114-lock-128.png);
+    background-size: 100%;
+}
+
+.fund-manage-view  .fund-spread-item-bottom{
+    padding: 0 calc(22vmin*var(--rate));
+    margin-top: calc(19vmin*var(--rate));
+    color: #EDA82F;
+}
+
+/*维护中样式*/
+.fund-manage-view .fund-spread-grid-lock{
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    color: #ccc;
+    overflow: hidden;
+    background:url(http://ku.90sjimg.com/element_origin_min_pic/16/11/23/646a6e0300df595e7b86fdf8f38e11cf.jpg);
+    background-size: 100%;
+
+}
+.fund-manage-view .fund-spread-grid-lock .item-name{
+    color: #ccc;
+}
+.fund-manage-view .fund-spread-grid-lock .fund-spread-item-bottom{
+    color: #ccc;
+}
+.fund-manage-view .no-more-content{
+    width: 100%;
+    height: calc(200vmin*var(--rate));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.fund-manage-view .no-more-content img{
+    width: calc(60vmin*var(--rate));
+    height: calc(60vmin*var(--rate));
+}
+.fund-manage-view .no-more-content span{
+    color: #ccc;
+    font-size: calc(24vmin*var(--rate));
+    margin-top: calc(15vmin*var(--rate));
+}
+
+.fund-manage-view .recycle-refresh-btn-box{
+    width: 100%;
+    height: calc(88vmin*var(--rate)) ;
+    display: flex;
+    color: #fff;
+}
+
+.fund-manage-view .recycle-refresh-btn-box span{
+    height: calc(88vmin*var(--rate));
+    display: block;
+    flex: 1;
+    text-align: center;
+    line-height: calc(88vmin*var(--rate));
+    font-size: calc(28vmin*var(--rate)) ;
+}
+
+.fund-manage-view .recycle-refresh-btn-box .one-key-recycle{
+    background: #2377D6;
+}
+.fund-manage-view .recycle-refresh-btn-box .one-key-refresh{
+    background: #0EC392;
+}
+.font-color-gray{
+    color: #ccc;
+}
+
+
