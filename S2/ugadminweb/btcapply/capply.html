@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zh">
+	<!--<![endif]-->
+
+	<!-- BEGIN HEAD -->
+
+	<head>
+		<title>申请兑换列表</title>
+		<base href="../../">
+
+		<script src="../pages/scripts/header.js"></script>
+		<meta http-equiv="content-type" content="text/html" charset="utf-8" />
+
+		<script src="pages/scripts/header.js"></script>
+		<link href='assets/global/plugins/jquery-watable/watable.css' rel='stylesheet' />
+		<link href='assets/global/plugins/jquery-watable/animate.min.css' rel='stylesheet' />
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-select/bootstrap-select.min.css" />
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css" />
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/jquery-multi-select/css/multi-select.css" />
+		<link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/jstree/dist/themes/default/style.min.css">
+		<!-- END THEME STYLES -->
+	</head>
+	<!-- END HEAD -->
+
+	<body class="page-header-fixed page-quick-sidebar-over-content">
+
+		<!-- 标题栏开始 -->
+		<div class="page-header navbar navbar-fixed-top">
+			<script>
+				$.include("pages/partial/menu.shtml");
+			</script>
+		</div>
+		<!-- 标题栏结束 -->
+		<div class="clearfix"></div>
+		<div class="page-container">
+			<!-- 左侧菜单开始 -->
+			<div class="page-sidebar-wrapper">
+				<script>
+					$.include("pages/partial/sidebar.shtml");
+				</script>
+			</div>
+			<!-- 左侧菜单结束 -->
+
+			<!-- 主内容开始 -->
+			<div class="page-content-wrapper">
+				<div class="page-content">
+					<!--内容头开始-->
+					<div class="row">
+						<div class="col-md-12">
+							<ul class="page-breadcrumb breadcrumb">
+								<li>
+									<i class="fa  fa-map-marker"></i>
+								</li>
+								<li>
+									<a href="javascript:void(0)">兑换比特币管理</a>
+									<i class="fa fa-angle-double-right"></i>
+								</li>
+								<li>
+									<a href="javascript:void(0)">申请兑换列表</a>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+					<!--<script>
+						$.include("common/navigation_bar.shtml");
+					</script>-->
+					<div class="container col-sm-12" style="padding-bottom:0px" id="find">
+						<div class="col-sm-3 form-group">
+							<div class="btn-group input-group">
+								<div class="input-group-addon">用户id:</div>
+								<input id="userId1" class="inputclear form-control" type="text" placeholder="">
+								<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+							</div>
+						</div>
+
+						<div class="col-sm-3 form-group">
+							<div class="btn-group input-group input-select2me">
+								<div class="input-group-addon">状态:</div>
+								<select id="status1" class="form-control input-middle" data-placeholder="状态">
+									<option value="">全部</option>
+									<option value="1">处理中</option>
+									<option value="2">已处理</option>
+									<option value="3">已驳回</option>
+									<option value="4">已撤销</option>
+								</select>
+								<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+							</div>
+						</div>
+
+
+
+
+
+						<div class="btn-group form-group">
+							<button id="find_button" class="btn yellow">
+        				<i class="fa fa-search"></i> 查询&nbsp;
+    				</button>
+						</div>
+
+						<!--<div class="btn-group form-group">
+							<button id="edit_btn" class="btn green" data-target="#edit_gp_btn2" data-toggle="modal">
+					        <i class="fa fa-eye"></i> 查看&nbsp;
+					    </button>
+						</div>-->
+
+					</div>
+
+					<div class="container-fluid" style="background-color: #ffffff">
+						<!--<div id="treetable" class="table-responsive container col-md-3" style="max-height: 450px; overflow-y: auto">-->
+						<!--</div>-->
+						<div id="divtable" class="table-responsive container-fluid col-md-12">
+						</div>
+					</div>
+					<!-- 内容结束-->
+				</div>
+			</div>
+		</div>
+		<!-- 主内容结束 -->
+
+		<!--查看模态框-->
+		<div class="modal fade" id="edit_gp_btn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">查看详细信息</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<form action="javascript:;" role="form" name="edit_form" id="edit_form">
+								<div class="row">
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">主键ID:</div>
+											<input id="ugOtcBtcApplyId_select" name="ugOtcBtcApplyId_select" class="inputclear form-control" type="text" placeholder="" disabled="disabled">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">用户ID:</div>
+											<input id="userId_select" name="userId_select" class="inputclear form-control" type="text" placeholder="" disabled="disabled">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">平台币数量:</div>
+											<input id="ugNumber_select" name="ugNumber_select" class="inputclear form-control" type="text" placeholder="" disabled="disabled">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">比特币数量:</div>
+											<input id="btcNumber_select" name="btcNumber_select" class="inputclear form-control" type="text" placeholder="" disabled="disabled">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">比特币地址:</div>
+											<input id="btcAddress_select" name="btcAddress_select" class="inputclear form-control" type="text" placeholder="" disabled="disabled">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">创建申请时间:</div>
+											<input id="createdTime_select" name="createdTime_select" class="inputclear form-control" type="text" placeholder="" disabled="disabled">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-3 form-group" style="width: 279px;">
+										<div class="btn-group input-group input-select2me">
+											<div class="input-group-addon">申请状态:</div>
+											<select id="status_select" name="status_select" class="form-control" disabled="disabled">
+												<!--<option value="">全部</option>-->
+												<option value="1">处理中</option>
+												<option value="2">已处理</option>
+												<option value="3">已驳回</option>
+												<option value="4">已撤销</option>
+											</select>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">hash值:</div>
+											<input id="txhash_select" name="txhash_select" class="inputclear form-control" type="text" placeholder="" disabled="disabled">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+								</div>
+
+							</form>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button id="quxiao" type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!--修改模态框-->
+		<div class="modal fade" id="edit_gp_btn1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">审批详细信息</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<form action="javascript:;" role="form" name="edit_form1" id="edit_form1">
+								<div class="row">
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">主键ID:</div>
+											<input id="ugOtcBtcApplyId" name="ugOtcBtcApplyId" class="form-control" type="text" placeholder="" readonly="readonly">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">用户ID:</div>
+											<input id="userId" name="userId" class="form-control" type="text" placeholder="" readonly="readonly">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">平台币数量:</div>
+											<input id="ugNumber" name="ugNumber" class="form-control" type="text" placeholder="" readonly="readonly">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">比特币数量:</div>
+											<input id="btcNumber" name="btcNumber" class="form-control" type="text" placeholder="" readonly="readonly">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">比特币地址:</div>
+											<input id="btcAddress" name="btcAddress" class="form-control" type="text" placeholder="" readonly="readonly">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">创建申请时间:</div>
+											<input id="createdTime" name="createdTime" class="form-control" type="text" placeholder="" readonly="readonly">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-3 form-group" style="width: 279px;">
+										<div class="btn-group input-group input-select2me">
+											<div class="input-group-addon">申请状态:</div>
+											<select id="status" name="status" class="form-control" readonly="readonly">
+												<!--<option value="">全部</option>-->
+												<option value="1">处理中</option>
+												<option value="2">已处理</option>
+												<option value="3">已驳回</option>
+												<option value="4">已撤销</option>
+											</select>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">hash值:</div>
+											<input id="txhash" name="txhash" class="inputclear form-control" type="text" placeholder="">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group" style="margin-top: 50px">
+										<div class="btn-group input-group"  style="display: flex;justify-content: center">
+											<input id="update_gp" type="button" class="btn btn-primary" data-target="#edit_gp_btn2" data-dismiss="modal" value="通过">
+										</div>
+									</div>
+									<div class="col-sm-6 form-group" style="margin-top: 50px" >
+										<div class="btn-group input-group" style="display: flex;justify-content: center">
+											<input id="bohui" type="button" class="btn btn-default" data-target="#edit_gp_btn3" data-dismiss="modal" value="驳回">
+										</div>
+									</div>
+								</div>
+
+							</form>
+						</div>
+
+					</div>
+					<!--<div class="modal-footer">
+
+						<button id="update_gp" type="button" class="btn btn-primary" data-target="#edit_gp_btn2" data-dismiss="modal">通过</button>
+						<button id="bohui" type="button" class="btn btn-default" data-target="#edit_gp_btn3" data-dismiss="modal">驳回</button>
+					</div>-->
+
+				</div>
+			</div>
+		</div>
+		<!--审核操作内容模态框-->
+		<div class="modal fade" id="edit_gp_btn2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">意见</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<form action="javascript:;" role="form" name="edit_form2" id="edit_form2">
+								<div class="row">
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">操作内容:</div>
+											<input id="operationContext" name="operationContext" class="form-control" type="text" placeholder="">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+								</div>
+
+							</form>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+
+						<button id="update_gp2" type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!--审核操作驳回内容模态框-->
+		<div class="modal fade" id="edit_gp_btn3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">意见</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<form action="javascript:;" role="form" name="edit_form3" id="edit_form3">
+								<input id="rejcause" name="rejcause" class="form-control" type="text" placeholder="" style="display: none;">
+								<div class="row">
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">驳回原因:</div>
+											<input id="rejectReason" name="rejectReason" class="form-control" type="text" placeholder="">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+								</div>
+
+							</form>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+
+						<button id="update_gp3" type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+		<script type="text/javascript">
+			$.include("pages/partial/xwatable-form.shtml")
+		</script>
+	</body>
+	<script>
+		$.include("pages/partial/scripts.shtml");
+	</script>
+	<script type="text/javascript" src="assets/global/plugins/jquery-watable/jquery.watable.js"></script>
+	<script type="text/javascript" src="pages/scripts/rqlbuilder.js"></script>
+	<script type="text/javascript" src="pages/scripts/xwatable.js"></script>
+	<script type="text/javascript" src="pages/scripts/refhelper.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/select2/select2.min.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>
+	<script src="assets/global/plugins/jstree/dist/jstree.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+	<script src="mods/basismanage.js"></script>
+	<script src="btcapply/capply.js"></script>
+	<!--<script src="mods/sys.js"></script>-->
+
+	<script type="text/javascript">
+		Apply.init();
+	</script>
+
+</html>
