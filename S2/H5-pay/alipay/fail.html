@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./js/style.js"></script>
+  <title>支付成功</title>
+  <style>
+    * {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
+    }
+
+    body {
+      padding: 0 0.6rem;
+    }
+
+    .header {
+      font-size: 0.54rem;
+      color: #030303;
+      letter-spacing: 0;
+      text-align: center;
+      margin-top: 0.1rem;
+    }
+
+    .ico-logo {
+      text-align: center;
+    }
+
+    .ico-logo img {
+      width: auto;
+      margin-top: 1.5rem;
+    }
+
+    .pay-other {
+      font-size: 0.36rem;
+      color: #000000;
+      text-align: center;
+      margin-top: 0.26rem;
+      margin-bottom: 1rem;
+    }
+
+    .bor-bt {
+      border-bottom: 1px solid #eee;
+      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.02);
+    }
+
+    .check-sure button {
+      background: #0D8EE9;
+      height: 1rem;
+      width: 100%;
+      border-radius: 0.1rem;
+      color: #fff;
+      border-color: #0D8EE9;
+      font-size: 0.4rem;
+      margin-top: 1.8rem;
+      outline: none;
+      list-style-type: none;
+      border: 0;
+      box-shadow: 0px 0px 2px rgba(4, 4, 4, 0.53);
+    }
+    .check-sure button:active {
+      background: rgb(16, 122, 199);
+    }
+    .success-detail{
+      margin-top: 0.6rem;
+    }
+    .success-detail div{
+      height: 0.8rem;
+      line-height: 0.8rem;
+    }
+    .success-detail div span{
+      display: inline-block;
+      color: #BBBBBB;
+      font-size: 0.35rem;
+    }
+    .success-detail div .val{
+      float: right;
+      text-align: right;
+      color: #000000;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">支付失败</div>
+  <div class="ico-logo"><img src="./img/err.png" alt=""></div>
+  <div class="pay-other">你已付款失败</div>
+  <div class="check-sure">
+    <button>返回</button>
+  </div>
+</body>
+
+</html>

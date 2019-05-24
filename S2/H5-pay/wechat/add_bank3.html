@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./js/style.js"></script>
+  <title>验证手机号</title>
+  <style>
+    * {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
+    }
+    html{
+      background: #f5f5f5;
+      height: 100%;
+    }
+    .header {
+      font-size: 0.5rem;
+      color: #030303;
+      letter-spacing: 0;
+      text-align: center;
+      position: relative;
+      /* background: #fff; */
+      height: 1.2rem;
+      line-height: 1.2rem;
+    }
+    .header div{
+      position: absolute;
+      left: 0.4rem;
+      color: #0D8EE9;
+      font-size: 0.4rem;
+      top: 0;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    .verify-phone{
+      color: #9A9A9A;
+      font-size: 0.3rem;
+      text-align: center;
+      /* background: #FFF; */
+      padding: 0.6rem 0;
+      line-height: 0.5rem;
+    }
+    .verify-phone span{
+      color: #333;
+      font-size: 0.38rem;
+    }
+    .check-sure {
+      padding: 0 0.6rem;
+    }
+    .check-sure button {
+      background: #08c160;
+      height: 1rem;
+      width: 100%;
+      border-radius: 0.1rem;
+      color: #fff;
+      border-color: #08c160;
+      font-size: 0.4rem;
+      margin-top: 1rem;
+      outline: none;
+      list-style-type: none;
+      border: 0;
+      box-shadow: 0px 0px 2px rgba(4, 4, 4, 0.53);
+    }
+    .check-sure button:active {
+      background: #08b35a;
+    }
+    .bank-detail div{
+      height: 1.2rem;
+      line-height: 1.2rem;
+      font-size: 0.35rem;
+      color: #BBBBBB;
+      padding: 0 0.6rem;
+      background: #fff;
+      margin-top: 0.4rem;
+      position: relative;
+      font-size: 0.36rem;
+    }
+    .bank-detail div .lab{
+      color: #333;
+    }
+    .bank-detail div input{
+      min-width: 70%;
+      padding: 0.3rem;
+      border: 0;
+      font-size: 0.36rem;
+    }
+    .bank-detail div input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color: #BBBBBB;
+    }
+    .bank-detail div input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color: #BBBBBB;
+    }
+    .bank-detail div input::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color: #BBBBBB;
+    }
+    .bank-detail div input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: #BBBBBB;
+    }
+    .bank-detail div.veri-code .val{
+      position: absolute;
+      padding-left: 0.2rem;
+      color: #BBBBBB;
+      right: 0.6rem;
+    }
+    .bank-detail div.veri-code .acitve{
+      color: #08c160;
+    }
+    .bank-detail div.veri-code .val::before{
+      content: '';
+      position: absolute;
+      border-left: 1px solid #eee;
+      height: 0.35rem;
+      top: 51%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">验证手机号
+    <div>
+      <img src="./img/go_back.png" alt="">
+    </div>
+  </div>
+  <div class="verify-phone">
+      <span>接受验证码：13029410101</span>
+      <br>
+      绑定银行卡需要进行短信验证
+  </div>
+  <div class="bank-detail">
+    <div class="veri-code">
+      <span class="lab">验证码</span>
+      <input type="text" placeholder="请填写验证码">
+      <span class="val acitve" id="veri-code">发送验证码</span>
+    </div>
+  </div>
+  <div class="check-sure">
+    <button>下一步</button>
+  </div>
+
+  <script>
+    var veriCode = document.getElementById('veri-code');
+    // 发送验证码逻辑
+    veriCode.addEventListener('click', function () {
+      var clsName = this.className
+      if (clsName.indexOf('acitve') > -1) {
+        this.innerHTML = '60秒后重发';
+        this.className = 'val';
+        getInterval(60);
+      }
+    });
+    function getInterval(time) {
+      if (time > 0) {
+        setTimeout(function () {
+          veriCode.innerHTML = time + '秒后重发'
+          getInterval(time - 1)
+        }, 1000)
+      } else {
+        veriCode.innerHTML = '发送验证码'
+        veriCode.className = 'val acitve';
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./js/style.js"></script>
+  <title>添加银行卡</title>
+  <style>
+    * {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
+    }
+    .header {
+      font-size: 0.5rem;
+      color: #030303;
+      letter-spacing: 0;
+      text-align: center;
+      margin-top: 0.1rem;
+      position: relative;
+    }
+    .header div{
+      position: absolute;
+      left: 0.4rem;
+      color: #0D8EE9;
+      font-size: 0.4rem;
+      top: 0;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    .header div img{
+      margin-top: 2px;
+    }
+    .pay-other {
+      font-size: 0.5rem;
+      color: #000000;
+      text-align: center;
+      margin-top: 0.8rem;
+      font-weight: bold;
+    }
+    .save-tip{
+      font-size: 0.35rem;
+      color: #BBBBBB;
+      text-align: center;
+      margin-top: 0.2rem;
+    }
+    .check-sure {
+      padding: 0 0.6rem;
+    }
+    .check-sure button {
+      background: #0D8EE9;
+      height: 1rem;
+      width: 100%;
+      border-radius: 0.1rem;
+      color: #fff;
+      border-color: #0D8EE9;
+      font-size: 0.4rem;
+      margin-top: 1rem;
+      outline: none;
+      list-style-type: none;
+      border: 0;
+      box-shadow: 0px 0px 2px rgba(4, 4, 4, 0.53);
+    }
+    .check-sure button:active {
+      background: rgb(16, 122, 199);
+    }
+    .bank-detail{
+      margin-top: 1rem;
+    }
+    .bank-detail div{
+      height: 1.2rem;
+      line-height: 1.2rem;
+      border-bottom: 1px solid #eee;
+      font-size: 0.35rem;
+      color: #BBBBBB;
+      padding: 0 0.6rem;
+    }
+    .bank-detail div .lab{
+      font-size: 0.36rem;
+      color: #333;
+    }
+    .bank-detail div input{
+      min-width: 70%;
+      padding: 0.3rem;
+      border: 0;
+    }
+    .bank-detail div input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color: #BBBBBB;
+    }
+    .bank-detail div input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color: #BBBBBB;
+    }
+    .bank-detail div input::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color: #BBBBBB;
+    }
+    .bank-detail div input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: #BBBBBB;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">添加银行卡
+    <div>
+      <img src="./img/top_back.png" alt="">
+      <span>&nbsp;&nbsp;返回</span>
+    </div>
+  </div>
+  <div class="pay-other">支付宝安全保障中</div>
+  <div class="save-tip">保障您的用卡安全</div>
+  <div class="bank-detail">
+    <div>
+      <span>请添加您的银行卡</span>
+    </div>
+    <div>
+      <span class="lab">真实姓名</span>
+      <input type="text" placeholder="请输入您的真实姓名">
+    </div>
+    <div>
+      <span class="lab">银行卡号</span>
+      <input type="text" placeholder="请输入银行卡号">
+    </div>
+  </div>
+  <div class="check-sure">
+    <button>下一步</button>
+  </div>
+</body>
+
+</html>

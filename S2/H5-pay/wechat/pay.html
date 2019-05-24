@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./js/style.js"></script>
+  <title>付款</title>
+  <style>
+    *{
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
+    }
+    html{
+      background: #ededed;
+    }
+    .header{
+      font-size: 0.54rem;
+      color: #030303;
+      letter-spacing: 0;
+      text-align: center;
+      margin-top: 0.1rem;
+    }
+    .ico-logo{
+      text-align: center;
+      padding-top: 1rem;
+      margin-top: 0.6rem;
+    }
+    .ico-logo img{
+      width: auto;
+    }
+    .pay-other{
+      font-size: 0.36rem;
+      color: #000000;
+      text-align: center;
+      margin-top: 0.26rem;
+      margin-bottom: 1rem;
+    }
+    .pay-amount .amount-title{
+      font-size: 0.3rem;
+      color: #000000;
+    }
+    .pay-amount .amount{
+      position: relative;
+      height: 1.3rem;
+      margin-top: 0.2rem;
+      border-bottom: 1px solid #eee;
+      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.02);
+    }
+    .pay-amount .amount span{
+      color: #000000;
+      font-size: 0.5rem;
+      position: absolute;
+      left: 0;
+      line-height: 1.3rem;
+    }
+    .pay-amount .amount input{
+      border: 0;
+      height: 0.6rem;
+      width: 100%;
+      font-size: 0.7rem;
+      margin: 0.35rem 0;
+      padding-left: 0.6rem;
+      font-weight: bold;
+      color: #08c160; /* 光标的颜色*/
+      text-shadow: 0px 0px 0px #000; /* 文本颜色 */
+      -webkit-text-fill-color: transparent;
+    }
+    .pay-amount .amount .colse-ico{
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      display: none;
+    }
+    .add-bank{
+      font-size: 0.35rem;
+      color: #08c160;
+      margin-top: 0.2rem;
+      padding-bottom: 0.4rem;
+
+    }
+    .check-sure {
+      padding: 0 0.6rem;
+    }
+    .check-sure button{
+      background: #08c160;
+      height: 1rem;
+      width: 100%;
+      border-radius: 0.1rem;
+      color: #fff;
+      border-color: #08c160;
+      font-size: 0.4rem;
+      margin-top: 1.5rem;
+      outline: none;
+      list-style-type: none;
+      border: 0;
+      box-shadow: 0px 0px 2px rgba(4, 4, 4, 0.53);
+    }
+    .check-sure button:active{
+      background: #08b35a;
+    }
+    .mui-backdrop {
+      position: fixed;
+      z-index: -1;
+      opacity: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0,0,0,.5);
+    }
+    .bottm-menu{
+      position: fixed;
+      left: 0px;
+      width: 100%;
+      z-index: 999;
+      height: 0;
+      overflow: hidden;
+      background: #fff;
+      -webkit-transition: .3s;
+      bottom: 0px;
+      opacity: 0;
+    }
+    .bottm-menu#select-bank{
+      height: auto;
+      left: 100%;
+    }
+    .menu-head{
+      font-size: 0.4rem;
+      color: #000000;
+      text-align: center;
+      height: 1.1rem;
+      line-height: 1.1rem;
+      border-bottom: 1px solid #eee;
+      position: relative;
+    }
+    .menu-head img{
+      position: absolute;
+      left: 0.6rem;
+      width: 0.3rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .bottm-menu .money{
+      text-align: center;
+      padding: 0.3rem 0;
+    }
+    .bottm-menu .money i{
+      color: #000000;
+      font-size: 0.5rem;
+      line-height: 1.3rem;
+      font-style: normal;
+    }
+    .bottm-menu .money span{
+      font-size: 0.7rem;
+      font-weight: bold;
+    }
+    .pay-detail{
+      padding: 0 0.6rem;
+    }
+    .pay-detail div{
+      height: 1rem;
+      line-height: 1rem;
+      border-bottom: 1px solid #eee;
+      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.02);
+      position: relative;
+    }
+    .pay-detail .pay-type:active{
+      background: rgba(241, 241, 241, 0.22);
+    }
+    .pay-detail div span{
+      display: inline-block;
+      color: #BBBBBB;
+      font-size: 0.35rem;
+    }
+    .pay-detail div .val{
+      float: right;
+      text-align: right;
+      color: #000000;
+      margin-right: 0.4rem;
+    }
+    .pay-detail div.veri-code .val{
+      position: relative;
+      padding-left: 0.2rem;
+      color: #BBBBBB;
+    }
+    .pay-detail div.veri-code .acitve{
+      color: #08c160;
+    }
+    .pay-detail div.veri-code .val::before{
+      content: '';
+      position: absolute;
+      border-left: 1px solid #eee;
+      height: 0.35rem;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+    .pay-detail div img{
+      position: absolute;
+      right: 0;
+      top: 53%;
+      transform: translateY(-50%);
+    }
+    .pay-detail div input{
+      padding: 0.25rem 0;
+      border: 0;
+      font-size: 0.35rem;
+    }
+    .pay-detail div input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color: #BBBBBB;
+    }
+    .pay-detail div input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color: #BBBBBB;
+    }
+    .pay-detail div input::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color: #BBBBBB;
+    }
+    .pay-detail div input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: #BBBBBB;
+    }
+    .menu-btn{
+      padding: 0 0.6rem;
+    }
+    .menu-btn button{
+      margin-top: 0.65rem
+    }
+    .err{
+      color: #FF2525;
+      font-size: 0.3rem;
+      margin-top: 0.1rem;
+      padding: 0 0.6rem;
+    }
+    #select-bank .pay-detail .val{
+      float: none;
+      margin-right: 0;
+    }
+    #select-bank .menu-head img{
+      width: auto;
+    }
+    #select-bank .pay-detail .bank-item{
+      position: relative;
+    }
+    #select-bank .pay-detail i{
+      position: absolute;
+      right: 0;
+      font-style: normal;
+      border: 1px solid #576B95;
+      opacity: 0.7;
+      color: #576B95;
+      border-radius: 0.1rem;
+      padding: 0.02rem 0.1rem;
+      margin-top:0.25rem;
+      font-size: 0.1rem;
+      transform: scale(0.8);
+      -webkit-transform: scale(0.75);
+      display: inline-block;
+      height: 0.5rem;
+      line-height: 0.5rem;
+    }
+    .add-bank-btn{
+      font-size: 0.35rem;
+      line-height: 1rem;
+      padding: 0 0.6rem;
+      position: relative;
+      color:#08c160;
+    }
+    .add-bank-btn img{
+      position: absolute;
+      right: 0.6rem;
+      top: 50%;
+      transform: translateY(-50%)
+    }
+  </style>
+</head>
+<body>
+    <div class="header">付款</div>
+    <div style="background:#fff; padding: 0 0.6rem;">
+      <div class="ico-logo"><img src="./img/logo.png" alt=""></div>
+      <div class="pay-other">付款给张三</div>
+      <div class="pay-amount">
+        <span class="amount-title">支付金额</span>
+        <div class="amount" id="amount">
+          <span>￥</span>
+          <input id="amount-ipt" type="text" value="100" oninput="checkOninput()">
+          <img src="./img/close.png" alt="" class="colse-ico" id="colse-ico">
+        </div>
+      </div>
+      <div class="add-bank">添加银行卡</div>
+    </div>
+    <div class="check-sure">
+      <button id="check-sure">立即付款</button>
+    </div>
+    <div class="mui-backdrop" id="mui-backdrop"></div>
+    <div class="bottm-menu" id="sure-pay">
+      <div class="menu-head">
+        <img src="./img/close2.png" alt="" id="close-menu">
+        <span>确认付款</span>
+      </div>
+      <div class="money"><i>￥</i><span>1000</span></div>
+      <div class="pay-detail">
+        <div>
+          <span class="lab">订单编号</span>
+          <span class="val">254313465745</span>
+        </div>
+        <div class="pay-type" id="pay-type">
+          <span class="lab">付款方式</span>
+          <img src="./img/right.png" alt="">
+          <span class="val">中国招商银行</span>
+        </div>
+        <div class="veri-code">
+          <input type="text" placeholder="填写验证码">
+          <span class="val acitve" id="veri-code">发送验证码</span>
+        </div>
+      </div>
+      <p class="err">手机验证码输入错误，请查看您的手机</p>
+      <div class="check-sure menu-btn">
+        <button>支付提交</button>
+      </div>
+    </div>
+    <!-- 选择银行卡 -->
+    <div class="bottm-menu" id="select-bank">
+      <div class="menu-head">
+        <img src="./img/go_back.png" alt="" id="go-back">
+        <span>选择付款方式</span>
+      </div>
+      <div class="pay-detail">
+        <div class="bank-item">
+          <span class="val">中国建设银行</span>
+          <i>解除绑定</i>
+        </div>
+        <div class="pay-type bank-item" id="pay-type">
+          <span class="val">菲律宾银行</span>
+          <i>解除绑定</i>
+        </div>
+        <div class="pay-type bank-item" id="pay-type">
+          <span class="val">高通银行</span>
+          <i>解除绑定</i>
+        </div>
+      </div>
+      <div class="add-bank-btn">
+        <span>添加银行卡付款</span>
+        <img src="./img/right.png" alt="">
+      </div>
+    </div>
+
+    <!-- js 逻辑部分 -->
+    <script>
+      var amount = document.getElementById('amount');
+      var amountIpt = document.getElementById('amount-ipt');
+      var colseIco = document.getElementById('colse-ico');
+      var checkSure = document.getElementById('check-sure');
+      var muiBackdrop = document.getElementById('mui-backdrop');
+      var surePay = document.getElementById('sure-pay');
+      var veriCode = document.getElementById('veri-code');
+      var closeMenu = document.getElementById('close-menu');
+      var payType = document.getElementById('pay-type');
+      var selectBank = document.getElementById('select-bank');
+      var goBack = document.getElementById('go-back');
+
+
+
+      var value = amountIpt.value;
+
+      // 清空输入框的内容相关
+      if (value) {
+        colseIco.style.display = 'block';
+      }
+      amount.addEventListener('click', function () {
+        amountIpt.setSelectionRange(value.length, value.length)
+        amountIpt.focus();
+      });
+      colseIco.addEventListener('click', function () {
+        amountIpt.value = '';
+        colseIco.style.display = 'none';
+      })
+
+      // 底部弹窗部分
+      checkSure.addEventListener('click', function () {
+        muiBackdrop.style.opacity = '1';
+        muiBackdrop.style.zIndex = '998';
+        surePay.style.opacity = '1';
+        surePay.style.height = '8.7rem';
+      });
+      closeMenu.addEventListener('click', closeMenuModal);
+      muiBackdrop.addEventListener('click', closeMenuModal);
+      function closeMenuModal() {
+        muiBackdrop.style.opacity = '0';
+        muiBackdrop.style.zIndex = '-1';
+        surePay.style.opacity = '0';
+        surePay.style.height = '0';
+        selectBank.style.opacity = '0';
+        selectBank.style.left = '100%';
+      }
+      // 发送验证码逻辑
+      veriCode.addEventListener('click', function () {
+        var clsName = this.className
+        if (clsName.indexOf('acitve') > -1) {
+          this.innerHTML = '60秒后重发';
+          this.className = 'val';
+          getInterval(60);
+        }
+      });
+      function getInterval(time) {
+        if (time > 0) {
+          setTimeout(function () {
+            veriCode.innerHTML = time + '秒后重发'
+            getInterval(time - 1)
+          }, 1000)
+        } else {
+          veriCode.innerHTML = '发送验证码'
+          veriCode.className = 'val acitve';
+        }
+      }
+      // 选择银行卡
+      payType.addEventListener('click', function () {
+        setTimeout(function(){
+          selectBank.style.opacity = '1';
+          selectBank.style.left = '0';
+        }, 60)
+        surePay.style.opacity = '0';
+        surePay.style.height = '0';
+      });
+      goBack.addEventListener('click', function () {
+        setTimeout(function(){
+          surePay.style.opacity = '1';
+          surePay.style.height = '8.7rem';
+        }, 60)
+        selectBank.style.opacity = '0';
+        selectBank.style.left = '100%';
+      });
+      // input输入框，只能输入数字
+      function checkOninput() {
+        value = amountIpt.value = amountIpt.value.replace(/[^\d]/g, '');
+        if (value) {
+          colseIco.style.display = 'block';
+        } else {
+          colseIco.style.display = 'none';
+        }
+      }
+    </script>
+
+    <!-- 调用弹窗 -->
+    <!-- <script src="./js/popup.js"></script>
+    <script>
+      popup.open('无法完成付款', '此银行卡余额不足，请选择其他银行卡支付。');
+    </script> -->
+</body>
+</html>
