@@ -202,6 +202,19 @@
       top: 53%;
       transform: translateY(-50%);
     }
+    .pay-detail div img.bank-svg{
+      position: unset;
+      right: unset;
+      top:unset;
+      transform:unset;
+      vertical-align: middle;
+      margin-right: 0.1rem;
+      margin-bottom: 0.1rem;
+    }
+    img.bank-svg{
+      width: 0.6rem;
+      height: 0.6rem;
+    }
     .pay-detail div input{
       padding: 0.25rem 0;
       border: 0;
@@ -306,7 +319,7 @@
         <div class="pay-type" id="pay-type">
           <span class="lab">付款方式</span>
           <img src="./img/right.png" alt="">
-          <span class="val">中国招商银行</span>
+          <span class="val"><img id="bank-svg" class="bank-svg" src="./img/招商银行.svg"><span id="bank-name" class="bank-name">中国招商银行</span></span>
         </div>
         <div class="veri-code">
           <input type="text" placeholder="填写验证码">
@@ -357,7 +370,8 @@
       var payType = document.getElementById('pay-type');
       var selectBank = document.getElementById('select-bank');
       var goBack = document.getElementById('go-back');
-
+      let bankName= document.getElementById('bank-name');
+      let bankSvg= document.getElementById('bank-svg');
 
 
       var value = amountIpt.value;
