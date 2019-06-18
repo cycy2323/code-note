@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="41px" viewBox="0 0 34 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>suo</title>
+    <desc>Created with Sketch.</desc>
+    <g id="suo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M16,2 L16,2 C11.0294373,2 7,5.8394186 7,10.5755814 L7,17 L25,17 L25,10.5755814 C25,5.8394186 20.9705627,2 16,2 Z" id="Stroke-1" stroke="#FDC100" stroke-width="3"></path>
+        <path d="M16.5,38 C24.5081826,38 31,31.4044879 31,23.2685253 L31,18 C31,17.4477153 30.5522847,17 30,17 L3,17 C2.44771525,17 2,17.4477153 2,18 L2,23.2685253 C2,31.4044879 8.49181735,38 16.5,38 Z" id="Stroke-3" stroke="#FDC100" stroke-width="3"></path>
+        <path d="M16.5,28 C17.8807119,28 19,26.8807119 19,25.5 C19,24.1192881 17.8807119,23 16.5,23 C15.1192881,23 14,24.1192881 14,25.5 C14,26.8807119 15.1192881,28 16.5,28 Z" id="椭圆形" fill="#FDC100"></path>
+    </g>
+</svg>

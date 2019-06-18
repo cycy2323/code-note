@@ -1,0 +1,155 @@
+
+.mixin-components-container {
+  background-color: #f0f2f5;
+  padding: 20px;
+  /*min-height: calc(100vh - 84px);*/
+}
+.el-header {
+  text-align: left;
+  font-size: 22px;
+  position: relative;
+  top: 15px;
+  color: #42b983;
+}
+.el-main {
+  width: 98%;
+  height: auto;
+  border: 1px solid #DFDFDF;
+  position: relative;
+  left: 1%;
+  top: -10px;
+  letter-spacing: 0;
+  font-size: 14px;
+  padding: 0;
+
+}
+
+.container-1 .el-container {
+  width: 100%;
+  height: 234px;
+  background: #FFFFFF;
+}
+.container-3 .el-container {
+  width: 100%;
+  height: 400px;
+  background: #FFFFFF;
+  position: relative;
+  top: 40px;
+}
+
+.container-3 {
+  width: 100%;
+  height: 450px;
+}
+
+.container-3 .el-container .el-main {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+.container-4 .el-container {
+  width: 100%;
+  height: auto;
+  background: #FFFFFF;
+  position: relative;
+  top: 20px;
+}
+
+.container-4 .el-container .el-main {
+  display: flex;
+}
+
+.left {
+  position: relative;
+  top: 10px;
+  left: 15%;
+  width: 20%;
+  text-align: right;
+  float: left;
+}
+.el-form-item {
+  height: 20px;
+}
+.right {
+  float: left;
+  width: 30%;
+  top: 30px;
+  text-align: left;
+  position: relative;
+  left: 45%;
+}
+
+.font-size-10 {
+  font-size: 10px;
+  color: #999999;
+  letter-spacing: 0;
+}
+.float-left-1 {
+  width: 50%;
+  height: 248px;
+  border: 1px solid #DFDFDF;
+  position: relative;
+  /*left: 1%;*/
+  /*float: left;*/
+}
+.el-form-item-left {
+  position: relative;
+  left: 3%;
+}
+
+.float-left-1>.el-form {
+  width: 80%;
+  position: absolute;
+  left: 30%;
+  top: 35%;
+}
+.float-left-2 {
+  width: 50%;
+  height: 248px;
+  border: 1px solid #DFDFDF;
+  border-left: none;
+  position: relative;
+}
+
+.bold-title {
+  width: 80%;
+  color: #606266;
+  font-weight: bold;
+  position: absolute;
+  top: 20px;
+  left: 15%;
+}
+
+.white-name-input {
+  position: absolute;
+  top: 40px;
+  left: 15%;
+}
+
+.el-tag {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 0 20px;
+}
+
+
+.verification {
+  position: absolute;
+  left: 40%;
+  top: 65%;
+}
+
+.btn-mini {
+  position: relative;
+  left: 15%;
+  top: 10px;
+}
+
+
+.el-table .warning-row {
+  background: oldlace;
+}
+
+.el-table .success-row {
+  background: #f0f9eb;
+}
