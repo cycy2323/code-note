@@ -1,0 +1,30 @@
+// 全局样式
+* {
+  box-sizing: border-box;
+}
+html,body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  padding-left: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.app-main-container {
+  width: 61.7%;
+  margin: 20px auto;
+  background-color: #FFFFFF;
+  min-height: calc(100vh - 200px);
+  position: relative;
+  overflow: hidden;
+  padding-top: 30px;
+}
