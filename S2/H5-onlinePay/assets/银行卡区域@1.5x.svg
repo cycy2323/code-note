@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="870px" height="59px" viewBox="0 0 870 59" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>银行卡区域</title>
+    <desc>Created with Sketch.</desc>
+    <g id="银行卡区域" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <text id="中国建设银行卡（9810）" font-family="PingFangSC-Regular, PingFang SC" font-size="15" font-weight="normal" line-spacing="15" fill="#000000">
+            <tspan x="43" y="38">中国建设银行卡（9810）</tspan>
+        </text>
+        <text id="储蓄卡-|-快捷" opacity="0.699999988" font-family="PingFangSC-Regular, PingFang SC" font-size="13" font-weight="normal" line-spacing="15" fill="#000000">
+            <tspan x="270" y="36">储蓄卡 | 快捷 </tspan>
+        </text>
+        <g id="解除绑定" transform="translate(362.000000, 20.500000)" opacity="0.699999988">
+            <text id="解除绑定复制-2" font-family="PingFangSC-Regular, PingFang SC" font-size="10" font-weight="normal" line-spacing="10" fill="#576B95">
+                <tspan x="4" y="14.5">解除绑定</tspan>
+            </text>
+            <rect id="矩形复制-2" stroke="#576B95" stroke-width="1" x="0.5" y="0.5" width="47" height="17" rx="3"></rect>
+        </g>
+        <path d="M0,58.5 L870,58.5" id="直线复制" stroke="#D9D9D9" stroke-linecap="square"></path>
+        <circle id="椭圆形" stroke="#979797" cx="21.5" cy="29.5" r="6.5"></circle>
+    </g>
+</svg>

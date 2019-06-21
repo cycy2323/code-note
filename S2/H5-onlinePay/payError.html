@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style/index.css">
+
+    <title>填写银行卡</title>
+    <style>
+    </style>
+</head>
+<body>
+<div class="add-card" style="background:#eff0f1;height: 100vh">
+    <div>
+        <div class="payment-pic">
+            <div class="page-row">
+                <image src="assets/logo.png"/>
+            </div>
+        </div>
+        <div class="page-row pay-hear">
+            <div>
+                <span>订单编号：20113543313133</span> &nbsp; &nbsp; &nbsp;<span>创建时间：2019-05-11 09:12:00</span>
+            </div>
+            <div class="amount">7000.00元</div>
+        </div>
+        <hr class="page-row line">
+        <div class="page-row add-content">
+            <div class="page-row bank-card">
+                <div class="cardNo">
+                    <div class="card-select"></div>
+                    <input class="bank-select" type="radio" name="bankCards" id="bank3">
+                    <label for="bank3">
+                        <span>中国农业银行(7891)</span>
+                    </label>
+                </div>
+                <span class="card-type">存蓄卡|快捷&nbsp;&nbsp;&nbsp; <button class="release-bind">解除绑定</button></span>
+                <div class="pay-amount">
+                </div>
+            </div>
+        </div>
+        <div class="page-row add-content">
+            <div class="page-row bank-card">
+                <div class="cardNo">
+                    <div class="card-select"></div>
+                    <input class="bank-select" type="radio" name="bankCards" id="bank1">
+                    <label for="bank1">
+                        <span>中国建设银行(7451)</span>
+                    </label>
+                </div>
+                <span class="card-type">存蓄卡|快捷&nbsp;&nbsp;&nbsp; <button class="release-bind">解除绑定</button></span>
+                <div class="pay-amount">
+                    支付 <span class="amount">7000.00元</span>
+                </div>
+            </div>
+        </div>
+        <div class="page-row add-content">
+            <div class="page-row bank-card">
+                <div class="cardNo">
+                    <div class="card-select"></div>
+                    <input class="bank-select" type="radio" name="bankCards" id="bank2">
+                    <label for="bank2">
+                        <span>招商银行(4461)</span>
+                    </label>
+                </div>
+                <span class="card-type">存蓄卡|快捷&nbsp;&nbsp;&nbsp; <button class="release-bind">解除绑定</button></span>
+                <div class="pay-amount">
+                </div>
+            </div>
+        </div>
+        <div class="page-row add-content">
+            <div class="page-row">
+                <div class="add-pay-type">
+                    添加快捷/网银付款
+                </div>
+                <div class="confirm-pay">
+                    确认付款
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-row add-help">
+        <p>遇到支付问题？</p>
+        <p>1.如果我没有注册，如何进行付款？</p>
+        <p>&nbsp;如果您没有注册账户，您可以在页面左侧直接输入卡号，点击“下一步”进行付款。您输入的银行信息需要通过发卡行验证后才能完成交易。</p>
+        <p>为什么要安装控件？控件不能下载，我该如何解决？</p>
+        <p>付款时，遇到提示“网站安全证书有问题”，我该如何解决？</p>
+    </div>
+</div>
+
+<!-- js 逻辑部分 -->
+<script>
+    var selected = document.getElementsByClassName('bank-select');
+    var selectIcon = document.getElementsByClassName('card-select');
+
+
+    for(var i=0;i<selected.length;i++){
+        (function(i){
+            selected[i].onclick=function(){
+                for(var j=0;j<selectIcon.length;j++){
+                    selectIcon[j].setAttribute("class","card-select")
+                }
+                selectIcon[i].setAttribute("class","card-select card-selected")
+            }
+        })(i);
+    }
+</script>
+
+</body>
+</html>

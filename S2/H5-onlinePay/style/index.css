@@ -1,0 +1,13 @@
+
+@media screen and (max-width: 600px) {
+    .payment-pic{
+        color: red;
+        /*width: 1000px;*/
+        /*margin: 0 auto;*/
+        /*height:68px;*/
+        /*background-color: #fff;*/
+    }
+    .payment-pic>image{
+    }
+
+}
