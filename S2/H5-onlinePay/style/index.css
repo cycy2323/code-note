@@ -1,13 +1,398 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
 
+.add-card {
+    display: flex;
+    flex-direction: column;
+}
+.error-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.payment-pic {
+    width: 100%;
+    background-color: #fff;
+}
+
+.page-row {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 10px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+}
+
+.father-link {
+    color: #00AAEE;
+}
+
+.line {
+    height: 0;
+    border: 2px solid #B3B3B3;
+}
+
+.add-title {
+    background-color: #F9F9F9;
+    border-bottom: 1px solid #cccccc;
+    color: #333333;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 30px;
+}
+
+.add-content {
+    background-color: #ffffff;
+    height: unset;
+}
+
+.add-table {
+    width: 50vw;
+    max-width: 500px;
+    margin: 0px auto;
+    padding: 30px 0;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.add-table>div{
+    margin-top: 30px;
+}
+.tr1,.tr2{
+    display: inline-block;
+}
+.tr1{
+    min-width: 100px;
+}
+.tr2{
+    min-width: 300px;
+}
+
+
+.add-table .add-contain {
+    padding-left: 30px;
+}
+
+.add-input {
+    width: 100%;
+    border: 1px solid #cccccc;
+    line-height: 2.5;
+    padding: 0 10px;
+}
+
+.add-btn {
+    line-height: 2.5;
+    width: 100%;
+    background: #00AAEE;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    margin-top: 20px;
+}
+
+.add-help {
+    margin-top: 40px;
+    font-size: 12px;
+    color:#4A4A4A;
+    display: unset;
+    align-items: unset;
+    height: unset;
+    padding-bottom: 30px;
+}
+
+.add-help p {
+    padding: 3px 0;
+}
+.add-help p:first-child {
+    color: #333;
+    font-weight:500;
+}
+
+.pay-hear {
+    justify-content: space-between;
+}
+
+.cardNo {
+    min-width: 170px;
+}
+
+.pay-amount {
+    font-size: 20px;
+    min-width: 150px;
+    text-align: center;
+}
+
+.amount {
+    color: #E56E1D;
+    font-size: 20px;
+}
+
+.amount-text {
+    color: black;
+    font-size: 16px;
+}
+
+.bank-card {
+    min-height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    align-items: center;
+}
+
+.card-select {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #777;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.card-selected {
+    border: 5px solid #00AAEE;
+    border-radius: 50%;
+}
+
+.bank-select {
+    display: none;
+}
+
+.card-type {
+    font-size: 14px;
+    color: #777;
+}
+
+.release-bind {
+    font-size: 12px;
+    color: #929fba;
+    border: 1px solid #929fba;
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.add-pay-type {
+    max-width: 159px;
+    width: 30%;
+    line-height: 2.5;
+    font-size: 14px;
+    color: #00AAEE;
+    text-align: center;
+    border: 1px dotted #CCCCCC;
+}
+
+.confirm-pay {
+    margin-left: 30px;
+    max-width: 159px;
+    width: 30%;
+    line-height: 2.6;
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+    background-color: #00AAEE;
+}
+
+.err-contain {
+    margin: 0 auto;
+}
+
+.pay-error-tips {
+    margin: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #4c4c4c;
+}
+
+/*遮罩*/
+.mui-backdrop {
+    position: fixed;
+    z-index: -1;
+    opacity: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.model {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 318px;
+    z-index: 999;
+    overflow: hidden;
+    background: #fff;
+    border: black solid 7px;
+    -webkit-transition: .3s;
+    opacity: 0;
+}
+
+.menu-head {
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 2;
+}
+
+.menu-head img {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.err-confirm {
+    height: 100%;
+    margin: 20px;
+    text-align: center;
+}
+
+.err-confirm-btn {
+    width: 100%;
+    margin-top: 30px;
+    margin-left: unset;
+    max-width: unset;
+}
+
+/*屏幕小于600*/
 @media screen and (max-width: 600px) {
-    .payment-pic{
-        color: red;
-        /*width: 1000px;*/
-        /*margin: 0 auto;*/
-        /*height:68px;*/
-        /*background-color: #fff;*/
+    .add-table {
+        width: unset;
     }
-    .payment-pic>image{
+
+    /*pay*/
+    .page-row {
+        width: 100%;
+        padding: 0 10px;
+        height: unset;
+        display: flex;
+        align-items: unset;
+        max-width: 980px;
+        margin: 0 auto;
+    }
+
+    .payment-pic {
+        height: 3.5rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .el-block {
+        display: block;
+    }
+
+    .pay-hear {
+        flex-direction: column;
+        background-color: #fff;
+        margin: 0.5rem 0 0 0;
+        padding-top: .5rem;
+        padding-bottom: 0rem;
+    }
+
+    .amount {
+        color: #E56E1D;
+        font-size: 1rem;
+    }
+
+    .pay-amount {
+        font-size: 1rem;
+        text-align: unset;
+    }
+
+    .line {
+        height: 0;
+        border: 0.3rem solid rgba(0, 0, 0, 0);
+    }
+
+    .bank-card {
+        position: relative;
+        padding-bottom: .5rem;
+        padding-top: .5rem;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .card-type {
+        position: absolute;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn-group {
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    .btn-group .add-pay-type {
+        font-size: 0.625rem;
+        width: 45%;
+    }
+
+    .btn-group .confirm-pay {
+        margin-left: 1.9rem;
+        width: 45%;
+        font-size: 0.625rem;
+    }
+
+    .add-help {
+        font-size: 0.45rem;
+        color:#4A4A4A;
+        display: flex;
+        flex-direction: column;
+        margin-top: 3rem;
+    }
+
+    .add-help > p {
+        padding-top: 0.45rem;
+        padding-bottom: 0.45rem;
+    }
+    .err-confirm-btn {
+        width: 100%;
+        margin-top: 2.5rem;
+        margin-left: unset;
+        max-width: unset;
+    }
+
+    .add-title, .crumbs {
+        display: none;
+    }
+    .add-table>div{
+        display: inline-block;
+    }
+    .br1{
+        display: none;
+    }
+    .tr1,tr2{
+        min-width: unset;
+        width: 100%;
+    }
+    .add-table>div {
+        margin-top: 1rem;
+    }
+    .add-table {
+        padding: 1rem 0 3rem 0 ;
+    }
+    .add-table .add-contain {
+        width: 100%;
+        padding-left: unset;
+    }
+    .tr2{
+    }
+    .add-btn {
+        margin-top: 0;
     }
 
 }

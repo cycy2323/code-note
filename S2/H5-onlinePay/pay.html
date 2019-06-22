@@ -19,39 +19,126 @@
                 <image src="assets/logo.png"/>
             </div>
         </div>
-        <div class="page-row">
-            <span class="father-link">付款</span><span>&lt;</span><span>添加银行卡</span>
+        <div class="page-row pay-hear">
+                <span class="el-block">订单编号：20113543313133</span>
+                <span class="el-block">创建时间：2019-05-11 09:12:00</span>
+            <div class="amount el-block"><span class="amount-text">订单金额：</span>7000.00元</div>
         </div>
         <hr class="page-row line">
-        <div class="page-row add-title">添加银行卡</div>
         <div class="page-row add-content">
-            <table class="add-table">
-                <tr>
-                    <td>银行卡号</td>
-                    <td class="add-contain">
-                        <input class="add-input" type="text" placeholder="请输入银行卡号">
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td class="add-contain">
-                        <button class="add-btn">下一步</button>
-                    </td>
-                </tr>
-            </table>
+            <div class="page-row bank-card">
+                <div class="cardNo">
+                    <div class="card-select"></div>
+                    <input class="bank-select" type="radio" name="bankCards" id="bank3">
+                    <label for="bank3">
+                        <span>中国农业银行(7891)</span>
+                    </label>
+                </div>
+                <span class="card-type"><span>存蓄卡|快捷&nbsp;&nbsp;&nbsp; </span><button class="release-bind">解除绑定</button></span>
+                <div class="pay-amount">
+                </div>
+            </div>
+        </div>
+        <div class="page-row add-content">
+            <div class="page-row bank-card">
+                <div class="cardNo">
+                    <div class="card-select card-selected"></div>
+                    <input class="bank-select" type="radio" name="bankCards" id="bank1">
+                    <label for="bank1">
+                        <span>中国建设银行(7451)</span>
+                    </label>
+                </div>
+                <span class="card-type">存蓄卡|快捷&nbsp;&nbsp;&nbsp; <button class="release-bind">解除绑定</button></span>
+                <div class="pay-amount"> 支付 <span class="amount">7000.00元</span></div>
+            </div>
+        </div>
+        <div class="page-row add-content">
+            <div class="page-row bank-card">
+                <div class="cardNo">
+                    <div class="card-select"></div>
+                    <input class="bank-select" type="radio" name="bankCards" id="bank2">
+                    <label for="bank2">
+                        <span>招商银行(4461)</span>
+                    </label>
+                </div>
+                <span class="card-type">存蓄卡|快捷&nbsp;&nbsp;&nbsp; <button class="release-bind">解除绑定</button></span>
+                <div class="pay-amount">
+                </div>
+            </div>
+        </div>
+        <div class="page-row add-content">
+            <div class="page-row btn-group">
+                <div class="add-pay-type">
+                    添加快捷/网银付款
+                </div>
+                <div class="confirm-pay" id="confirm-pay">
+                    确认付款
+                </div>
+            </div>
         </div>
     </div>
     <div class="page-row add-help">
-        <p>遇到支付问题？</p>
+        <p class="help-title">遇到支付问题？</p>
         <p>1.如果我没有注册，如何进行付款？</p>
         <p>&nbsp;如果您没有注册账户，您可以在页面左侧直接输入卡号，点击“下一步”进行付款。您输入的银行信息需要通过发卡行验证后才能完成交易。</p>
-        <p>为什么要安装控件？控件不能下载，我该如何解决？</p>
-        <p>付款时，遇到提示“网站安全证书有问题”，我该如何解决？</p>
+        <p>2.为什么要安装控件？控件不能下载，我该如何解决？</p>
+        <p>3.付款时，遇到提示“网站安全证书有问题”，我该如何解决？</p>
+    </div>
+    <!--弹窗-->
+    <div class="mui-backdrop" id="mui-backdrop"></div>
+    <div class="model" id="sure-pay">
+        <div class="menu-head">
+            <img src="assets/网页-关闭.png" agt="" id="close-menu">
+            <div>信息错误</div>
+        </div>
+        <div class="err-confirm">
+            <div>系统异常 支付失败！请您重新支付！</div>
+            <div class="confirm-pay err-confirm-btn" id="err-confirm">
+                确认
+            </div>
+        </div>
     </div>
 </div>
 
 <!-- js 逻辑部分 -->
 <script>
+    var selected = document.getElementsByClassName('bank-select');
+    var selectIcon = document.getElementsByClassName('card-select');
+    var muiBackdrop = document.getElementById('mui-backdrop');
+    var confirmPay = document.getElementById('confirm-pay');
+    var surePay = document.getElementById('sure-pay');
+    var closeMenu = document.getElementById('close-menu');
+    var errConfirm = document.getElementById('err-confirm');
+
+
+
+    for(var i=0;i<selected.length;i++){
+        (function(i){
+            selected[i].onclick=function(){
+                for(var j=0;j<selectIcon.length;j++){
+                    selectIcon[j].setAttribute("class","card-select")
+                }
+                selectIcon[i].setAttribute("class","card-select card-selected")
+            }
+        })(i);
+    }
+
+    // 弹窗部分
+    confirmPay.addEventListener('click', function () {
+        muiBackdrop.style.opacity = '1';
+        muiBackdrop.style.zIndex = '998';
+        surePay.style.opacity = '1';
+        surePay.style.height = '186px';
+    });
+    closeMenu.addEventListener('click', closeMenuModal);
+    errConfirm.addEventListener('click', closeMenuModal);
+    function closeMenuModal() {
+        muiBackdrop.style.opacity = '0';
+        muiBackdrop.style.zIndex = '-1';
+        surePay.style.opacity = '0';
+        surePay.style.height = '0';
+    }
+    closeMenuModal()
 </script>
 
 </body>
