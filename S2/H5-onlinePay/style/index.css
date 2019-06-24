@@ -124,7 +124,8 @@
 }
 
 .pay-amount {
-    font-size: 20px;
+    color: #333333;
+    font-size: 16px;
     min-width: 150px;
     text-align: center;
 }
@@ -135,7 +136,7 @@
 }
 
 .amount-text {
-    color: black;
+    color: #333;
     font-size: 16px;
 }
 
@@ -166,7 +167,7 @@
 }
 
 .card-type {
-    font-size: 14px;
+    font-size: 15px;
     color: #777;
 }
 
@@ -176,6 +177,7 @@
     border: 1px solid #929fba;
     padding: 2px;
     border-radius: 3px;
+    background-color: #fff;
 }
 
 .add-pay-type {
