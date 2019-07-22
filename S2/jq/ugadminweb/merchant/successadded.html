@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zh">
+	<!--<![endif]-->
+
+	<!-- BEGIN HEAD -->
+
+	<head>
+		<title>商户管理</title>
+		<base href="../../">
+
+		<script src="../pages/scripts/header.js"></script>
+		<meta http-equiv="content-type" content="text/html" charset="utf-8" />
+
+		<script src="pages/scripts/header.js"></script>
+		<link href='assets/global/plugins/jquery-watable/watable.css' rel='stylesheet' />
+		<link href='assets/global/plugins/jquery-watable/animate.min.css' rel='stylesheet' />
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-select/bootstrap-select.min.css" />
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css" />
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/jquery-multi-select/css/multi-select.css" />
+		<link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="merchant/successadded.css"/>
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/jstree/dist/themes/default/style.min.css">
+		<link href="assets/global/plugins/bootstrap-fileinput/fileinput.min.css" rel="stylesheet">
+
+		<!-- END THEME STYLES -->
+	</head>
+	<!-- END HEAD -->
+
+	<body class="page-header-fixed page-quick-sidebar-over-content Rectangle-5">
+
+		<!-- 标题栏开始 -->
+		<div class="page-header navbar navbar-fixed-top">
+			<script>
+				$.include("pages/partial/menu.shtml");
+			</script>
+		</div>
+		<!-- 标题栏结束 -->
+		<div class="clearfix"></div>
+		<div class="page-container">
+			<!-- 左侧菜单开始 -->
+			<div class="page-sidebar-wrapper">
+				<script>
+					$.include("pages/partial/sidebar.shtml");
+				</script>
+			</div>
+			<!-- 左侧菜单结束 -->
+
+			<!-- 主内容开始 -->
+			<div class="page-content-wrapper">
+				<div class="page-content" style="background: #f4f8fc;height:100px">
+					<!--内容头开始-->
+					<div class="row top" style="margin-top:20px;">
+						<div class="col-lg-12">
+							<span style="font-size:21px;color:#000000;font-family: PingFangSC;">添加代理</span>
+						</div>
+					</div>
+
+
+					<div class="col-xs-12" style="width: 1151px;height: 600px;background-color: #ffffff;position:absolute;">
+						<img src="merchant/picture/img1.png" class="row" style="position:absolute;width: 69.9px;height: 50px;left:31.3%;top:19.8%;"></img>
+						<div class="row css1">提交成功</div>
+						<div class="row css2">代理信息已提交成功，请等待审核。账号可登录代理后台试用</div>
+						<div class="row css3">
+							<span>代理登录名:</span>
+						</div>
+						<input class="Link1245" id="loginName"></input>
+						<div class="css4">
+							<span id="copy1">点击复制</span>
+						</div>
+						<div class="row css7">
+							<span>初始密码:</span>
+						</div>
+						<input class="Link789" id="password"></span>
+						<div class="css8">
+							<span id="copy3">点击复制</span>
+						</div>
+
+							<button id="fanhui" class="css9" type="button">返回</button>
+
+					</div>
+					<!-- 内容结束-->
+				</div>
+			</div>
+		</div>
+		<!-- 主内容结束 -->
+
+		<!--查看模态框-->
+
+
+		<script type="text/javascript">
+			$.include("pages/partial/xwatable-form.shtml")
+		</script>
+	</body>
+	<script>
+		$.include("pages/partial/scripts.shtml");
+	</script>
+	<script type="text/javascript" src="assets/global/plugins/jquery-watable/jquery.watable.js"></script>
+	<script type="text/javascript" src="pages/scripts/rqlbuilder.js"></script>
+	<script type="text/javascript" src="pages/scripts/xwatable.js"></script>
+	<script type="text/javascript" src="pages/scripts/refhelper.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/select2/select2.min.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>
+	<script src="assets/global/plugins/jstree/dist/jstree.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+	<script src="mods/basismanage.js"></script>
+	<script src="merchant/successadded.js"></script>
+	<!--<script src="mods/sys.js"></script>-->
+
+	<!--<script type="text/javascript">
+		Merchant.init();
+	</script>
+	-->
+
+
+</html>

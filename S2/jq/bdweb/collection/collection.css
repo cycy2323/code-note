@@ -1,0 +1,228 @@
+.collec1 {
+	width: 320px;
+	height: 144px;
+	border: 2px solid #E2E5E9;
+	background-color: #ffffff;
+	position: relative;
+	margin-left: 5%;
+	margin-top: 2%;
+}
+
+.picture1 {
+	position: absolute;
+	top: 7.5%;
+	left: 5%
+}
+
+.picture2 {
+	position: absolute;
+	top: 7.5%;
+	left: 71.6%
+}
+
+.collec2 {
+	width: 140px;
+	height: 20px;
+	font-family: PingFangSC;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: 0px;
+	color: #000000;
+	position: absolute;
+	top: 45.1%;
+	left: 7.5%
+}
+
+.collec3 {
+	width: 28px;
+	height: 20px;
+	font-family: PingFangSC;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: 0px;
+	color: #0cc2aa;
+	cursor: pointer;
+	position: absolute;
+	top: 72.2%;
+	left: 71.6%
+}
+
+.collec4 {
+	width: 28px;
+	height: 20px;
+	font-family: PingFangSC;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: 0px;
+	color: #f44455;
+	cursor: pointer;
+	position: absolute;
+	top: 72.2%;
+	left: 85%
+}
+
+.collec5 {
+	width: 80px;
+	height: 28px;
+	font-family: PingFangSC;
+	font-size: 20px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: 0px;
+	color: #000000;
+	position: absolute;
+	top: 5%;
+	left: 19.4%
+}
+
+.collec6 {
+	width: 140px;
+	height: 20px;
+	font-family: PingFangSC;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: 0px;
+	color: #000000;
+	position: absolute;
+	top: 45.1%;
+	left: 25%
+}
+
+.ABclass {
+	width: 320px;
+	height: 144px;
+	border: 2px solid #E2E5E9;
+	background-color: #ffffff;
+	position: relative;
+	margin-left: 5%;
+	margin-top: 2%;
+}
+
+.ABclass1 {
+	width: 47px;
+	height: 28px;
+	font-family: PingFangSC;
+	font-size: 20px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: 0px;
+	color: #000000;
+	position: relative;
+	top: 7.6%;
+	left: 17.8%
+}
+
+.ABclass2 {
+	width: 154px;
+	height: 20px;
+	font-family: PingFangSC;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: 0px;
+	color: #000000;
+	position: absolute;
+	top: 45.1%;
+	left: 7.5%
+}
+
+.ABclass3 {
+	width: 140px;
+	height: 20px;
+	font-family: PingFangSC;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: 0px;
+	color: #000000;
+	position: absolute;
+	top: 45.1%;
+	left: 28%;
+}
+
+.ABclass4 {
+	width: 84px;
+	height: 20px;
+	font-family: PingFangSC;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: 0px;
+	color: #000000;
+	position: absolute;
+	top: 72.2%;
+	left: 7.5%;
+}
+
+.ABclass5 {
+	width: 28px;
+	height: 20px;
+	font-family: PingFangSC;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: 0px;
+	color: #0cc2aa;
+	cursor: pointer;
+	position: absolute;
+	top: 72.2%;
+	left: 32%;
+}
+
+.ABclass6 {
+	width: 28px;
+	height: 20px;
+	font-family: PingFangSC;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: 0px;
+	color: #0cc2aa;
+	cursor: pointer;
+	position: absolute;
+	top: 72.2%;
+	left: 71.6%
+}
+
+.ABclass7 {
+	width: 28px;
+	height: 20px;
+	font-family: PingFangSC;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: 0px;
+	color: #f44455;
+	cursor: pointer;
+	position: absolute;
+	top: 72.2%;
+	left: 85%
+}

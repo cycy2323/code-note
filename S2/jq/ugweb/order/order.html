@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zh">
+	<!--<![endif]-->
+
+	<!-- BEGIN HEAD -->
+
+	<head>
+		<title>订单查询</title>
+		<base href="../../">
+
+		<script src="../pages/scripts/header.js"></script>
+		<meta http-equiv="content-type" content="text/html" charset="utf-8" />
+		<meta http-equiv="content-type" content="text/html" charset="utf-8" />
+		<script src="pages/scripts/header.js"></script>
+		<link href='assets/global/plugins/jquery-watable/watable.css' rel='stylesheet' />
+		<link href='assets/global/plugins/jquery-watable/animate.min.css' rel='stylesheet' />
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-select/bootstrap-select.min.css" />
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css" />
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/jquery-multi-select/css/multi-select.css" />
+		<link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/jstree/dist/themes/default/style.min.css">
+
+
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-datepicker/css/datepicker3.css" />
+
+		<!-- BEGIN THEME STYLES -->
+		<link href="assets/global/css/components.css" rel="stylesheet" type="text/css" />
+		<link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css" />
+		<!-- END THEME STYLES -->
+		<style type="text/css">
+			.watable{
+				margin-bottom: 0px
+			}
+			.fancybox-overlay{
+				z-index: 99999
+			}
+			@media print {
+				.noneprint {
+					display: none;
+				}
+        	}
+
+			.tabPrint td {
+				border-left: #000000 solid 1px;
+				border-top: #000000 solid 1px;
+				height: 21px;
+			}
+
+			table.tabPrint {
+				border-right: #000000 solid 1px;
+				border-bottom: #000000 solid 1px;
+			}
+
+			.nextPage {
+				page-break-after: always;
+			}
+
+			.linetd {
+				border-bottom: solid 1px #000;
+			}
+			</style>
+		</head>
+	<!-- END HEAD -->
+
+	<body class="page-header-fixed page-quick-sidebar-over-content">
+		<!-- 标题栏开始 -->
+		<div class="page-header navbar navbar-fixed-top">
+			<script>
+				$.include("pages/partial/menu.shtml");
+			</script>
+		</div>
+		<!-- 标题栏结束 -->
+		<div class="clearfix"></div>
+		<div class="page-container">
+			<!-- 左侧菜单开始 -->
+			<div class="page-sidebar-wrapper">
+				<script>$.include("pages/partial/sidebar.shtml");</script>
+			</div>
+			<!-- 左侧菜单结束 -->
+			 <!-- 主内容开始 -->
+			<div class="page-content-wrapper" style="height:100vh !important; overflow: auto" >
+				<div class="page-content">
+					<!--内容头开始-->
+					<div class="row">
+						<div class="col-md-12">
+							<ul class="page-breadcrumb breadcrumb">
+								<li>
+									<i class="fa  fa-map-marker"></i>
+								</li>
+								<li>
+									<a href="javascript:void(0)">订单管理</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="tabbable tabbable-custom tabbable-custom-profile col-md-12 " >
+						<div class="row" style=" background:#fff; padding:30px 10px 0 10px;">
+					<!-- <div class="container col-sm-12" style="padding-bottom:0px" id="find"> -->
+							<div class="col-sm-4 col-lg-3 form-group">
+								<div class="btn-group input-group input-select2me col-sm-12">
+									<div class="input-group-addon">订单编号：</div>
+									<input id="find_orderno" class=" form-control input-middle"  type="text" placeholder="">
+									<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+								</div>
+							</div>
+							<div class="col-sm-4 col-lg-3 form-group">
+								<div class="btn-group input-group input-select2me col-sm-12">
+									<div class="input-group-addon">买家ID:</div>
+									<input id="find_buyuserid" class="inputclear input-middle form-control" type="text" placeholder="">
+									<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+								</div>
+							</div>
+							<!--<div class="col-sm-4 col-lg-3 form-group">-->
+								<!--<div class="btn-group input-group input-select2me col-sm-12">-->
+									<!--<div class="input-group-addon">收款账号:</div>-->
+									<!--<input id="find_paymentwayaccount" class="inputclear input-middle form-control" type="text" placeholder="">-->
+									<!--<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>-->
+								<!--</div>-->
+							<!--</div>-->
+							<div class="col-sm-4 col-lg-3 form-group">
+								<div class="btn-group input-group input-select2me col-sm-12">
+									<div class="input-group-addon">收款方式:</div>
+									<select id="find_paymentway" class="form-control input-middle select2me" data-placeholder="状态...">
+										<option value="" name='全部'>全部</option>
+										<option value="2">支付宝</option>
+										<option value="1">微信</option>
+										<option value="3">银行卡</option>
+									</select>
+									<span class="inputclear glyphicon glyphicon-remove-circle hide" ></span>
+								</div>
+							</div>
+							<div class="col-sm-4 col-lg-3 form-group">
+								<div class="btn-group input-group input-select2me col-sm-12">
+									<div class="input-group-addon">状态:</div>
+									<select id="find_status" class="form-control input-middle select2me" data-placeholder="状态...">
+										<option value="" name='全部'>全部</option>
+										<option value="1">未付款</option>
+										<option value="2">已付款</option>
+										<option value="3">已完成</option>
+										<option value="4">已取消</option>
+										<option value="5">交易关闭（自动）</option>
+										<option value="6">申诉中</option>
+										<option value="7">申诉成功</option>
+										<option value="8">申诉失败</option>
+									</select>
+									<span class="inputclear glyphicon glyphicon-remove-circle hide" ></span>
+								</div>
+							</div>
+							<div class="col-md-5 form-group" style="margin:10px 0;">
+								<div class="btn-group input-group" style="padding-left: 20px;">
+									<div class="input-group-addon" style="width:50px">时间:</div>
+									<input id="find_begintime" placeholder="yyyy-MM-dd" class="inputclear form-control layui-input" type="text">
+									<div class="input-group-addon" style="width:20px">&nbsp; 至</div>
+									<input id="find_endtime" placeholder="yyyy-MM-dd" class="inputclear form-control layui-input" type="text">
+								</div>
+							</div>
+
+							<div class="col-sm-2 col-md-12 col-lg-2 btn-group form-group" >
+								<button id="find_button" class="btn btn-success"  style="margin-top: 10px;">
+									<i class="fa fa-search"></i> 查询&nbsp;
+								</button>
+							</div>
+						</div>
+
+						<div class="container-fluid">
+							<div id="divtable" class="table-responsive col-md-12">
+							</div>
+						</div>
+						<div class="container-fluid" id="divtabledetailcon" style="display:none;">
+							<h4 id="detailtitle"></h4>
+							<div id="divtabledetail" class="table-responsive">
+							</div>
+						</div>
+					<!-- 内容结束-->
+					</div>
+				</div>
+			</div>
+		<!-- 主内容结束 -->
+		</div>
+		<!--新增模态框-->
+		<div class="modal fade" id="order_edit_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">订单详情</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<form action="javascript:;" role="form" name="orderFormView" id="edit_form" onSubmit="return beforeSubmit(this)">
+								<div class="row">
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">订单ID:</div>
+											<input id="detail_ugotcorderid" data-name='otcOrderId' name="ugotcorderid" class="inputclear form-control" type="text" placeholder="" readonly>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">订单号:</div>
+											<input id="detail_orderno" data-name='orderNo' name="orderno" class="inputclear form-control" type="text" placeholder="" readonly>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">广告ID:</div>
+											<input id="detail_advertid" data-name='advertId' name="advertid" class="inputclear form-control" type="text" placeholder="" readonly>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">买家ID:</div>
+											<input id="detail_buyuserid" data-name='buyUserId' name="buyuserid" class="inputclear form-control" type="text" placeholder="" readonly>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">卖家ID:</div>
+											<input id="detail_selluserid" data-name='sellUserId' name="selluserid" class="inputclear form-control" type="text" placeholder="" readonly>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">成交数量:</div>
+											<input id="detail_number" data-name='number' name="number" class="inputclear form-control" type="text" placeholder="" readonly>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">价格:</div>
+											<input id="detail_price" data-name="price" name="price" class="inputclear form-control" type="text" placeholder="" readonly>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">手续费:</div>
+											<input id="detail_brokerage" data-name="brokerage" name="brokerage" class="inputclear form-control" type="text" placeholder="" readonly>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<!-- <div class="col-sm-3 form-group" style="width: 279px;">
+										<div class="btn-group input-group input-select2me">
+											<div class="input-group-addon">订单支付方式:</div>
+											<select id="detail_paymentway" data-name='paymentWay' name="paymentway" class="form-control" >
+												<option value="0">--</option>
+												<option value="1">微信</option>
+												<option value="2">支付宝</option>
+												<option value="3">银行卡</option>
+											</select>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div> -->
+
+									<div class="col-sm-3 form-group" style="width: 279px;">
+										<div class="btn-group input-group input-select2me">
+											<div class="input-group-addon">状态:</div>
+											<select id="detail_status" data-name='status' name="status" class="form-control" disabled>
+												<option value="1">未付款</option>
+												<option value="2">已付款</option>
+												<option value="3">已完成</option>
+												<option value="4">已取消</option>
+												<option value="5">已关闭（自动）</option>
+												<option value="6">申诉中</option>
+												<option value="7">申诉成功</option>
+												<option value="8">申诉失败</option>
+											</select>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">订单创建时间:</div>
+											<input id="detail_createdtime" data-name='createdTime' name="createdtime" class="inputclear form-control" type="text" placeholder="" readonly>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">订单修改时间:</div>
+											<input id="detail_modifytime" data-name='modifyTime' name="modifytime" class="inputclear form-control" type="text" placeholder="" readonly>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">订单付款时间:</div>
+											<input id="detail_paymenttime" data-name="paymentTime" name="paymenttime" class="inputclear form-control" type="text" placeholder="" readonly>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">订单完成时间:</div>
+											<input id="detial_finishtime" data-name="finishTime" name="finishtime" class="inputclear form-control" type="text" placeholder="" readonly>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">订单确定时间:</div>
+											<input id="detail_confirmtime" data-name="confirmTime" name="confirmtime" class="inputclear form-control" type="text" placeholder="" readonly>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">订单关闭时间:</div>
+											<input id="detail_closetime" data-name="closeTime" name="closetime" class="inputclear form-control" type="text" placeholder="" readonly>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<!-- <div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">订单取消时间:</div>
+											<input id="detail_cancletime" name="cancletime" class="inputclear form-control" type="text" placeholder="" disabled="disabled">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div> -->
+									<div class="col-sm-3 form-group" style="width: 279px;">
+										<div class="btn-group input-group input-select2me">
+											<div class="input-group-addon">是否评价:</div>
+											<select id="detail_isevaluation" data-name="isEvaluation" name="isevaluation" class="form-control" >
+												<!--<option value="">全部</option>-->
+												<option value="1">已评价</option>
+												<option value="2">未评价</option>
+											</select>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+								</div>
+
+							</form>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button id="quxiao" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<!--<button id="update_gp1" type="button" class="btn btn-primary" data-dismiss="modal">保存</button>-->
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- TODO 查看模态框 -->
+
+
+		<script type="text/javascript">
+			$.include("pages/partial/xwatable-form.shtml")
+		</script>
+	</body>
+	<script>
+		$.include("pages/partial/scripts.shtml");
+	</script>
+	<script type="text/javascript" src="pages/scripts/layui/layui.js" charset="utf-8"></script>
+	<script type="text/javascript" src="assets/global/plugins/jquery-watable/jquery.watable.js"></script>
+	<script type="text/javascript" src="pages/scripts/rqlbuilder.js"></script>
+	<script type="text/javascript" src="pages/scripts/xwatable.js"></script>
+	<script type="text/javascript" src="pages/scripts/refhelper.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/select2/select2.min.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>
+	<script src="assets/global/plugins/jstree/dist/jstree.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="assets/admin/pages/scripts/components-dropdowns.js"></script>
+	<script src="mods/order.js"></script>
+	<script src="mods/basismanage.js"></script>
+	<script src="order/order.js"></script>
+	<script type="text/javascript">
+		Order.init();
+	</script>
+
+</html>

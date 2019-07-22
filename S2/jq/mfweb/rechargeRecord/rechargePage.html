@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<!--suppress ALL -->
+<html lang="zh">
+
+<head>
+    <title>充值管理</title>
+    <base href="../../">
+    <!--main页面需要引入的css样式-->
+    <script src="../pages/scripts/header.js"></script>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8"/>
+    <script src="pages/scripts/header.js"></script>
+    <link href='assets/global/plugins/jquery-watable/watable.css' rel='stylesheet'/>
+    <link href='assets/global/plugins/jquery-watable/animate.min.css' rel='stylesheet'/>
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-select/bootstrap-select.min.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/jquery-multi-select/css/multi-select.css"/>
+    <link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/jstree/dist/themes/default/style.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-datepicker/css/datepicker3.css"/>
+    <style type="text/css">
+        input:-webkit-autofill {
+            box-shadow: 0 0 0px 1000px white inset !important;
+            border: 1px solid #cccccc;
+        }
+    </style>
+</head>
+
+<body class="page-header-fixed page-quick-sidebar-over-content">
+<!-- 标题栏开始 -->
+<div class="page-header navbar navbar-fixed-top">
+    <script>
+        $.include("pages/partial/menu.shtml");
+    </script>
+</div>
+<!-- 标题栏结束 -->
+<div class="clearfix"></div>
+<div class="page-container">
+    <!-- 左侧菜单开始 -->
+    <div class="page-sidebar-wrapper" style="height:100%">
+        <script>
+            $.include("pages/partial/sidebar.shtml");
+        </script>
+    </div>
+    <!-- 左侧菜单结束 -->
+    <!-- 主内容开始 -->
+    <div class="page-content-wrapper" style="width: 100%;">
+        <div class="page-content" style="background: #f4f8fc;height:100px">
+            <div class="row top" style="margin-top:20px;margin-bottom: 20px;">
+                <div class="col-lg-12">
+                    <span style="font-size:21px;color:#000000;font-family: PingFangSC;">充值管理</span>
+                </div>
+            </div>
+            <div class="col-xs-4" style="width: 100%;height: 300px;background:#ffffff;padding: 20px 20px;">
+                <div class="row" style="height:40px;line-height:40px;font-size:14px;color:#000000">
+                <span style="font-weight: bolder">当前可用数量：&nbsp<span id="balabceNum" style="color: #45B6AF"></span></span>
+                </div>
+                <div class="row" style="height:40px;line-height:40px;font-size:14px;color:#000000">
+                    <span style="font-weight: bolder;margin-left: 30px;margin-right: 10px;">充值数量:</span>
+                    <input id="orderAmount" type="text" placeholder="请输入充值数量" oninput="document.getElementById('payNum').innerHTML = $('#orderAmount').val()" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" style="width: 200px;height: 30px;outline: none;autocomplete:false">&nbsp;&nbsp;BUB<br>
+                    <span style="font-weight: bolder;margin-left: 30px;margin-right: 10px;">实需支付： <span id="payNum" style="color: #45B6AF;font-weight: bolder"></span> 元</span>
+                </div>
+                <div class="row"
+                     style="margin: 60px auto;height:40px;line-height:40px;font-size:14px;color:#000000;display: flex;align-items: center">
+                    <p style="font-weight: bolder;margin-left: 60px;margin-right: 10px;">备注:</p>
+                    <textarea name="" id="remark" cols="30" rows="2" style="resize: none"></textarea>
+                    <!--<input type="text">-->
+                </div>
+                <!--<div class="row" style="line-height:40px;font-size:14px;color:#000000">-->
+                <!--<span>支付方式</span>-->
+                <!--<div>-->
+                <!--<select id="detail_isevaluation" data-name="isEvaluation" name="isevaluation" style="width: 300px;height: 30px;margin-bottom: 30px;">-->
+                <!--&lt;!&ndash;<option value="1">中国工商银行</option>&ndash;&gt;-->
+                <!--</select>-->
+                <!--</div>-->
+                <!--</div>-->
+                <div style="height: 30px;position: absolute;bottom: 20px;margin-left: 150px;">
+                    <button id="btn-submit"
+                            style="width: 60px;height: 30px;border: 0 none deepskyblue;background: #45B6AF">提交
+                    </button>
+                </div>
+            </div>
+            <div class="row top" style="margin-top:40px;">
+                <div class="col-lg-12" style="margin-top: 20px;margin-bottom: 20px;">
+                    <span style="font-size:21px;color:#000000;font-family: PingFangSC;">历史充值记录</span>
+                </div>
+            </div>
+            <div style="width: 100%;background:#ffffff;padding: 20px 20px;">
+                <div class="row" style=" background:#fff; padding:30px 10px 0 10px;">
+                    <!-- <div class="container col-sm-12" style="padding-bottom:0px" id="find"> -->
+                    <div class="col-sm-4 form-group">
+                        <div class="btn-group input-group input-select2me col-sm-12">
+                            <div class="input-group-addon">订单编号：</div>
+                            <input id="find_orderno" class=" form-control input-middle" type="text" placeholder="" style="width: 300px">
+                            <span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        <div class="btn-group input-group input-select2me col-sm-12">
+                            <div class="input-group-addon">用户ID:</div>
+                            <input id="find_buyuserid" class="inputclear input-middle form-control" type="text"
+                                   placeholder="" style="width: 300px">
+                            <span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+                        </div>
+                    </div>
+                    <!--<div class="col-sm-4 form-group">-->
+                    <!--<div class="btn-group input-group input-select2me col-sm-12">-->
+                    <!--<div class="input-group-addon">收款账号:</div>-->
+                    <!--<input id="find_paymentwayaccount" class="inputclear input-middle form-control" type="text" placeholder="">-->
+                    <!--<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <div class="col-md-5 form-group" style="width: 200px;">
+                        <div class="btn-group input-group input-select2me col-sm-12">
+                            <div class="input-group-addon">状态:</div>
+                            <select id="find_status" class="form-control input-middle select2me"
+                                    data-placeholder="状态...">
+                                <option value="" name='全部'>全部</option>
+                                <option value="0">未支付</option>
+                                <option value="1">支付成功</option>
+                                <option value="2">支付失败</option>
+                                <option value="3">订单取消</option>
+                            </select>
+                            <span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2 btn-group form-group" style="margin-left: 40px;">
+                        <button id="find_button" class="btn btn-success">
+                            <i class="fa fa-search"></i> 查询&nbsp;
+                        </button>
+                    </div>
+                </div>
+                <br><br>
+                <table class="table" id="pay-table">
+                    <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<th data-field="orderID">订单编号</th>-->
+                        <!--<th data-field="userID">用户ID</th>-->
+                        <!--<th data-field="orderMoney">订单金额</th>-->
+                        <!--<th data-field="payment">实际支付</th>-->
+                        <!--<th data-field="createTime">创建时间</th>-->
+                        <!--<th data-field="successTime">充值时间</th>-->
+                        <!--<th data-field="orderStatus">订单状态</th>-->
+                        <!--<th data-field="operationstatus">操作状态</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody></tbody>-->
+                </table>
+                <div class="container-fluid" style="background-color: #ffffff">
+                    <!--<div id="treetable" class="table-responsive container col-md-3" style="max-height: 450px; overflow-y: auto">-->
+                    <!--</div>-->
+                    <div id="divtable" class="table-responsive container-fluid col-md-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    $.include("pages/partial/xwatable-form.shtml")
+</script>
+<script>
+    $.include("pages/partial/scripts.shtml");
+</script>
+<script>
+    window.onload = function () {
+        var obj={}
+        var res = {'reqresource': '1'}
+        Object.defineProperty(obj,'orderAmount',{
+            get:function(){
+                return obj
+            },
+            set:function(newValue){
+                alert(newValue)
+                document.getElementById('orderAmount').value = newValue
+                document.getElementById('payNum').innerHTML = newValue
+            }
+        })
+        document.addEventListener('keyup',function(e){
+            obj.txt = e.target.value
+        })
+        $.ajax({
+            url: "/mf/usr/pblbi.do?bd="+JSON.stringify(res),
+            type: 'GET',
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            // parmas: JSON.stringify(reqresource),
+            // data: {},
+            success: function (data) {
+                // console.log(data)
+                // alert(data.usablefund)
+                // var resNum = data.usablefund
+                document.getElementById('balabceNum').innerHTML = data.usablefund
+                // window.open(data.payUrl)
+            }
+        })
+    }
+
+    $('#btn-submit').click(function () {
+        var orderAmount1 = $('#orderAmount').val();
+        var remarks1 = $('#remark').val();
+        if(!orderAmount1){
+            bootbox.alert("请输入充值数量!")
+            return;
+        }
+        var reg=/^[1-9]\d*$/;
+        if(!reg.test(orderAmount1)){
+            bootbox.alert("填写数量需为正整数");return;
+        }
+        var dataSubmit = {
+            "bankCode": "UNIONWAPPAY",
+            "bankName": "银联H5",
+            "orderAmount": orderAmount1,
+            "remarks": remarks1
+        }
+        $.ajax({
+            url: '/mf/ing/pbirs.do',
+            type: 'POST',
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(dataSubmit),
+            success: function (data) {
+                if(data.errcode=='1'){
+                    location.reload();
+                    var newWindow = window.open()
+                    newWindow.document.write(data.payUrl)
+                }else{
+                    bootbox.alert(data.msg)
+                    return;
+                }
+
+            }
+        })
+    })
+</script>
+<script type="text/javascript" src="assets/global/plugins/jquery-watable/jquery.watable.js"></script>
+<script type="text/javascript" src="pages/scripts/rqlbuilder.js"></script>
+<script type="text/javascript" src="pages/scripts/xwatable.js"></script>
+<script type="text/javascript" src="pages/scripts/refhelper.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/select2/select2.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>
+<script src="assets/global/plugins/jstree/dist/jstree.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+<script src="mods/basismanage.js"></script>
+<script src="rechargeRecord/js/rechargePage.js"></script>
+<script type="text/javascript">
+    orderHistoryRecord.init();
+</script>>
+
+</html>
