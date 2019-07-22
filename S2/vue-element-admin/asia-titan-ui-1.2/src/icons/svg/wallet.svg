@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="29px" viewBox="0 0 32 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>wallet@2x</title>
+    <desc>Created with Sketch.</desc>
+    <g id="wallet" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M30,19 L21.5398044,19 C19.0324494,19 17,16.7612379 17,13.9998162 C17,11.2383945 19.0324494,9 21.5398044,9 L30,9 L30,19 Z" id="Stroke-1" stroke="#5FC27E" stroke-width="3" stroke-linecap="round"></path>
+        <path d="M28.4840646,27 L3.51593537,27 C2.67880217,27 2,26.2764206 2,25.3840659 L2,3.61593414 C2,2.7235794 2.67880217,2 3.51593537,2 L28.4840646,2 C29.3211978,2 30,2.7235794 30,3.61593414 L30,25.3840659 C30,26.2764206 29.3211978,27 28.4840646,27 Z" id="Stroke-3" stroke="#5FC27E" stroke-width="3" stroke-linecap="round"></path>
+        <path d="M22,16 C23.1045695,16 24,15.1045695 24,14 C24,12.8954305 23.1045695,12 22,12 C20.8954305,12 20,12.8954305 20,14 C20,15.1045695 20.8954305,16 22,16 Z" id="椭圆形" fill="#5FC27E"></path>
+    </g>
+</svg>
