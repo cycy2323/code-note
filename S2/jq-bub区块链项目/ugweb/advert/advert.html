@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zh">
+	<!--<![endif]-->
+
+	<!-- BEGIN HEAD -->
+
+	<head>
+		<title>广告管理</title>
+		<base href="../../">
+
+		<script src="../pages/scripts/header.js"></script>
+		<meta http-equiv="content-type" content="text/html" charset="utf-8" />
+		<link rel="stylesheet" href="pages/scripts/layui/css/layui.css"  media="all">
+		<script src="pages/scripts/header.js"></script>
+		<link href='assets/global/plugins/jquery-watable/watable.css' rel='stylesheet' />
+		<link href='assets/global/plugins/jquery-watable/animate.min.css' rel='stylesheet' />
+		<link href='assets/global/css/fselect.css' rel='stylesheet' />
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-select/bootstrap-select.min.css" />
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css" />
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/jquery-multi-select/css/multi-select.css" />
+		<link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/jstree/dist/themes/default/style.min.css">
+		<!-- END THEME STYLES -->
+	</head>
+	<!-- END HEAD -->
+
+	<body class="page-header-fixed page-quick-sidebar-over-content">
+
+		<!-- 标题栏开始 -->
+		<div class="page-header navbar navbar-fixed-top">
+			<script>
+				$.include("pages/partial/menu.shtml");
+			</script>
+		</div>
+		<!-- 标题栏结束 -->
+		<div class="clearfix"></div>
+		<div class="page-container">
+			<!-- 左侧菜单开始 -->
+			<div class="page-sidebar-wrapper">
+				<script>
+					$.include("pages/partial/sidebar.shtml");
+				</script>
+			</div>
+			<!-- 左侧菜单结束 -->
+
+			 <!-- 主内容开始 -->
+			<div class="page-content-wrapper" style="height:100vh !important; overflow: auto">
+				<div class="page-content">
+					<!--内容头开始-->
+					<div class="row">
+						<div class="col-md-12">
+							<ul class="page-breadcrumb breadcrumb">
+								<li>
+									<i class="fa  fa-map-marker"></i>
+								</li>
+								<li>
+									<a href="javascript:void(0)">广告管理</a>
+									<!-- <i class="fa fa-angle-double-right"></i> -->
+								</li>
+								<!-- <li>
+									<a href="javascript:void(0)">广告信息管理</a>
+								</li> -->
+							</ul>
+						</div>
+					</div>
+					<div class="container col-sm-12" style="padding-bottom:0px" id="find">
+						<div class="row">
+						<div class="col-sm-3 form-group">
+							<div class="btn-group input-group">
+								<div class="input-group-addon">广告ID：</div>
+								<input id="find_advertid" class=" form-control" type="text" placeholder="">
+								<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+							</div>
+						</div>
+						<div class="col-sm-3 form-group">
+							<div class="btn-group input-group input-select2me">
+								<div class="input-group-addon">广告类型：</div>
+								<select id="find_type" class="form-control input-middle select2me" data-placeholder="类型">
+									<option value="">全部</option>
+									<option value="1">买</option>
+									<option value="2">卖</option>
+								</select>
+								<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+							</div>
+						</div>
+						<div class="col-sm-3 form-group">
+							<div class="btn-group input-group input-select2me">
+								<div class="input-group-addon">广告状态：</div>
+								<select id="find_status" class="form-control input-middle select2me" data-placeholder="类型">
+									<option value="">全部</option>
+									<option value="1">上架</option>
+									<option value="2">下架</option>
+									<option value="3">售罄</option>
+								</select>
+								<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+							</div>
+						</div>
+						<div class="col-sm-3 form-group">
+							<div class="btn-group input-group input-select2me">
+								<div class="input-group-addon">收款方式：</div>
+								<select id="find_paymentway" class="form-control input-middle select2me" data-placeholder="类型">
+									<option value="">全部</option>
+									<option value="1">微信</option>
+									<option value="2">支付宝</option>
+									<option value="3">银行卡</option>
+								</select>
+								<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+
+						<div class="col-md-6 form-group" style="margin:10px 0;">
+							<div class="btn-group input-group" style="padding-left: 20px;">
+								<div class="input-group-addon" style="width:50px">时间:</div>
+								<input id="find_begintime" placeholder="yyyy-MM-dd" class="inputclear form-control layui-input" type="text">
+								<div class="input-group-addon" style="width:20px">&nbsp; 至</div>
+								<input id="find_endtime" placeholder="yyyy-MM-dd" class="inputclear form-control layui-input" type="text">
+							</div>
+						</div>
+
+						<div class="col-md-6 btn-group form-group" style="margin:10px 0;">
+							<button id="find_button" class="btn btn-success">
+        						<i class="fa fa-search"></i> 查询&nbsp;
+							</button>
+							<button id="add_advert_button" class="btn btn-default">
+								<i class="fa fa-plus"></i> 添加&nbsp;
+							</button>
+							<!-- <button id="find_button" class="btn btn-danger">
+									<i class="fa fa-trash-o"></i> 删除&nbsp;
+							</button> -->
+						</div>
+						</div>
+						<!--<div class="btn-group form-group">
+							<button id="edit_btn" class="btn green" data-target="#edit_gp_btn" data-toggle="modal">
+					        <i class="fa fa-eye"></i> 查看&nbsp;
+					    </button>
+						</div>-->
+
+					</div>
+
+					<div class="container-fluid" style="background-color: #ffffff;">
+						<!--<div id="treetable" class="table-responsive container col-md-3" style="max-height: 450px; overflow-y: auto">-->
+						<!--</div>-->
+						<div id="divtable" class="table-responsive container-fluid col-md-12">
+						</div>
+					</div>
+					<!-- 内容结束-->
+				</div>
+			</div>
+		</div>
+		<!-- 主内容结束 -->
+
+		<!--查看模态框-->
+		<div class="modal fade" id="add_advert_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">添加广告</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<form action="javascript:;" role="form" name="add_advert_form" id="add_advert_form">
+								<div class="row">
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">数量:</div>
+											<input id="add_number" name="add_number" class="inputclear form-control" type="text" placeholder="需大于50" required>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-3 form-group" style="width: 279px;">
+										<div class="btn-group input-group input-select2me">
+											<div class="input-group-addon">金额类型:</div>
+											<select id="add_amounttype" name="add_amounttype" class="form-control" >
+												<!--<option value="">全部</option>-->
+												<option value="1">限额</option>
+												<option value="2">固额</option>
+											</select>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group showlimitmax">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">限额最大:</div>
+											<input id="add_limitmaxamount" name="add_limitmaxamount" class="inputclear form-control" type="text" placeholder="" value="2000" >
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group showlimitmin">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">限额最小:</div>
+											<input id="add_limitminamount" name="add_limitminamount" class="inputclear form-control" type="text" value="50" >
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-3 form-group showfix" style="width: 279px;">
+										<div class="btn-group input-group input-select2me">
+											<div class="input-group-addon">固定额:</div>
+											<select id="add_fixedamount" name="add_fixedamount" class="form-control" >
+												<!--<option value="">全部</option>-->
+												<!--<option value="1">22413513</option>-->
+												<!--<option value="2">卖</option>-->
+											</select>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">单价:</div>
+											<input id="add_price" name="add_price" class="inputclear form-control" type="text" placeholder="" value="1.00" readonly>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-3 form-group" style="width: 279px;">
+										<div class="btn-group input-group input-select2me">
+											<div class="input-group-addon">类型:</div>
+											<select id="add_type" name="add_type" class="form-control" >
+												<!--<option value="">全部</option>-->
+												<!--<option value="1">买</option>-->
+												<option value="2">卖</option>
+											</select>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">付款期限（单位:分钟）:</div>
+											<input id="add_prompt" name="add_prompt" class="inputclear form-control" type="text" placeholder="范围：1-15分钟" >
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">币种:</div>
+											<input id="add_coinid" name="add_coinid" class="inputclear form-control" type="text" placeholder="" value="BUB" readonly>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-3 form-group" style="width: 279px;">
+										<div class="btn-group input-group input-select2me">
+											<div class="input-group-addon">收款方式:</div>
+											<select  class="demo" id="add_paymentway" name="add_paymentway" multiple="multiple">
+												<!--<optgroup label="微信">-->
+													<!--<option value="cp">C++</option>-->
+													<!--<option value="cs">C#</option>-->
+													<!--<option value="oc">Object C</option>-->
+													<!--<option value="c">C</option>-->
+												<!--</optgroup>-->
+												<!--<optgroup label="支付宝">-->
+													<!--<option value="js">JavaScript</option>-->
+													<!--<option value="php">PHP</option>-->
+													<!--<option value="asp">ASP</option>-->
+													<!--<option value="jsp">JSP</option>-->
+												<!--</optgroup>-->
+											</select>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<div class="col-sm-3 form-group" style="width: 279px;" hidden>
+										<div class="btn-group input-group input-select2me">
+											<div class="input-group-addon">货币类型:</div>
+											<select id="add_cointype" name="add_cointype" class="form-control" readonly="true">
+												<!--<option value="">全部</option>-->
+												<option value="1">人民币</option>
+											</select>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<!--<div class="col-sm-6 form-group">-->
+										<!--<div class="btn-group input-group">-->
+											<!--<div class="input-group-addon">自动回复内容:</div>-->
+											<!--<input id="add_autoreplycontent" name="add_autoreplycontent" class="inputclear form-control" type="text" placeholder="" >-->
+											<!--<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>-->
+										<!--</div>-->
+									<!--</div>-->
+									<div class="col-sm-3 form-group" style="width: 279px;">
+										<div class="btn-group input-group input-select2me">
+											<div class="input-group-addon">是否需要高级认证:</div>
+											<!--无 / 需通过实名验证 / 需通过实名验证+高级验证-->
+											<select id="add_isseniorcertification" name="add_isseniorcertification" class="form-control" >
+												<option value="1">无</option>
+												<option value="2">需通过实名验证</option>
+												<option value="3">需通过实名验证+高级验证</option>
+											</select>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-3 form-group" style="width: 279px;" hidden>
+										<div class="btn-group input-group input-select2me">
+											<div class="input-group-addon">是否与平台商家交易:</div>
+											<select id="add_ismerchantstrade" name="add_ismerchantstrade" class="form-control">
+												<!--<option value="">全部</option>-->
+												<option value="1">是</option>
+												<option value="2">否</option>
+											</select>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">支付密码:</div>
+											<input id="add_transactionPassword" name="add_transactionPassword" class="form-control" type="text" onfocus="this.type='password';" placeholder="" >
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group" id="showGoogle">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">谷歌验证码:</div>
+											<input id="add_googlecode" name="add_googlecode" class="form-control" type="text" placeholder="" >
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button id="submit_advert" type="submit" class="btn btn-primary" form="add_advert_form">保存</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!--修改模态框-->
+		<div class="modal fade" id="edit_gp_btn1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">修改广告信息</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<form action="javascript:;" role="form" name="advertEdit" id="edit_form1">
+								<div class="row">
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">广告ID:</div>
+											<input name="advertEdit" id="edit_advertId" data-name="ugOtcAdvertId" class="form-control" type="text" placeholder="" readonly="readonly">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">创建人:</div>
+											<input name="advertEdit" data-name="userId" class="form-control" type="text" placeholder="" readonly="readonly">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">商家昵称:</div>
+											<input name="advertEdit" data-name="nickName" class="inputclear form-control" type="text" placeholder="" readonly="readonly">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">数量:</div>
+											<input name="advertEdit" id="edit_number" data-name="number" class="inputclear form-control" type="text" placeholder="">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">付款期限（单位:分钟）:</div>
+											<input id="edit_prompt" name="advertEdit" data-name="prompt" class="inputclear form-control" type="text" placeholder="">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-3 form-group" style="width: 279px;">
+										<div class="btn-group input-group input-select2me">
+											<div class="input-group-addon">金额类型:</div>
+											<select name="advertEdit" id="edit_amountType" data-name="amountType" name="advertEdit" class="form-control" disabled>
+												<!--<option value="">全部</option>-->
+												<option value="1">限额</option>
+												<option value="2">固额</option>
+											</select>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group showlimitmax1">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">限额最大:</div>
+											<input name="advertEdit" id="edit_limitMaxAmount" data-name="limitMaxAmount" class="inputclear form-control" type="text" placeholder="">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group showlimitmin1">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">限额最小:</div>
+											<input name="advertEdit" id="edit_limitMinAmount" data-name="limitMinAmount" class="inputclear form-control" type="text" placeholder="">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<div class="col-sm-6 form-group showfix1">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">固定额:</div>
+											<input name="advertEdit" id="edit_fixedAmount" data-name="fixedAmount" class="inputclear form-control" type="text" placeholder="">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">单价:</div>
+											<input name="advertEdit" id="edit_price" data-name="price" class="inputclear form-control" type="text" placeholder="" disabled>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-3 form-group" style="width: 279px;">
+										<div class="btn-group input-group input-select2me">
+											<div class="input-group-addon">类型:</div>
+											<select id="edit_type" data-name="type" name="advertEdit" class="form-control" disabled="disabled">
+												<!--<option value="">全部</option>-->
+												<option value="1">买入</option>
+												<option value="2">卖出</option>
+											</select>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">成交量:</div>
+											<input name="advertEdit" data-name="volume" class="form-control" type="text" placeholder="" readonly="readonly">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">冻结量:</div>
+											<input name="advertEdit" data-name="freezeAmount" class="form-control" type="text" placeholder="" readonly="readonly">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">广告发布时间:</div>
+											<input name="advertEdit" data-name="createdTime" class="form-control" type="text" placeholder="" readonly="readonly">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<!-- <div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">广告修改时间:</div>
+											<input name="modifytime" data-nam class="form-control" type="text" placeholder="" readonly="readonly">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div> -->
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">广告上架时间:</div>
+											<input name="advertEdit" data-name="shelveTime" class="form-control" type="text" placeholder="" readonly="readonly">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">广告下架时间:</div>
+											<input name="advertEdit" data-name="unshelveiTime" class="form-control" type="text" placeholder="" readonly="readonly">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-3 form-group" style="width: 279px;">
+										<div class="btn-group input-group input-select2me">
+											<div class="input-group-addon">广告状态:</div>
+											<select id="status" name="status" class="form-control" disabled="disabled">
+
+										<option value="1">上架</option>
+										<option value="2">下架</option>
+									</select>
+									<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+								</div>
+							</div>
+							<div class="col-sm-3 form-group" style="width: 279px;">
+								<div class="btn-group input-group input-select2me">
+									<div class="input-group-addon">收款方式:</div>
+									<select  class="demo1" id="edit_paymentWay" data-name="paymentWay" name="advertEdit" multiple="multiple">
+										<!--<optgroup label="微信">-->
+										<!--<option value="cp">C++</option>-->
+										<!--<option value="cs">C#</option>-->
+										<!--<option value="oc">Object C</option>-->
+										<!--<option value="c">C</option>-->
+										<!--</optgroup>-->
+										<!--<optgroup label="支付宝">-->
+										<!--<option value="js">JavaScript</option>-->
+										<!--<option value="php">PHP</option>-->
+										<!--<option value="asp">ASP</option>-->
+										<!--<option value="jsp">JSP</option>-->
+										<!--</optgroup>-->
+									</select>
+									<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+								</div>
+							</div>
+							<div class="col-sm-6 form-group">
+								<div class="btn-group input-group">
+									<div class="input-group-addon">币种:</div>
+									<input name="advertEdit" id="edit_coinId" data-name="coinId" class="form-control" type="text" placeholder="" readonly="readonly">
+									<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+								</div>
+							</div>
+							<div class="col-sm-3 form-group" style="width: 279px;">
+								<div class="btn-group input-group input-select2me">
+									<div class="input-group-addon">货币类型:</div>
+									<select id="edit_coinType" name="advertEdit" data-name="coinType" class="form-control" disabled>
+										<!--<option value="">全部</option>-->
+										<option value="1" selected>人民币</option>
+									</select>
+									<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+								</div>
+							</div>
+							<!--<div class="col-sm-6 form-group">-->
+								<!--<div class="btn-group input-group">-->
+									<!--<div class="input-group-addon">自动回复内容:</div>-->
+									<!--<input id="edit_autoReplyContent" name="advertEdit" data-name="autoReplyContent" class="inputclear form-control" type="text" placeholder="">-->
+									<!--<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>-->
+								<!--</div>-->
+							<!--</div>-->
+							<div class="col-sm-3 form-group" style="width: 279px;">
+								<div class="btn-group input-group input-select2me">
+									<div class="input-group-addon">是否需要高级认证:</div>
+									<select id="edit_isSeniorCertification" data-name="isSeniorCertification" name="advertEdit" class="form-control">
+										<!--<option value="">全部</option>-->
+										<option value="1">无</option>
+										<option value="2">需通过实名验证</option>
+										<option value="3">需通过实名验证+高级验证</option>
+									</select>
+									<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+								</div>
+							</div>
+							<!--<div class="col-sm-3 form-group" style="width: 279px;">-->
+								<!--<div class="btn-group input-group input-select2me">-->
+									<!--<div class="input-group-addon">是否与平台商家交易:</div>-->
+									<!--<select id="edit_isMerchantsTrade" data-name="isMerchantsTrade" name="advertEdit" class="form-control">-->
+										<!--&lt;!&ndash;<option value="">全部</option>&ndash;&gt;-->
+										<!--&lt;!&ndash;<option value="1">是</option>&ndash;&gt;-->
+										<!--<option value="2">否</option>-->
+									<!--</select>-->
+									<!--<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>-->
+								<!--</div>-->
+							<!--</div>-->
+							<div class="col-sm-6 form-group">
+								<div class="btn-group input-group">
+									<div class="input-group-addon">支付密码:</div>
+									<input id="edit_transactionPassword" name="edit_transactionPassword" class="form-control" type="password" placeholder="" >
+									<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+								</div>
+							</div>
+							<div class="col-sm-6 form-group">
+								<div class="btn-group input-group">
+									<div class="input-group-addon">谷歌验证码:</div>
+									<input  id="edit_googlecode" name="googlecode" class="form-control" type="text" placeholder="" >
+									<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+
+				<button id="update_advert" type="button" class="btn btn-primary" data-dismiss="modal">保存</button>
+				<!--<button id="update_gp1" type="button" class="btn btn-primary" data-dismiss="modal">保存</button>-->
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$.include("pages/partial/xwatable-form.shtml")
+</script>
+</body>
+<script>
+	$.include("pages/partial/scripts.shtml");
+</script>
+<script type="text/javascript" src="pages/scripts/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="assets/global/plugins/jquery-watable/jquery.watable.js"></script>
+<script type="text/javascript" src="pages/scripts/rqlbuilder.js"></script>
+<script type="text/javascript" src="pages/scripts/xwatable.js"></script>
+<script type="text/javascript" src="pages/scripts/refhelper.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/select2/select2.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>
+<script src="assets/global/plugins/jstree/dist/jstree.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+<script src="mods/basismanage.js"></script>
+<script src="mods/advert.js"></script>
+<script src="advert/advert.js"></script>
+<script type="text/javascript" src="assets/global/scripts/ugweb.jquery.md5.js"></script>
+<script type="text/javascript" src="assets/global/scripts/fselect.js"></script>
+<!--<script src="mods/sys.js"></script>-->
+
+<script type="text/javascript">
+	Advert.init();
+</script>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zh">
+
+<head>
+    <title>合作企业后台管理</title>
+    <!--main页面需要引入的css样式-->
+    <script src="pages/scripts/header.js"></script>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/bootstrap-fileinput/fileinput.css" rel="stylesheet">
+    <link href="assets/admin/layout/css/warning.css" rel="stylesheet" type="text/css" />
+    <link href='assets/global/plugins/jquery-watable/watable.css' rel='stylesheet' />
+    <link href='assets/global/plugins/jquery-watable/animate.min.css' rel='stylesheet' />
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-select/bootstrap-select.min.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="assets/global/plugins/jquery-multi-select/css/multi-select.css"/>-->
+    
+    
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
+
+	<link href="assets/global/css/components.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
+    <style type="text/css">
+        .dashboard-stat .details {
+            font-size: 30px;
+            font-family: Courier New !important;
+        }
+        .visual{
+            padding-left:30px;padding-top:30px;width:84px;height:84px;
+
+        }
+        .number {
+            font-family: HelveticaNeue Thin;font-size:44px; color:#1bc6f9;
+        }
+        .desc{
+            font-family:PingFangSC Regular;
+            font-size:14px !important;
+            color :#353535;
+            margin-top: 10px;
+        }
+        .tabs{
+            height:46px;
+            background: #f5f5f6;
+        }
+        .tabs li{
+            height:46px;
+        }
+        .tabs li a{
+            line-height: 46px;
+            height: 46px;
+            border: none;
+            padding: 0 20px;
+            margin-left: 1px;
+            color:#333333 !important;
+        }
+        .tabbable-custom > .nav-tabs > li.active{
+            border-top:none;
+            border-bottom: 2px solid #2c9dfa;
+        }
+        .tabbable-custom > .nav-tabs > li.active >a{
+            background: none !important;
+            color:#2c9dfa !important;
+        }
+        .blocks{
+            width:24.25% !important;
+            padding:0;
+        }
+        .banner{
+            width:100%;
+        }
+        .banner img{
+            width:100%;
+            margin-bottom:20px;
+        }
+    </style>
+</head>
+
+<body class="page-header-fixed page-quick-sidebar-over-content">
+
+    <!-- 标题栏开始 -->
+    <div class="page-header navbar navbar-fixed-top">
+        <script>
+            $.include("pages/partial/menu.shtml");
+        </script>
+    </div>
+    <!-- 标题栏结束 -->
+
+    <div class="clearfix"></div>
+
+    <div class="page-container" style="background: #f9f9fb !important;">
+
+        <!-- 左侧菜单开始 -->
+        <div class="page-sidebar-wrapper" style="height:100%">
+            <script>
+                $.include("pages/partial/sidebar.shtml");
+            </script>
+        </div>
+        <!-- 左侧菜单结束 -->
+
+        <!-- 主内容开始 -->
+        <div class="page-content-wrapper">
+            <div class="page-content" style="background: #f9f9fb !important;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="page-breadcrumb breadcrumb">
+                            <li>
+                                <i class="fa fa-map-marker"></i>
+                                <a href="index.html">首页</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--内容头开始  先注释掉-->
+
+
+                <!-- BEGIN DASHBOARD STATS -->
+                <div class="row" id="numbers" style="margin-bottom: 20px;display:none;" >
+                    
+                </div>
+                
+                <!-- END DASHBOARD STATS -->
+                <!-- 内容头结束-->
+
+
+                <!-- TODO 此处写内容 -->
+
+            </div>
+        </div>
+        <!-- 主内容结束 -->
+
+    </div>
+
+    <!-- 底边栏开始 -->
+
+    <!-- 底边栏结束 -->
+</body>
+
+<script type="text/javascript">
+                $.include("pages/partial/xwatable-form.shtml")
+
+</script>
+<script>
+    $.include("pages/partial/scripts.shtml");
+
+</script>
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="assets/global/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/flot/jquery.flot.pie.min.js"></script>
+<script src="assets/addons/countUp.min.js" type="text/javascript"></script>
+
+<script src="pages/scripts/rest.js" type="text/javascript"></script>
+<script src="assets/addons/jquery-dateFormat.min.js" type="text/javascript"></script>
+<script src="assets/addons/dust-full-2.4.0.min.js" type="text/javascript"></script>
+<script src="assets/addons/dust-helpers-1.2.0.min.js" type="text/javascript"></script>
+<script src="assets/addons/dust-helpers-1.2.0.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="assets/global/plugins/jquery-watable/jquery.watable.js"></script>
+<script type="text/javascript" src="pages/scripts/rqlbuilder.js"></script>
+<script type="text/javascript" src="pages/scripts/xwatable.js"></script>
+<script type="text/javascript" src="pages/scripts/refhelper.js"></script>
+<script src="mods/indexEnum.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="assets/global/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/select2/select2.min.js"></script>
+<!--<script type="text/javascript" src="assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>-->
+<script src="mods/bil.js"></script>
+
+<script src="pages/scripts/index.js" type="text/javascript"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+
+</html>

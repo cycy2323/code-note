@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zh">
+<!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+<head>
+    <title>通知管理</title>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html" charset="utf-8"/>
+	<!-- BEGIN THEME STYLES -->
+    <script src="pages/scripts/header.js"></script>
+    <link href='assets/global/plugins/jquery-watable/watable.css' rel='stylesheet'/>
+    <link href='assets/global/plugins/jquery-watable/animate.min.css' rel='stylesheet'/>
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-select/bootstrap-select.min.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/jquery-multi-select/css/multi-select.css"/>
+    <link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="assets/global/plugins/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="notice/css/sysNotice.css"> 
+</head>
+<!-- END HEAD -->
+<body class="page-header-fixed page-quick-sidebar-over-content">
+
+<!-- 标题栏开始 -->
+<div class="page-header navbar navbar-fixed-top">
+    <script>$.include("pages/partial/menu.shtml");</script>
+</div>
+<!-- 标题栏结束 -->
+<div class="clearfix"></div>
+<div class="page-container">
+    <!-- 左侧菜单开始 -->
+    <div class="page-sidebar-wrapper">
+        <script>$.include("pages/partial/sidebar.shtml");</script>
+    </div>
+    <!-- 左侧菜单结束 -->
+    <!-- 主内容开始 -->
+    <div class="page-content-wrapper">
+        <div class="page-content">
+        	 <div class="row">
+		        <div class="col-md-12">
+		            <ul class="page-breadcrumb breadcrumb">
+		                <li>
+		                    <i class="fa fa-map-marker"></i>
+		                    	通知管理<i class="fa fa-angle-double-right"></i>系统通知
+		                </li>
+		            </ul>
+		        </div>
+		    </div>
+            <!--内容开始-->
+	            <div class="page-header">
+	                <h4 class="page-title batchTitle">系统通知发布</h4>
+	            </div>
+	            <div class="page-body">
+                 <form action="javascript:;" class="form-horizontal" role="form" id="sysNotice">
+                    	<div class="form-group" style="margin-left: 353px;">
+                    			<label class="col-sm-2 control-label global_font">通知内容:</label>
+                    			<div class="col-sm-4">
+	                            	<textarea id="content" name="content" class="form-control" rows="3" placeholder="请输入通知内容"></textarea>
+	                            </div>
+	                    </div>
+	                    <div class="form-group" style="margin-top: 30px;margin-left: 348px;">
+	                    	<div class="col-sm-offset-2 col-sm-4">
+	                    		<button id="send" class="btn btn-primary" style="width: 290px;">发布</button>
+	                    	</div>
+	                    </div>	
+	                     	
+                </form>
+	        </div>  
+            <!-- 内容结束-->
+        </div>
+    </div>
+</div>
+<!-- 主内容结束 -->
+</div>
+
+<script type="text/javascript">$.include("pages/partial/xwatable-form.shtml")</script>
+
+<!-- 底边栏开始 -->
+<!--<script>$.include("pages/partial/foot.shtml");</script>-->
+<!-- 底边栏结束 -->
+</body>
+<script>$.include("pages/partial/scripts.shtml");</script>
+<script type="text/javascript" src="assets/global/plugins/jquery-watable/jquery.watable.js"></script>
+<script type="text/javascript" src="pages/scripts/rqlbuilder.js"></script>
+<script type="text/javascript" src="pages/scripts/xwatable.js"></script>
+<script type="text/javascript" src="pages/scripts/refhelper.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/select2/select2.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="notice/js/sysNotice.js"></script>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zh">
+	<!--<![endif]-->
+
+	<!-- BEGIN HEAD -->
+
+	<head>
+		<title>收款方式管理</title>
+		<base href="../../">
+
+		<script src="../pages/scripts/header.js"></script>
+		<meta http-equiv="content-type" content="text/html" charset="utf-8" />
+
+		<script src="pages/scripts/header.js"></script>
+		<link href='assets/global/plugins/jquery-watable/watable.css' rel='stylesheet' />
+		<link href='assets/global/plugins/jquery-watable/animate.min.css' rel='stylesheet' />
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-select/bootstrap-select.min.css" />
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css" />
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/jquery-multi-select/css/multi-select.css" />
+		<link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="assets/global/plugins/jstree/dist/themes/default/style.min.css">
+		<!-- END THEME STYLES -->
+	</head>
+	<!-- END HEAD -->
+
+	<body class="page-header-fixed page-quick-sidebar-over-content">
+
+		<!-- 标题栏开始 -->
+		<div class="page-header navbar navbar-fixed-top">
+			<script>
+				$.include("pages/partial/menu.shtml");
+			</script>
+		</div>
+		<!-- 标题栏结束 -->
+		<div class="clearfix"></div>
+		<div class="page-container">
+			<!-- 左侧菜单开始 -->
+			<div class="page-sidebar-wrapper">
+				<script>
+					$.include("pages/partial/sidebar.shtml");
+				</script>
+			</div>
+			<!-- 左侧菜单结束 -->
+
+			<!-- 主内容开始 -->
+			<div class="page-content-wrapper">
+				<div class="page-content">
+					<!--内容头开始-->
+					<div class="row">
+						<div class="col-md-12">
+							<ul class="page-breadcrumb breadcrumb">
+								<li>
+									<i class="fa  fa-map-marker"></i>
+								</li>
+								<li>
+									<a href="javascript:void(0)">用户信息管理</a>
+									<i class="fa fa-angle-double-right"></i>
+								</li>
+								<li>
+									<a href="javascript:void(0)">收款方式管理</a>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+					<div class="container col-sm-12" style="padding-bottom:0px" id="find">
+
+						<div class="col-sm-3 form-group">
+							<div class="btn-group input-group input-select2me">
+								<div class="input-group-addon">收款方式:</div>
+								<select id="paymentWay1" class="form-control input-middle select2me" data-placeholder="收款方式">
+									<option value="">全部</option>
+									<option value="1">微信</option>
+									<option value="2">支付宝</option>
+									<option value="3">银行卡</option>
+								</select>
+								<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+							</div>
+						</div>
+
+						<div class="btn-group form-group">
+							<button id="find_button" class="btn yellow">
+        						<i class="fa fa-search"></i> 查询&nbsp;
+    						</button>
+						</div>
+
+						<!--<div class="btn-group form-group">
+							<button id="edit_btn" class="btn green" data-target="#edit_gp_btn" data-toggle="modal">
+					        <i class="fa fa-eye"></i> 查看&nbsp;
+					    </button>
+						</div>-->
+
+					</div>
+
+					<div class="container-fluid" style="background-color: #ffffff">
+						<!--<div id="treetable" class="table-responsive container col-md-3" style="max-height: 450px; overflow-y: auto">-->
+						<!--</div>-->
+						<div id="divtable" class="table-responsive container-fluid col-md-12">
+						</div>
+					</div>
+					<!-- 内容结束-->
+				</div>
+			</div>
+		</div>
+		<!-- 主内容结束 -->
+
+		<!--新增模态框-->
+		<div class="modal fade" id="edit_gp_btn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">收款方式查询</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<form action="javascript:;" role="form" name="edit_form" id="edit_form" onSubmit="return beforeSubmit(this)">
+								<div class="row">
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">收款方式表主键:</div>
+											<input id="ugOtcPaymentWayId" name="ugOtcPaymentWayId" class="inputclear form-control" type="text" placeholder="" disabled="disabled">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">用户ID:</div>
+											<input id="userId" name="userId" class="inputclear form-control" type="text" placeholder="" disabled="disabled">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-3 form-group" style="width: 279px;">
+										<div class="btn-group input-group input-select2me">
+											<div class="input-group-addon">收款方式:</div>
+											<select id="paymentWay" name="paymentWay" class="form-control" disabled="disabled">
+												<!--<option value="">全部</option>-->
+												<option value="1">微信</option>
+												<option value="2">支付宝</option>
+												<option value="3">银行卡</option>
+											</select>
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">账号:</div>
+											<input id="paymentAccount" name="paymentAccount" class="inputclear form-control" type="text" placeholder="" disabled="disabled">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">二维码:</div>
+											<input id="qrCode" name="qrCode" class="inputclear form-control" type="text" placeholder="" disabled="disabled">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">开户银行:</div>
+											<input id="accountOpenBank" name="accountOpenBank" class="inputclear form-control" type="text" placeholder="" disabled="disabled">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">开户支行:</div>
+											<input id="accountOpenBranch" name="accountOpenBranch" class="inputclear form-control" type="text" placeholder="" disabled="disabled">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">银行卡号:</div>
+											<input id="accountBankCard" name="accountBankCard" class="inputclear form-control" type="text" placeholder="" disabled="disabled">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">创建时间:</div>
+											<input id="createdTime" name="createdTime" class="inputclear form-control" type="text" placeholder="" disabled="disabled">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+									<div class="col-sm-6 form-group">
+										<div class="btn-group input-group">
+											<div class="input-group-addon">修改时间:</div>
+											<input id="modifyTime" name="modifyTime" class="inputclear form-control" type="text" placeholder="" disabled="disabled">
+											<span class="inputclear glyphicon glyphicon-remove-circle hide"></span>
+										</div>
+									</div>
+
+								</div>
+
+							</form>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button id="quxiao" type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<!--<button id="update_gp1" type="button" class="btn btn-primary" data-dismiss="modal">保存</button>-->
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			$.include("pages/partial/xwatable-form.shtml")
+		</script>
+	</body>
+	<script>
+		$.include("pages/partial/scripts.shtml");
+	</script>
+	<script type="text/javascript" src="assets/global/plugins/jquery-watable/jquery.watable.js"></script>
+	<script type="text/javascript" src="pages/scripts/rqlbuilder.js"></script>
+	<script type="text/javascript" src="pages/scripts/xwatable.js"></script>
+	<script type="text/javascript" src="pages/scripts/refhelper.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/select2/select2.min.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>
+	<script src="assets/global/plugins/jstree/dist/jstree.js"></script>
+	<script type="text/javascript" src="assets/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+	<script src="mods/basismanage.js"></script>
+	<script src="payment/payment.js"></script>
+	<script type="text/javascript">
+		Payment.init();
+	</script>
+
+</html>

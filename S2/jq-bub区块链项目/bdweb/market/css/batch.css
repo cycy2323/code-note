@@ -1,0 +1,15 @@
+.batchTitle{
+	text-align: center;
+}
+.priceType{
+	margin-left: 12px;
+	width: 290px;
+}
+.autoTransaction{
+	margin-left: 14px;
+	width: 290px;
+	height: 35px;
+}
+.global_font{
+	font-size: 13px;
+}
