@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="4px" height="4px" viewBox="0 0 4 4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>路径</title>
+    <desc>Created with Sketch.</desc>
+    <g id="网页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1" transform="translate(-844.000000, -284.000000)" fill="#809AA8" fill-rule="nonzero">
+            <path d="M844.731707,284 C845.349593,284.440816 845.98374,284.979592 846.601626,285.632653 C847.138211,286.187755 847.609756,286.759184 848,287.314286 L847.186992,288 C846.796748,287.444898 846.325203,286.889796 845.804878,286.334694 C845.203252,285.681633 844.601626,285.142857 844,284.685714 L844.731707,284 Z" id="路径"></path>
+        </g>
+    </g>
+</svg>

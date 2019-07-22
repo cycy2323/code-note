@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>输入付款银联卡号</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .common {
+            width: 950px;
+            margin: 0 auto;
+        }
+
+        .clear-both::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .header {
+            border-bottom: 1px solid #33578E;
+            box-shadow: 0 2px 2px 0 #33578E;
+            height: 68px;
+        }
+
+        .logo {
+            float: left;
+            margin-top: 17px;
+        }
+
+        .header-right {
+            height: 68px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            float: right;
+            font-size: 12px;
+            color: #738193;
+        }
+
+        .header-options {
+            cursor: pointer
+        }
+
+        .tel {
+            margin-left: 20px;
+            height: 14px;
+        }
+
+        .content {
+            height: calc(100vh - 70px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .order-msg {
+            margin-top: 15px;
+            height: 60px;
+            background: #EBF0F1;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 14px;
+            color: #333333;
+        }
+
+        .account {
+            font-size: 20px;
+            color: #FF6500;
+        }
+
+        .detail-link {
+            font-size: 12px;
+            color: #367DB3;
+            cursor: pointer
+        }
+
+        .yellow-tips {
+            font-size: 12px;
+            color: #FF7500;
+            line-height: 32px;
+            float: right;
+        }
+
+        .operate-step {
+            height: 209px;
+            border: 1px solid #5A97CD;
+            margin-top: 32px;
+            box-shadow: 0 0 0 4px #c8d3e5 inset;
+            box-sizing: border-box;
+            padding: 30px 60px;
+        }
+
+        .step-tip {
+            font-size: 15px;
+            color: #333333;
+        }
+
+        .card-input {
+            border: 1px solid #C4CDD5;
+            border-radius: 3px;
+            line-height: 45px;
+            height: 36px;
+            width: 300px;
+            padding-left: 10px;
+            margin: 15px 0;
+        }
+
+        .next-back {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-top: 15px;
+            cursor: pointer
+        }
+
+        .next-step {
+            width: 91px;
+            height: 33px;
+        }
+
+        .go-back {
+            font-size: 14px;
+            color: #3E81B6;
+            margin-left: 20px;
+        }
+
+        .payType-select {
+            border: 1px solid #C3D7EA;
+            margin-top: 15px;
+            box-shadow: 0 0 0 4px #f2f7fb inset;
+            line-height: 54px;
+            font-size: 13px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .payType {
+            padding: 0 30px;
+            color: #1965D3;
+            cursor: pointer;
+        }
+
+        .help {
+            font-size: 13px;
+            color: #333;
+            line-height: 28px;
+            margin-top: 30px;
+        }
+
+        .answer {
+            font-size: 13px;
+            color: #686868;
+        }
+
+        .help-link {
+            font-size: 13px;
+            color: #367DB3;
+            text-decoration:underline;
+            cursor: pointer
+        }
+
+        .help-tile, .more-help {
+            line-height: 32px;
+        }
+        .footer{
+            font-size: 13px;
+            color: #6E8198;
+            line-height: 36px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #D7DBDB;
+        }
+        .footer-left{
+            margin-left: -10px;
+        }
+        .other-links{
+            padding: 0 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div class="header">
+        <div class="header-content common clear-both">
+            <img src="assets/logo.png" alt="" class="logo">
+            <div class="header-right">
+                <span class="header-options">首页</span>&nbsp;|&nbsp;
+                <span class="header-options">帮助中心</span>
+                <img src="assets/tel.png" alt="" class="tel">
+            </div>
+        </div>
+    </div>
+
+    <div class="content common">
+        <div class="main">
+            <div class="order-msg">
+                <div>订单金额：<span class="account">7000.00</span>&nbsp;元</div>
+                <div>订单编号：5000342342</div>
+                <div>商户名称：银联全渠道无卡快捷通道</div>
+                <div class="detail-link">订单详情[+]</div>
+            </div>
+            <div class="yellow-tips">请你在1970/01/01 08:00:02前完成支付，以免商户订单失败</div>
+            <div class="operate-step">
+                <div class="step-tip">请输入要付款的银联卡号:</div>
+                <input class="card-input" type="text" placeholder="信用卡/存蓄卡/中银通卡">
+                <div class="next-back">
+                    <img src="assets/next.png" alt="" class="next-step">
+                    <span class="go-back">返回</span>
+                </div>
+            </div>
+            <div class="payType-select">
+                <div class="payType">银联卡支付</div>
+                |
+                <div class="payType">迷你付</div>
+            </div>
+            <div class="help">
+                <p class="help-tile">支付遇到问题？</p>
+                <p>1.如果我没有注册，如何进行付款？</p>
+                <p class="answer">答: 如果您没有注册账户，您可以在页面左侧直接输入卡号，点击“下一步”进行付款。您输入的银行卡信息需要通过发卡行验证后才能完成交易，安全又便捷。</p>
+                <p>2.为什么要安装控件？控件不能下载，我该如何解决？</p>
+                <p>3.付款时，遇到提示“网址安全证书有问题”，我该如何解决？</p>
+                <p class="more-help">如需查看更多问题，请点击 <span class="help-link">帮助中心</span>或联系 <span
+                        class="help-link">在线客服</span></p>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-left">
+                <span class="other-links">银联官网</span>|
+                <span class="other-links">银联在线支付</span>|
+                <span class="other-links">关于我们</span>|
+                <span class="other-links">网址使用条款</span>
+            </div>
+            <div class="copyrightNo">中国银联股份有限公司版权所有 © 2002-2019 泸ICP备07032180号</div>
+        </div>
+    </div>
+</div>
+
+<script>
+</script>
+
+</body>
+</html>

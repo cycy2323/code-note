@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>确认</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="25.4715097%" y1="7.95568365%" x2="68.5909721%" y2="90.5887742%" id="linearGradient-1">
+            <stop stop-color="#E1F4A0" offset="0%"></stop>
+            <stop stop-color="#29B800" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="确认" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="椭圆形" fill="url(#linearGradient-1)" cx="8" cy="8" r="8"></circle>
+        <polyline id="路径-2" stroke="#FFFFFF" stroke-width="1.4" points="3 7.10510768 7.00974648 11.1295419 12.991172 4.86611224"></polyline>
+    </g>
+</svg>

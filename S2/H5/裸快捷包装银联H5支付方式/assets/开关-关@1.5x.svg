@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="51px" height="29px" viewBox="0 0 51 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>开关-关</title>
+    <desc>Created with Sketch.</desc>
+    <g id="开关-关" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="矩形" fill="#D8D8D8" x="0" y="0" width="51" height="29" rx="5"></rect>
+        <path d="M9,2 L24,2 C26.7614237,2 29,4.23857625 29,7 L29,22 C29,24.7614237 26.7614237,27 24,27 L9,27 C6.23857625,27 4,24.7614237 4,22 L4,7 C4,4.23857625 6.23857625,2 9,2 Z" id="矩形复制-16" fill="#FFFFFF"></path>
+    </g>
+</svg>

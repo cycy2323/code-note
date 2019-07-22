@@ -245,7 +245,7 @@ export default class PromotionsView extends BigPopPage {
     // 测内容图片宽高
     measureWidth = (uri) =>{
         // 图片uri错误防守，报黄处理
-        let str=/\w(\.gif|\.jpeg|\.webp|\.jpg|\.bmp|\.ico)/i;
+        let str=/\w(\.gif|\.jpeg|\.webp|\.jpg|\.bmp|\.ico|\.png)/i;
         if(!(uri.search(str)===-1)){
             Image.getSize(uri, (width, height) => {
                 this.setState({picWidth:width,picHeight:height});
